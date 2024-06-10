@@ -5,17 +5,16 @@
         <section class="pt-6 text-center">
             <h1 class="text-3xl font-bold">Let's Find Your Next Job</h1>
 
-            <form action="" class="mt-6">
-                <input type="text" placeholder="Backend Developer......"
-                    class="rounded-xl bg-black/10 border-black/10 px-5 py-4 focus:outline-none focus:ring focus:ring-blue-500 w-full max-w-xl">
-            </form>
+            <x-forms.form action="/search" class="mt-6">
+                <x-forms.input :label="false" type="text" name="q" placeholder="Backend Developer..." />
+            </x-forms.form>
         </section>
 
 
         <section class="pt-6">
             <x-section-heading>Featured Jobs</x-section-heading>
 
-            <div class="grid lg:grid-cols-3 gap-8 mt-4">
+            <div class="grid lg:grid-cols-3 gap-8 mt-4 ">
 
                 @foreach ($featuredJobs as $job)
                 <x-job-card :job="$job" />

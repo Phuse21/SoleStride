@@ -13,10 +13,10 @@
     <div class="flex justify-between items-center mt-auto">
         <div class="space-x-2">
             @foreach ($job->tags as $tag)
-                <x-tag :tag="$tag" size="sm" />
+            <x-tag :tag="$tag" size="sm" />
             @endforeach
         </div>
 
-        <x-employer-logo :width="42" />
+        <x-employer-logo :employer="$job->employer" :width="42" :height="42" />
     </div>
 </x-panel>
