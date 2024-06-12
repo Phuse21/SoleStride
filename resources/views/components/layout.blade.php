@@ -25,21 +25,23 @@
             </div>
 
             @auth
-            <div class="flex space-x-4 font-bold">
-                <a href="/jobs/create">Post a Job</a>
+                <div class="flex space-x-4 font-bold">
+                    <a href="/jobs/create">Post a Job</a>
 
-                <form method="POST" action="/logout">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Logout</button>
-                </form>
-            </div>
+                    <form method="POST" action="/logout">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Logout</button>
+
+                    </form>
+
+                </div>
             @endauth
             @guest
-            <div class="space-x-4 font-bold">
-                <a href="/register">Sign Up</a>
-                <a href="/login">Login</a>
-            </div>
+                <div class="space-x-4 font-bold">
+                    <a href="/register">Sign Up</a>
+                    <a href="/login">Login</a>
+                </div>
             @endguest
         </nav>
 

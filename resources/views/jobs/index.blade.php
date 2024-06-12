@@ -5,9 +5,12 @@
         <section class="pt-6 text-center">
             <h1 class="text-3xl font-bold">Let's Find Your Next Job</h1>
 
-            <x-forms.form action="/search" class="mt-6">
-                <x-forms.input :label="false" type="text" name="q" placeholder="Backend Developer..." />
-            </x-forms.form>
+            <form action="" class="mt-6">
+                <div class="flex justify-center w-full">
+                    <input type="text" name="search" id="search" placeholder="Web Developer.." class="rounded-xl bg-black/10 border border-black/20 px-5 py-4 w-[50%] focus:outline-none focus:ring-2
+                focus:ring-blue-500 focus:border-transparent">
+                </div>
+            </form>
         </section>
 
 
