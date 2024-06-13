@@ -3,12 +3,14 @@
 namespace App\Livewire;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Hash;
-use Livewire\Attributes\Rule;
-use Livewire\Attributes\Validate;
+
+
 use Livewire\Component;
 use Livewire\WithFileUploads;
+
+
 
 class RegisterUser extends Component
 {

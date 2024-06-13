@@ -1,6 +1,6 @@
 <!-- method="POST" action="/register" enctype="multipart/form-data" -->
 <div>
-    <x-page-heading>Register</x-page-heading>
+    <x-page-heading>Login</x-page-heading>
 
     <div>
         <form wire:submit="register" class="max-w-2xl mx-auto space-y-6">
