@@ -19,6 +19,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'role',
         'password',
     ];
 
@@ -49,5 +50,10 @@ class User extends Authenticatable
     {
 
         return $this->hasOne(Employer::class);
+    }
+
+    public function applicant()
+    {
+        return $this->hasOne(Applicants::class);
     }
 }

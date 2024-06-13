@@ -13,35 +13,36 @@
     <div class="px-8">
         <nav class="flex justify-between items-center border-b border-black/10 sticky top-0 bg-white z-50">
             <div>
-                <a href="">
+                <a wire:navigate href="/">
                     <img class="h-24 w-24" src="https://i.ibb.co/C0484RC/2-removebg-preview.png" alt="Your Company">
                 </a>
             </div>
             <div class="space-x-4 font-bold">
-                <a href="">Jobs</a>
-                <a href="">Careers</a>
-                <a href="">Salaries</a>
-                <a href="">Companies</a>
+                <x-nav-link wire:navigate href="/" :active="request()->is('/')">Jobs</x-nav-link>
+                <x-nav-link wire:navigate href="/careers" :active="request()->is('/careers')">Careers</x-nav-link>
+                <x-nav-link wire:navigate href="/salaries" :active="request()->is('/salaries')">Salaries</x-nav-link>
+                <x-nav-link wire:navigate href="/companies" :active="request()->is('/companies')">Companies</x-nav-link>
             </div>
 
             @auth
-                <div class="flex space-x-4 font-bold">
-                    <a href="/jobs/create">Post a Job</a>
+            <div class="flex space-x-4 font-bold">
+                <x-nav-link wire:navigate href="/jobs/create" :active="request()->is('jobs/create')">Post a
+                    Job</x-nav-link>
 
-                    <form method="POST" action="/logout">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Logout</button>
+                <form method="POST" action="/logout">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Logout</button>
 
-                    </form>
+                </form>
 
-                </div>
+            </div>
             @endauth
             @guest
-                <div class="space-x-4 font-bold">
-                    <a href="/register">Sign Up</a>
-                    <a href="/login">Login</a>
-                </div>
+            <div class="space-x-4 font-bold">
+                <x-nav-link wire:navigate href="/register" :active="request()->is('register')">Sign Up</x-nav-link>
+                <x-nav-link wire:navigate href="/login" :active="request()->is('login')">Login</x-nav-link>
+            </div>
             @endguest
         </nav>
 
