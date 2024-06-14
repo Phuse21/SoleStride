@@ -3,7 +3,7 @@
     <x-page-heading>Login</x-page-heading>
 
     <div>
-        <form wire:submit="register" class="max-w-2xl mx-auto space-y-6">
+        <form wire:submit="login" class="max-w-2xl mx-auto space-y-6">
 
             <div>
                 <x-label :name="'email'" :label="'Email'" />
@@ -17,8 +17,7 @@
                 <x-error name="password" />
             </div>
 
-
-
+            <p>Don't have an account? <a wire:navigate href="/register" class="text-blue-500 font-bold">Register</a></p>
 
             <x-button type="submit">Login</x-button>
         </form>

@@ -124,7 +124,9 @@
                     </div>
                 </div>
             @endif
+            <p>Already have an account? <a wire:navigate href="/login" class="text-blue-500 font-bold">Login</a></p>
 
+            <p>By creating an account you agree to our <a href="#" class="text-blue-500">Terms & Privacy</a></p>
             <x-button type="submit">Create Account</x-button>
         </form>
 

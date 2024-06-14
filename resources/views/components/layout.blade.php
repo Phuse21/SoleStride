@@ -25,16 +25,11 @@
             </div>
 
             @auth
-            <div class="flex space-x-4 font-bold">
+            <div class="flex space-x-4 font-bold items-center">
                 <x-nav-link wire:navigate href="/jobs/create" :active="request()->is('jobs/create')">Post a
                     Job</x-nav-link>
 
-                <form method="POST" action="/logout">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Logout</button>
-
-                </form>
+                <livewire:logout-user />
 
             </div>
             @endauth
@@ -51,6 +46,5 @@
         </main>
     </div>
 </body>
-
 
 </html>

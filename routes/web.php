@@ -19,7 +19,6 @@ Route::get('/tags/{tag:name}', [TagController::class, '_invoke']);
 Route::middleware('guest')->group(function () {
     Route::get('/register', [RegisteredUserController::class, 'create']);
     Route::get('/login', [SessionController::class, 'create'])->name('login');
-    Route::post('/login', [SessionController::class, 'store']);
 });
 
 Route::delete('/logout', [SessionController::class, 'destroy'])->middleware('auth');
