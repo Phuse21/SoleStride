@@ -43,7 +43,7 @@ class CreateJob extends Component
         ]);
 
         // Include the 'feature' attribute if it is set
-        $attributes['featured'] = $this->feature ?? false;
+        $attributes['featured'] = $this->featured ?? false;
 
         // Get the authenticated user's employer
         $employer = Auth::user()->employer;
