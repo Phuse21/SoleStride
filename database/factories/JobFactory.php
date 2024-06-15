@@ -23,7 +23,8 @@ class JobFactory extends Factory
             'title' => fake()->jobTitle(),
             'salary' => '$' . number_format(fake()->numberBetween(10000, 100000)),
             'location' => fake()->city(),
-            'schedule' => Arr::random(['full-time', 'part-time', 'remote']),
+            'schedule' => Arr::random(['full-time', 'part-time']),
+            'mode' => Arr::random(['On-site', 'Remote', 'Hybrid']),
             'url' => fake()->url(),
             'featured' => false,
 

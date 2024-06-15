@@ -25,19 +25,23 @@
             </div>
 
             @auth
-            <div class="flex space-x-4 font-bold items-center">
-                <x-nav-link wire:navigate href="/jobs/create" :active="request()->is('jobs/create')">Post a
-                    Job</x-nav-link>
+                <div class="flex space-x-4 font-bold items-center">
+                    @if(auth()->user()->role === 'employer')
+                        <x-nav-link wire:navigate href="/jobs/create" :active="request()->is('jobs/create')">Post a Job
+                        </x-nav-link>
+                    @elseif(auth()->user()->role === 'applicant')
+                        <x-nav-link wire:navigate href="/profile" :active="request()->is('profile')">Profile</x-nav-link>
+                    @endif
 
-                <livewire:logout-user />
+                    <livewire:logout-user />
 
-            </div>
+                </div>
             @endauth
             @guest
-            <div class="space-x-4 font-bold">
-                <x-nav-link wire:navigate href="/register" :active="request()->is('register')">Sign Up</x-nav-link>
-                <x-nav-link wire:navigate href="/login" :active="request()->is('login')">Login</x-nav-link>
-            </div>
+                <div class="space-x-4 font-bold">
+                    <x-nav-link wire:navigate href="/register" :active="request()->is('register')">Sign Up</x-nav-link>
+                    <x-nav-link wire:navigate href="/login" :active="request()->is('login')">Login</x-nav-link>
+                </div>
             @endguest
         </nav>
 

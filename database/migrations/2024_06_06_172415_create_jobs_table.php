@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('salary');
             $table->string('location');
             $table->string('schedule');
+            $table->string('mode');
             $table->string('url');
             $table->boolean('featured')->default(false);
             $table->timestamps();

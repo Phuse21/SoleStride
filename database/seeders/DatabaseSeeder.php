@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Employer;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,7 +24,8 @@ class DatabaseSeeder extends Seeder
         // $this->call(ApplicantsSeeder::class);
 
         $this->call([
-            JobSeeder::class
+                // JobSeeder::class
+            EmployerSeeder::class
         ]);
     }
 }
