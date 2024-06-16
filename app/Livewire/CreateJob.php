@@ -46,10 +46,10 @@ class CreateJob extends Component
         $attributes['featured'] = $this->featured ?? false;
 
         // Get the authenticated user's employer
-        $employer = Auth::user()->employer;
+        // $employer = Auth::user()->employer;
 
         // Create the job excluding the tags attribute
-        $job = $employer->jobs()->create(Arr::except($attributes, ['tags']));
+        $job = Auth::user()->employer->jobs()->create(Arr::except($attributes, ['tags']));
 
         // Handle tags if provided
         if ($attributes['tags'] ?? false) {
