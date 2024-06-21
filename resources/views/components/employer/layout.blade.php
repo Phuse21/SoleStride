@@ -11,7 +11,7 @@
 
 <body class="bg-white text-black font-hanken overflow-x-hidden pb-20">
     <div class="px-8">
-        <nav class="flex justify-between items-center border-b border-black/10 sticky top-0 bg-white z-50">
+        <nav class="flex justify-between items-center border-b border-black/10 sticky top-0 bg-white z-10">
             <div>
                 <a wire:navigate href="{{route('employer.home')}}">
                     <img class="h-24 w-24" src="https://i.ibb.co/C0484RC/2-removebg-preview.png" alt="Your Company">

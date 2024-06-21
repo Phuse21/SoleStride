@@ -3,11 +3,25 @@
 namespace App\Livewire;
 
 use Illuminate\Support\Arr;
+use Livewire\Attributes\On;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CreateJob extends Component
 {
+
+    #[On('sweetalert:confirmed')]
+    public function onConfirmed(array $payload)
+    {
+        flash()->success('Job creation successful.');
+        return redirect()->route('employer.home');
+    }
+
+    #[On('sweetalert:denied')]
+    public function onDeny(array $payload): void
+    {
+        flash()->error('Job creation cancelled.');
+    }
 
     public $title;
     public $salary;
@@ -30,6 +44,9 @@ class CreateJob extends Component
         //     $this->tags,
         //     $this->featured
         // );
+
+
+
 
         $attributes = $this->validate([
             'title' => 'required',
@@ -58,9 +75,14 @@ class CreateJob extends Component
             }
         }
 
-        // Redirect with a success message
-        return redirect('/');
+        sweetalert()
+            ->showDenyButton()
+            ->info('Are you sure you want to create this job ?');
     }
+
+
+
+
     public function render()
     {
         return view('livewire.create-job');

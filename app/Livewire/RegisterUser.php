@@ -131,7 +131,7 @@ class RegisterUser extends Component
         }
 
         // Auth::login($user)
-
+        flash()->success('User created successfully.');
         return redirect()->route('login');
 
     }
