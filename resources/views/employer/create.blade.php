@@ -1,3 +1,3 @@
-<x-layout>
+<x-employer.layout>
     <livewire:create-job />
-</x-layout>
+</x-employer.layout>

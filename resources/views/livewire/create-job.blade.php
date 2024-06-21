@@ -71,8 +71,8 @@
             </form>
         </div>
 
-        <div class="flex-1 pb-10 -mt-10">
+        <!-- <div class="flex-1 pb-10 -mt-10">
             <img src="https://i.ibb.co/W6YvfNY/Frame-2.png" class="pl-10 ">
-        </div>
+        </div> -->
     </div>
 </div>
