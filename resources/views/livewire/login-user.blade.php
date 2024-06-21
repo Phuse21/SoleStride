@@ -6,15 +6,15 @@
         <form wire:submit="login" class="max-w-2xl mx-auto space-y-6">
 
             <div>
-                <x-label :name="'email'" :label="'Email'" />
-                <x-input type="email" :name="'email'" :id="'email'" wire:model="email" />
-                <x-error name="email" />
+                <x-form.label :name="'email'" :label="'Email'" />
+                <x-form.input type="email" :name="'email'" :id="'email'" wire:model="email" />
+                <x-form.error name="email" />
             </div>
 
             <div>
-                <x-label :name="'password'" :label="'Password'" />
-                <x-input type="password" :name="'password'" :id="'password'" wire:model="password" />
-                <x-error name="password" />
+                <x-form.label :name="'password'" :label="'Password'" />
+                <x-form.input type="password" :name="'password'" :id="'password'" wire:model="password" />
+                <x-form.error name="password" />
             </div>
 
             <p>Don't have an account? <a wire:navigate href="/register" class="text-blue-500 font-bold">Register</a></p>

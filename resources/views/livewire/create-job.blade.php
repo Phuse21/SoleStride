@@ -5,64 +5,64 @@
             <form class="max-w-2xl mx-auto space-y-6">
                 <div class="flex space-x-4">
                     <div class="w-1/2">
-                        <x-label :name="'title'" :label="'Title'" />
-                        <x-input type="text" :name="'title'" :id="'title'" wire:model="title" />
-                        <x-error name="title" />
+                        <x-form.label :name="'title'" :label="'Title'" />
+                        <x-form.input type="text" :name="'title'" :id="'title'" wire:model="title" />
+                        <x-form.error name="title" />
                     </div>
 
                     <div class="w-1/2">
-                        <x-label :name="'salary'" :label="'Salary'" />
-                        <x-input type="'text" :name="'salary'" :id="'salary'" wire:model="salary" />
-                        <x-error name="salary" />
+                        <x-form.label :name="'salary'" :label="'Salary'" />
+                        <x-form.input type="'text" :name="'salary'" :id="'salary'" wire:model="salary" />
+                        <x-form.error name="salary" />
                     </div>
                 </div>
 
                 <div class="flex space-x-4">
                     <div class="w-1/2">
-                        <x-label :name="'location'" :label="'Location'" />
-                        <x-input type="text" :name="'location'" :id="'location'" wire:model="location" />
-                        <x-error name="location" />
+                        <x-form.label :name="'location'" :label="'Location'" />
+                        <x-form.input type="text" :name="'location'" :id="'location'" wire:model="location" />
+                        <x-form.error name="location" />
                     </div>
 
                     <div class="w-1/2">
-                        <x-label :name="'schedule'" :label="'Schedule'" />
-                        <x-select :name="'schedule'" :id="'schedule'" wire:model="schedule">
+                        <x-form.label :name="'schedule'" :label="'Schedule'" />
+                        <x-form.select :name="'schedule'" :id="'schedule'" wire:model="schedule">
                             <option value="full-time">Full Time</option>
                             <option value="part-time">Part Time</option>
-                        </x-select>
-                        <x-error name="schedule" />
+                        </x-form.select>
+                        <x-form.error name="schedule" />
                     </div>
                 </div>
 
                 <div class="flex space-x-4">
                     <div class="w-1/2 form-check">
-                        <x-label :name="'feature'" :label="'Featured(Cost Extra)'" />
-                        <x-checkbox name="feature" id="feature" wire:model="featured" />
-                        <x-error name="feature" />
+                        <x-form.label :name="'feature'" :label="'Featured(Cost Extra)'" />
+                        <x-form.checkbox name="feature" id="feature" wire:model="featured" />
+                        <x-form.error name="feature" />
                     </div>
 
                     <div class="w-1/2">
-                        <x-label :name="'mode'" :label="'Mode'" />
-                        <x-select :name="'mode'" :id="'mode'" wire:model="mode">
+                        <x-form.label :name="'mode'" :label="'Mode'" />
+                        <x-form.select :name="'mode'" :id="'mode'" wire:model="mode">
                             <option value="full-time">Remote</option>
                             <option value="part-time">On-Site</option>
                             <option value="part-time">Hybrid</option>
-                        </x-select>
-                        <x-error name="mode" />
+                        </x-form.select>
+                        <x-form.error name="mode" />
                     </div>
                 </div>
 
                 <div class="flex space-x-4">
                     <div class="w-1/2">
-                        <x-label :name="'url'" :label="'Url'" />
-                        <x-input type="text" :name="'url'" :id="'url'" wire:model="url" />
-                        <x-error name="url" />
+                        <x-form.label :name="'url'" :label="'Url'" />
+                        <x-form.input type="text" :name="'url'" :id="'url'" wire:model="url" />
+                        <x-form.error name="url" />
                     </div>
 
                     <div class="w-1/2">
-                        <x-label :name="'tags'" :label="'Tags'" />
-                        <x-input type="text" :name="'tags'" :id="'tags'" wire:model="tags" />
-                        <x-error name="tags" />
+                        <x-form.label :name="'tags'" :label="'Tags'" />
+                        <x-form.input type="text" :name="'tags'" :id="'tags'" wire:model="tags" />
+                        <x-form.error name="tags" />
                     </div>
                 </div>
                 <p>By publishing you agree to our <a href="#" class="text-blue-500">Terms & Privacy</a></p>

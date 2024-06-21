@@ -13,28 +13,38 @@
     <div class="px-8">
         <nav class="flex justify-between items-center border-b border-black/10 sticky top-0 bg-white z-50">
             <div>
-                <a wire:navigate href="/">
-                    <img class="h-24 w-24" src="https://i.ibb.co/C0484RC/2-removebg-preview.png" alt="Your Company">
-                </a>
+                @auth
+                    <a wire:navigate href="{{route('home')}}">
+                        <img class="h-24 w-24" src="https://i.ibb.co/C0484RC/2-removebg-preview.png" alt="Your Company">
+                    </a>
+                @endauth
+
+                @guest
+                    <a wire:navigate href="/">
+                        <img class="h-24 w-24" src="https://i.ibb.co/C0484RC/2-removebg-preview.png" alt="Your Company">
+                    </a>
+                @endguest
+
             </div>
             <div class="space-x-4 font-bold">
-                <x-nav-link wire:navigate href="/" :active="request()->is('/')">Jobs</x-nav-link>
-                <x-nav-link wire:navigate href="/careers" :active="request()->is('/careers')">Careers</x-nav-link>
-                <x-nav-link wire:navigate href="/salaries" :active="request()->is('/salaries')">Salaries</x-nav-link>
-                <x-nav-link wire:navigate href="/companies" :active="request()->is('/companies')">Companies</x-nav-link>
+                @guest
+                    <x-nav-link wire:navigate href="/" :active="request()->is('/')">Home</x-nav-link>
+                    <x-nav-link wire:navigate href="/careers" :active="request()->is('/careers')">Careers</x-nav-link>
+                    <x-nav-link wire:navigate href="/salaries" :active="request()->is('/salaries')">Salaries</x-nav-link>
+                @endguest
+
+                @auth
+                    <x-nav-link wire:navigate href="{{route('home')}}" :active="request()->routeIs('home')">Home
+                    </x-nav-link>
+                    <x-nav-link wire:navigate href="/careers" :active="request()->is('/careers')">Careers</x-nav-link>
+                    <x-nav-link wire:navigate href="/salaries" :active="request()->is('/salaries')">Salaries</x-nav-link>
+                @endauth
             </div>
 
             @auth
                 <div class="flex space-x-4 font-bold items-center">
-                    @if(auth()->user()->role === 'employer')
-                        <x-nav-link wire:navigate href="/jobs/create" :active="request()->is('jobs/create')">Post a Job
-                        </x-nav-link>
-                    @elseif(auth()->user()->role === 'applicant')
-                        <x-nav-link wire:navigate href="/profile" :active="request()->is('profile')">Profile</x-nav-link>
-                    @endif
-
+                    <x-nav-link wire:navigate href="/profile" :active="request()->is('profile')">Profile</x-nav-link>
                     <livewire:logout-user />
-
                 </div>
             @endauth
             @guest

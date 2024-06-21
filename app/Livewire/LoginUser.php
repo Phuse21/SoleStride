@@ -34,13 +34,11 @@ class LoginUser extends Component
         $user = Auth::user();
 
         //if applicant redirect to home
-        if ($user->role == 'applicant') {
-
-            return redirect('/');
+        if ($user->role == 'employer') {
+            return redirect()->route('employer.home');
         }
 
-        //else redirect to dashboard
-        return redirect('/');
+        return redirect()->route('home');
     }
 
     public function destroy()

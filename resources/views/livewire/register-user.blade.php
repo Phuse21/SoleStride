@@ -7,37 +7,37 @@
             <form wire:submit.prevent="register" class="max-w-2xl mx-auto space-y-6">
                 <div class="flex space-x-4">
                     <div class="w-1/2">
-                        <x-label :name="'name'" :label="'Name'" />
-                        <x-input type="text" :name="'name'" :id="'name'" wire:model="name" />
-                        <x-error name="name" />
+                        <x-form.label :name="'name'" :label="'Name'" />
+                        <x-form.input type="text" :name="'name'" :id="'name'" wire:model="name" />
+                        <x-form.error name="name" />
                     </div>
 
                     <div class="w-1/2">
-                        <x-label :name="'email'" :label="'Email'" />
-                        <x-input type="email" :name="'email'" :id="'email'" wire:model="email" />
-                        <x-error name="email" />
+                        <x-form.label :name="'email'" :label="'Email'" />
+                        <x-form.input type="email" :name="'email'" :id="'email'" wire:model="email" />
+                        <x-form.error name="email" />
                     </div>
                 </div>
 
                 <div class="flex space-x-4">
                     <div class="w-1/2">
-                        <x-label :name="'password'" :label="'Password'" />
-                        <x-input type="password" :name="'password'" :id="'password'" wire:model="password" />
-                        <x-error name="password" />
+                        <x-form.label :name="'password'" :label="'Password'" />
+                        <x-form.input type="password" :name="'password'" :id="'password'" wire:model="password" />
+                        <x-form.error name="password" />
                     </div>
 
                     <div class="w-1/2">
-                        <x-label :name="'password_confirmation'" :label="'Confirm Password'" />
-                        <x-input type="password" :name="'password_confirmation'" :id="'password_confirmation'"
+                        <x-form.label :name="'password_confirmation'" :label="'Confirm Password'" />
+                        <x-form.input type="password" :name="'password_confirmation'" :id="'password_confirmation'"
                             wire:model="password_confirmation" />
-                        <x-error name="password confirmation" />
+                        <x-form.error name="password confirmation" />
                     </div>
                 </div>
-                <div class="flex space-x-4">
+                <div class="flex mr-4">
                     <div class="w-1/2">
-                        <x-label :name="'role'" :label="'Role'" />
-                        <x-radio :name="'role'" :id="'role'" wire:model="role" />
-                        <x-error name="role" />
+                        <x-form.label :name="'role'" :label="'Role'" />
+                        <x-form.radio :name="'role'" :id="'role'" wire:model="role" />
+                        <x-form.error name="role" />
                     </div>
                 </div>
 
@@ -47,15 +47,15 @@
                     <x-divider />
                     <div class="flex space-x-4">
                         <div class="w-1/2">
-                            <x-label :name="'employer'" :label="'Company Name'" />
-                            <x-input type="text" :name="'employer'" :id="'employer'" wire:model="employer" />
-                            <x-error name="employer" />
+                            <x-form.label :name="'employer'" :label="'Company Name'" />
+                            <x-form.input type="text" :name="'employer'" :id="'employer'" wire:model="employer" />
+                            <x-form.error name="employer" />
                         </div>
 
                         <div class="w-1/2">
-                            <x-label :name="'logo'" :label="'Company Logo'" />
-                            <x-input type="file" :name="'logo'" :id="'logo'" wire:model="logo" />
-                            <x-error name="logo" />
+                            <x-form.label :name="'logo'" :label="'Company Logo'" />
+                            <x-form.input type="file" :name="'logo'" :id="'logo'" wire:model="logo" />
+                            <x-form.error name="logo" />
                         </div>
                     </div>
                 @endif
@@ -66,68 +66,70 @@
                     <x-divider />
                     <div class="flex space-x-4">
                         <div class="w-1/2">
-                            <x-label :name="'education'" :label="'Education'" />
-                            <x-input type="text" :name="'education'" :id="'education'" wire:model="education" />
-                            <x-error name="education" />
+                            <x-form.label :name="'education'" :label="'Education'" />
+                            <x-form.input type="text" :name="'education'" :id="'education'" wire:model="education" />
+                            <x-form.error name="education" />
                         </div>
 
                         <div class="w-1/2">
-                            <x-label :name="'field'" :label="'Field'" />
-                            <x-input type="text" :name="'field'" :id="'field'" wire:model="field" />
-                            <x-error name="field" />
+                            <x-form.label :name="'field'" :label="'Field'" />
+                            <x-form.input type="text" :name="'field'" :id="'field'" wire:model="field" />
+                            <x-form.error name="field" />
                         </div>
                     </div>
                     <div class="flex space-x-4">
                         <div class="w-1/2">
-                            <x-label :name="'country'" :label="'Country'" />
-                            <x-input type="text" :name="'country'" :id="'country'" wire:model="country" />
-                            <x-error name="country" />
+                            <x-form.label :name="'country'" :label="'Country'" />
+                            <x-form.input type="text" :name="'country'" :id="'country'" wire:model="country" />
+                            <x-form.error name="country" />
                         </div>
 
                         <div class="w-1/2">
-                            <x-label :name="'phone'" :label="'Phone'" />
-                            <x-input type="text" :name="'phone'" :id="'phone'" wire:model="phone" />
-                            <x-error name="phone" />
+                            <x-form.label :name="'phone'" :label="'Phone'" />
+                            <x-form.input type="text" :name="'phone'" :id="'phone'" wire:model="phone" />
+                            <x-form.error name="phone" />
                         </div>
                     </div>
 
                     <div class="col-span-full">
-                        <x-label :name="'street-address'" :label="'Street Address'" />
-                        <x-input type="text" :name="'street-address'" :id="'street-address'" wire:model="street_address" />
-                        <x-error name="street_address" />
+                        <x-form.label :name="'street-address'" :label="'Street Address'" />
+                        <x-form.input type="text" :name="'street-address'" :id="'street-address'"
+                            wire:model="street_address" />
+                        <x-form.error name="street_address" />
                     </div>
 
                     <div class="flex space-x-4">
                         <div class="w-1.5/4">
-                            <x-label :name="'city'" :label="'City'" />
-                            <x-input type="text" :name="'city'" :id="'city'" wire:model="city" />
-                            <x-error name="city" />
+                            <x-form.label :name="'city'" :label="'City'" />
+                            <x-form.input type="text" :name="'city'" :id="'city'" wire:model="city" />
+                            <x-form.error name="city" />
                         </div>
 
                         <div class="w-1.5/4">
-                            <x-label :name="'state'" :label="'State'" />
-                            <x-input type="text" :name="'state'" :id="'state'" wire:model="state" />
-                            <x-error name="state" />
+                            <x-form.label :name="'state'" :label="'State'" />
+                            <x-form.input type="text" :name="'state'" :id="'state'" wire:model="state" />
+                            <x-form.error name="state" />
                         </div>
 
                         <div class="w-1/4">
-                            <x-label :name="'zip'" :label="'Zip'" />
-                            <x-input type="text" :name="'zip'" :id="'zip'" wire:model="zip" />
-                            <x-error name="zip" />
+                            <x-form.label :name="'zip'" :label="'Zip'" />
+                            <x-form.input type="text" :name="'zip'" :id="'zip'" wire:model="zip" />
+                            <x-form.error name="zip" />
                         </div>
                     </div>
 
                     <div class="flex space-x-4">
                         <div class="w-1/2">
-                            <x-label :name="'linkedin'" :label="'Linkedin'" />
-                            <x-input type="text" :name="'linkedin'" :id="'linkedin'" wire:model="linkedin" />
-                            <x-error name="linkedin" />
+                            <x-form.label :name="'linkedin'" :label="'Linkedin'" />
+                            <x-form.input type="text" :name="'linkedin'" :id="'linkedin'" wire:model="linkedin" />
+                            <x-form.error name="linkedin" />
                         </div>
 
                         <div class="w-1/2">
-                            <x-label :name="'profile-photo'" :label="'Profile Photo'" />
-                            <x-input type="file" :name="'profile-photo'" :id="'profile-photo'" wire:model="profile_photo" />
-                            <x-error name="profile photo" />
+                            <x-form.label :name="'profile-photo'" :label="'Profile Photo'" />
+                            <x-form.input type="file" :name="'profile-photo'" :id="'profile-photo'"
+                                wire:model="profile_photo" />
+                            <x-form.error name="profile photo" />
                         </div>
                     </div>
                 @endif
@@ -139,9 +141,9 @@
 
         </div>
 
-        <div class="flex-1 pb-10 -mt-10">
+        <!-- <div class="flex-1 pb-10 -mt-10">
             <img src="https://i.ibb.co/W6YvfNY/Frame-2.png" class="pl-10 ">
-        </div>
+        </div> -->
     </div>
 
 </div>
