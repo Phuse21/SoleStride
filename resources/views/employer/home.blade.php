@@ -2,7 +2,7 @@
     <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
         <div class="mr-4">
             <h3 class="text-xl font-semibold mb-2">Employer Dashboard</h3>
-            <h4 class="text-sm text-gray-600 ml-0.5">Welcome {{auth()->user()->name}}</h4>
+            <h4 class="text-sm text-gray-600 ml-0.5">{{auth()->user()->employer->name}}</h4>
         </div>
         <div class="flex flex-wrap items-start justify-end">
             <x-button wire:navigate :href="route('employer.create')">

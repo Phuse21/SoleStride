@@ -29,7 +29,7 @@ class LogoutUser extends Component
     {
         sweetalert()
             ->showDenyButton()
-            ->info('Are you sure you want to delete the user ?');
+            ->info('Are you sure you want to logout ?');
     }
     public function render()
     {
