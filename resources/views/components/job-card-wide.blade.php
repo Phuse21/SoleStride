@@ -1,8 +1,10 @@
 @props(['job'])
 
-<x-panel class="flex gap-x-4">
+<x-panel class="flex gap-x-4 relative">
     <div>
         <x-employer-logo :employer="$job->employer" />
+
+        <a href="" class="absolute inset-0"></a>
     </div>
 
 
