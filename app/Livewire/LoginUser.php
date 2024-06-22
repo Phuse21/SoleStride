@@ -33,7 +33,7 @@ class LoginUser extends Component
 
         $user = Auth::user();
 
-        flash()->success('Logged in as ' . $user->name . '!');
+        flash()->flash('success', 'Welcome ' . $user->name . '!');
 
         //if applicant redirect to home
         if ($user->role == 'employer') {
