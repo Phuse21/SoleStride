@@ -17,7 +17,7 @@
                     <img class="h-24 w-24" src="https://i.ibb.co/C0484RC/2-removebg-preview.png" alt="Your Company">
                 </a>
             </div>
-            <div class="space-x-4 font-bold">
+            <div class="space-x-4 font-bold ml-10">
                 <x-nav-link wire:navigate href="{{route('employer.home')}}"
                     :active="request()->routeIs('employer.home')">
                     Home
