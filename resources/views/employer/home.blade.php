@@ -78,7 +78,7 @@
             <div class="p-4 flex-grow">
                 <div
                     class="flex items-center justify-center h-full px-4 py-16 text-gray-400 text-3xl font-semibold bg-gray-100 border-2 border-gray-200 border-dashed rounded-md">
-                    Chart</div>
+                    News</div>
             </div>
         </div>
         <div class="flex items-center p-8 bg-white shadow rounded-lg">
@@ -126,7 +126,7 @@
                 </button>
                 <!-- Refer here for full dropdown menu code: https://tailwindui.com/components/application-ui/elements/dropdowns -->
             </div>
-            <div class="overflow-y-auto" style="max-height: 24rem;">
+            <div class="overflow-y-auto" style="max-height: 30rem;">
                 <ul class="p-6 space-y-6">
                     <li class="flex items-center">
                         <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
@@ -191,15 +191,41 @@
                         <span class="text-gray-600">Norman Walters</span>
                         <span class="ml-auto font-semibold">7.7</span>
                     </li>
+                    <li class="flex items-center">
+                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/men/95.jpg"
+                                alt="Norman Walters profile picture">
+                        </div>
+                        <span class="text-gray-600">Norman Walters</span>
+                        <span class="ml-auto font-semibold">7.7</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/men/15.jpg"
+                                alt="Norman Walters profile picture">
+                        </div>
+                        <span class="text-gray-600">Norman Walters</span>
+                        <span class="ml-auto font-semibold">7.7</span>
+                    </li>
+                    <li class="flex items-center">
+                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/men/85.jpg">
+                        </div>
+                        <span class="text-gray-600">Adli Barns</span>
+                        <span class="ml-auto font-semibold">7.7</span>
+                    </li>
                 </ul>
             </div>
         </div>
         <div class="flex flex-col row-span-3 bg-white shadow rounded-lg">
-            <div class="px-6 py-5 font-semibold border-b border-gray-100">Students by type of studying</div>
+            <div class="px-6 py-5 font-semibold border-b border-gray-100">Jobs by Requests</div>
             <div class="p-4 flex-grow">
                 <div
                     class="flex items-center justify-center h-full px-4 py-24 text-gray-400 text-3xl font-semibold bg-gray-100 border-2 border-gray-200 border-dashed rounded-md">
-                    Chart</div>
+
+                    <livewire:chart-component />
+
+                </div>
             </div>
         </div>
     </section>

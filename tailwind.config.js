@@ -3,6 +3,7 @@ export default {
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
+    "./node_modules/flowbite/**/*.js",
   ],
   theme: {
     extend: {
@@ -19,6 +20,10 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')({
+      charts: true,
+    }),
+  ],
 }
 
