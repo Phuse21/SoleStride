@@ -12,6 +12,10 @@ use App\Http\Controllers\EmployerController;
 
 Route::get('/', [JobController::class, 'index']);
 
+
+Route::get('/job-details/{job}', [JobController::class, 'show'])->name('job.details');
+
+
 Route::group([
     'prefix' => 'employer',
     'middleware' => ['auth', 'employer']

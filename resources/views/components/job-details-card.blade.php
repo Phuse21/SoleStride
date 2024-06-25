@@ -4,7 +4,6 @@
     <div>
         <x-employer-logo :employer="$job->employer" />
 
-        <a href="{{ route('job.details', ['job' => $job->id]) }}" class="absolute inset-0"></a>
     </div>
 
 

@@ -33,39 +33,17 @@ class JobController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    // public function store(Request $request)
-    // {
-    //     //validate
-    //     $attributes = $request->validate([
-    //         'title' => 'required',
-    //         'salary' => 'required',
-    //         'location' => 'required',
-    //         'schedule' => ['required', Rule::in(['full-time', 'part-time', 'remote'])],
-    //         'url' => ['required',],
-    //         'tags' => 'nullable',
-    //     ]);
 
-    //     $attributes['featured'] = $request->has('featured');
-
-    //     $job = Auth::user()->employer->jobs()->create(Arr::except($attributes, ['tags']));
-
-    //     if ($attributes['tags'] ?? false) {
-    //         foreach (explode(',', $attributes['tags']) as $tag) {
-    //             $job->tag($tag);
-    //         }
-
-    //     }
-
-    //     return redirect('/');
-    // }
 
     /**
      * Display the specified resource.
      */
-    public function show(Job $job)
+
+    public function show($jobId)
     {
-        //
+        return view('jobDetails', ['jobId' => $jobId]);
     }
+
 
     /**
      * Show the form for editing the specified resource.

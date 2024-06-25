@@ -3,7 +3,7 @@
 <x-panel class="flex flex-col text-center relative">
     <div class="self-start text-sm group-hover:font-bold ">{{$job->employer->name}}
 
-        <a href="" class="absolute inset-0"></a>
+        <a href="{{ route('job.details', ['job' => $job->id]) }}" class="absolute inset-0"></a>
     </div>
 
     <div class="py-4">
