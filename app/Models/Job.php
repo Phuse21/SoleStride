@@ -29,5 +29,10 @@ class Job extends Model
         return $this->belongsTo(Employer::class);
     }
 
+    public function job_details()
+    {
+        return $this->hasOne(JobDetails::class);
+    }
+
 
 }

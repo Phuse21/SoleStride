@@ -49,11 +49,11 @@
 
                         <div class="hidden md:flex md:flex-col md:items-end md:leading-tight">
                             <span class="font-semibold
-                                                text-sm">{{auth()->user()->name}}</span>
+                                                    text-sm">{{auth()->user()->name}}</span>
                             <span class="text-xs text-gray-600">{{auth()->user()->role}}</span>
                         </div>
                         <span class="h-12 w-12 ml-2 sm:ml-3 mr-2 p-1 bg-gray-100 rounded-full overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="user profile photo"
+                            <img src="{{asset(auth()->user()->applicant->profile_photo)}}" alt="user profile photo"
                                 class="h-full w-full object-cover rounded-full">
                         </span>
                     </button>

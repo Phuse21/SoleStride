@@ -62,7 +62,7 @@ class RegisterUser extends Component
 
         $userAttributes = $this->validate([
             'name' => 'required|min:3|max:255',
-            'email' => 'required|email|min:3|max:255',
+            'email' => 'required|email|min:3|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
             'role' => 'required',
         ]);

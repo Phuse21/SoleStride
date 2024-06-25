@@ -19,9 +19,14 @@ class JobController extends Controller
     public function index()
     {
         $jobs = Job::latest()->with(['employer', 'tags'])->get()->groupBy('featured');
+
+        // Initialize the variables with empty collections if the keys do not exist
+        $featuredJobs = $jobs->get(1, collect());
+        $regularJobs = $jobs->get(0, collect());
+
         return view('index', [
-            'featuredJobs' => $jobs[1],
-            'jobs' => $jobs[0],
+            'featuredJobs' => $featuredJobs,
+            'jobs' => $regularJobs,
             'tags' => Tag::all()
         ]);
     }
