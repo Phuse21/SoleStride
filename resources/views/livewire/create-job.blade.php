@@ -1,6 +1,26 @@
 <div x-data="{ step: @entangle('step') }">
     <x-page-heading>Create New Job</x-page-heading>
 
+    <!-- Stepper -->
+    <div class="max-w-md mx-auto mb-6" x-data="{ step: @entangle('step') }">
+        <div class="flex justify-between items-center">
+            <div :class="{'bg-blue-600 text-white': step >= 1, 'bg-gray-300': step < 1}"
+                class="w-8 h-8 rounded-full flex items-center justify-center">
+                1
+            </div>
+            <div :class="{'bg-blue-600': step > 1}" class="flex-1 h-1 bg-gray-300 mx-2"></div>
+            <div :class="{'bg-blue-600 text-white': step >= 2, 'bg-gray-300': step < 2}"
+                class="w-8 h-8 rounded-full flex items-center justify-center">
+                2
+            </div>
+        </div>
+        <div class="flex justify-between text-xs text-gray-600 mt-2">
+            <span>Job Details</span>
+            <span>Job Summary</span>
+        </div>
+    </div>
+
+
     <!-- Step 1 -->
     <div x-show="step === 1">
         <div class="flex-1">
@@ -89,17 +109,15 @@
         <div class="flex-1">
             <form wire:submit.prevent="saveJobDetails">
                 <div class="max-w-2xl mx-auto space-y-6">
-
-
                     <div class="flex space-x-2">
                         <div class="w-2/5">
                             <x-form.label name="minimum_qualifications" label="Minimum Qualifications" />
                             <x-form.select name="minimum_qualifications" id="minimum_qualifications"
                                 wire:model="minimum_qualifications">
                                 <option value="none">None</option>
-                                <option value="bachelor">High School</option>
+                                <option value="high_school">High School</option>
                                 <option value="bachelor">Bachelor</option>
-                                <option value="bachelor">Master</option>
+                                <option value="master">Master</option>
                             </x-form.select>
                             <x-form.error name="minimum_qualifications" />
                         </div>
@@ -115,13 +133,12 @@
                             <x-form.label name="experience_level" label="Experience Level" />
                             <x-form.select name="experience_level" id="experience_level" wire:model="experience_level">
                                 <option value="none">Any</option>
-                                <option value="bachelor">Entry</option>
-                                <option value="bachelor">Mid</option>
-                                <option value="bachelor">Senior</option>
+                                <option value="entry">Entry</option>
+                                <option value="mid">Mid</option>
+                                <option value="senior">Senior</option>
                             </x-form.select>
                             <x-form.error name="experience_level" />
                         </div>
-
                     </div>
 
                     <div class="flex space-x-4">
@@ -136,7 +153,7 @@
                         <div class="w-1/2">
                             <x-form.label name="skills" label="Skills" />
                             <textarea name="skills" id="skills" wire:model="skills"
-                                placeholder=" Communication, English etc."
+                                placeholder="Communication, English etc."
                                 class="w-full border rounded-md p-2 text-sm h-20"></textarea>
                             <x-form.error name="skills" />
                         </div>
@@ -145,7 +162,7 @@
                     <div class="flex space-x-4">
                         <div class="w-full">
                             <x-form.label name="summary" label="Job Summary" />
-                            <textarea name="summary" id="summary" wire:model="summary" p
+                            <textarea name="summary" id="summary" wire:model="summary"
                                 placeholder="Provide a brief description of the job."
                                 class="w-full border rounded-md p-2 text-sm h-20"></textarea>
                             <x-form.error name="summary" />
@@ -167,12 +184,4 @@
             </form>
         </div>
     </div>
-
-    <!-- <div wire:loading>
-        <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]"
-            role="status">
-            <span
-                class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
-        </div>
-    </div> -->
 </div>

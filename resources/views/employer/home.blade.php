@@ -71,7 +71,7 @@
             </div>
         </div>
     </section>
-    <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
+    <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6 mt-6">
         <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
             <div class="px-6 py-5 font-semibold border-b border-gray-100">The number of applied and left students per
                 month</div>
