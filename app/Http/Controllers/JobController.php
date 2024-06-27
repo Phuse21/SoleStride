@@ -4,12 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use App\Http\Requests\UpdateJobRequest;
-use App\Models\Tag;
 
-// use Illuminate\Http\Request;
-// use Illuminate\Support\Arr;
-// use Illuminate\Support\Facades\Auth;
-// use Illuminate\Validation\Rule;
 
 class JobController extends Controller
 {

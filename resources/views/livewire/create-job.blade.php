@@ -39,6 +39,9 @@
                             <x-form.error name="salary" />
                         </div>
                     </div>
+                    <div>
+                        <livewire:country-state />
+                    </div>
 
                     <div class="flex space-x-4">
                         <div class="w-1/2">
