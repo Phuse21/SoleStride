@@ -40,19 +40,28 @@
                         </div>
                     </div>
                     <div>
-                        <livewire:country-state />
+                        <livewire:country-state wire:model="selectedCountry" wire:model="selectedState" />
+                        <div class="flex">
+                            <div class="w-1/2">
+                                <x-form.error name="selectedCountry" />
+                            </div>
+                            <div class="w-1/2 pl-4">
+                                <x-form.error name="selectedState" />
+                            </div>
+                        </div>
                     </div>
 
                     <div class="flex space-x-4">
                         <div class="w-1/2">
-                            <x-form.label name="location" label="Location" />
-                            <x-form.input type="text" name="location" id="location" wire:model="location" />
-                            <x-form.error name="location" />
+                            <x-form.label name="city" label="City" />
+                            <x-form.input type="text" name="city" id="city" wire:model="city" />
+                            <x-form.error name="city" />
                         </div>
 
                         <div class="w-1/2">
                             <x-form.label name="schedule" label="Schedule" />
                             <x-form.select name="schedule" id="schedule" wire:model="schedule">
+                                <option value="">--Please Select--</option>
                                 <option value="full-time">Full Time</option>
                                 <option value="part-time">Part Time</option>
                             </x-form.select>
@@ -70,6 +79,7 @@
                         <div class="w-1/2">
                             <x-form.label name="mode" label="Mode" />
                             <x-form.select name="mode" id="mode" wire:model="mode">
+                                <option value="">--Please Select--</option>
                                 <option value="remote">Remote</option>
                                 <option value="on-site">On-Site</option>
                                 <option value="hybrid">Hybrid</option>
@@ -80,7 +90,7 @@
 
                     <div class="flex space-x-4">
                         <div class="w-1/2">
-                            <x-form.label name="url" label="Url" />
+                            <x-form.label name="url" label="Url(Optional)" />
                             <x-form.input type="text" name="url" id="url" wire:model="url" />
                             <x-form.error name="url" />
                         </div>

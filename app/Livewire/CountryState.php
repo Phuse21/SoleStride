@@ -39,4 +39,9 @@ class CountryState extends Component
         $this->states = State::where('country_id', $country)->get();
         $this->selectedState = null;
     }
+
+    public function updatedSelectedState($state)
+    {
+        $this->dispatch('selectedStateAndCountry', $state, $this->selectedCountry);
+    }
 }

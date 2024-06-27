@@ -2,8 +2,8 @@
 
 @php
     $defaults = [
-        'class' => 'block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-black/2
-    ',
+        'class' => 'block w-full text-sm text-gray-900 border border-black/20 rounded-lg cursor-pointer bg-black/2
+        ',
     ];
 @endphp
 

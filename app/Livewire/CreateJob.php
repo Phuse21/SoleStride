@@ -9,12 +9,12 @@ use Livewire\Component;
 
 class CreateJob extends Component
 {
-
+    public $listeners = ['selectedStateAndCountry'];
     public $step = 1;
 
     public $title;
     public $salary;
-    public $location;
+    public $city;
     public $schedule;
     public $url;
     public $tags;
@@ -28,20 +28,37 @@ class CreateJob extends Component
     public $responsibilities;
     public $skills;
 
+    public $selectedState;
+    public $selectedCountry;
+
+
     public function nextStep()
     {
+        // dd($this->mode, $this->title, $this->salary, $this->city, $this->schedule, $this->url, $this->tags, $this->featured);
         $this->validate([
             'title' => 'required',
             'salary' => 'required',
-            'location' => 'required',
+            'city' => 'required',
             'schedule' => 'required',
             'featured' => 'nullable',
             'mode' => 'required',
-            'url' => 'required',
+            'url' => 'nullable',
             'tags' => 'nullable',
+            'selectedState' => 'required',
+            'selectedCountry' => 'required',
+
         ]);
 
         $this->step = 2;
+    }
+
+    public function messages()
+    {
+
+        return [
+            'selectedState.required' => 'The state field is required.',
+            'selectedCountry.required' => 'The country field is required.',
+        ];
     }
 
     public function saveJobDetails()
@@ -58,15 +75,18 @@ class CreateJob extends Component
             'skills' => 'required',
         ]);
 
+
         $attributes = [
             'title' => $this->title,
             'salary' => $this->salary,
-            'location' => $this->location,
+            'city' => $this->city,
             'schedule' => $this->schedule,
             'featured' => $this->featured ?? false,
             'mode' => $this->mode,
             'url' => $this->url,
             'tags' => $this->tags,
+            'state' => $this->selectedState,
+            'country' => $this->selectedCountry
         ];
 
         $job = Auth::user()->employer->jobs()->create(Arr::except($attributes, ['tags']));
@@ -95,7 +115,11 @@ class CreateJob extends Component
         return array_map('trim', explode(',', $input));
     }
 
-
+    public function selectedStateAndCountry($state, $country)
+    {
+        $this->selectedState = $state;
+        $this->selectedCountry = $country;
+    }
     public function render()
     {
         return view('livewire.create-job');
