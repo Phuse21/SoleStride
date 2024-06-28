@@ -7,14 +7,18 @@
         </div>
 
         @guest
-            <div class="w-1/3">
-                <livewire:login-user />
-            </div>
+        <div class="w-1/3">
+            <livewire:login-user />
+        </div>
         @endguest
         @auth
-            <div class="w-1/3">
-                <img src="https://i.ibb.co/cQWvHtK/ahsanization-UTO8esc-GF3-M-unsplash.jpg" class="rounded-xl">
+        <div class="w-1/3">
+
+            <div>
+                <img src="https://i.ibb.co/pwfFZjj/we-are-hiring-concept-collage.jpg"
+                    alt="we-are-hiring-concept-collage" class="rounded-xl">
             </div>
+        </div>
         @endauth
     </div>
 </div>
