@@ -34,14 +34,26 @@ class CountryState extends Component
         return view('livewire.country-state');
     }
 
-    public function updatedSelectedCountry($country)
+    public function updatedSelectedCountry($countryId)
     {
-        $this->states = State::where('country_id', $country)->get();
+        $this->states = State::where('country_id', $countryId)->get();
         $this->selectedState = null;
+
+        $country = Country::find($countryId);
+        if ($country) {
+            $this->dispatch('selectedStateAndCountry', null, $country->name);
+        }
     }
 
-    public function updatedSelectedState($state)
+    public function updatedSelectedState($stateId)
     {
-        $this->dispatch('selectedStateAndCountry', $state, $this->selectedCountry);
+        $state = State::find($stateId);
+        if ($state) {
+            $country = Country::find($state->country_id);
+            if ($country) {
+                $this->dispatch('selectedStateAndCountry', $state->name, $country->name);
+            }
+        }
     }
+
 }

@@ -127,8 +127,10 @@
                             <x-form.label name="minimum_qualifications" label="Minimum Qualifications" />
                             <x-form.select name="minimum_qualifications" id="minimum_qualifications"
                                 wire:model="minimum_qualifications">
+                                <option value="">--Please Select--</option>
                                 <option value="none">None</option>
                                 <option value="high_school">High School</option>
+                                <option value="diploma">Diploma</option>
                                 <option value="bachelor">Bachelor</option>
                                 <option value="master">Master</option>
                             </x-form.select>
@@ -145,7 +147,8 @@
                         <div class="w-2/5">
                             <x-form.label name="experience_level" label="Experience Level" />
                             <x-form.select name="experience_level" id="experience_level" wire:model="experience_level">
-                                <option value="none">Any</option>
+                                <option value="">--Please Select--</option>
+                                <option value="Any">Any</option>
                                 <option value="entry">Entry</option>
                                 <option value="mid">Mid</option>
                                 <option value="senior">Senior</option>

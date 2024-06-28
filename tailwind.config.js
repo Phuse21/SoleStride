@@ -10,6 +10,7 @@ export default {
       colors: {
         'white': '#FFFFFA',
         'black': '#060606',
+        'primary': '#1891c8',
       },
       fontFamily: {
         'hanken': ['Hanken Grotesk', 'sans-serif'],

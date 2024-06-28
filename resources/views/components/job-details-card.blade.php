@@ -20,14 +20,17 @@
 
         <div class="space-x-2">
             @foreach ($job->tags as $tag)
-            <x-tag :$tag size="sm" />
+                <x-tag :$tag size="sm" />
             @endforeach
         </div>
     </div>
 
     <div class="mt-8 w-full border-t-2 py-2 items-center">
         <div class="mt-2 flex justify-between">
-            <h6 class="text-sm"><strong>Location</strong>: {{$job->location}}</h6>
+            <div>
+                <h6 class="text-sm"><strong>Location</strong>: {{$job->location}}</h6>
+                <h5 class="text-sm font-bold ml-10 pl-5">{{$job->city}}</h5>
+            </div>
 
             <span
                 class="text-sm py-2 px-2 bg-black/10 rounded-xl font-semibold hover:bg-black/30 transition-colors-duration-300 relative">{{$job->mode}}</span>
@@ -58,7 +61,7 @@
         <h6 class="font-bold mt-2">Responsibilities</h6>
         <ul class="mt-2 mb-2 list-disc pl-4">
             @foreach (json_decode($job->job_details->responsibilities) as $item)
-            <li>{{ $item }}</li>
+                <li>{{ $item }}</li>
             @endforeach
         </ul>
     </div>
@@ -67,7 +70,7 @@
         <h6 class="font-bold mt-2">Required Skills</h6>
         <ul class="mt-2 mb-2 list-disc pl-4">
             @foreach (json_decode($job->job_details->skills) as $item)
-            <li>{{ $item }}</li>
+                <li>{{ $item }}</li>
             @endforeach
         </ul>
     </div>

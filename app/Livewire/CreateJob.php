@@ -34,7 +34,7 @@ class CreateJob extends Component
 
     public function nextStep()
     {
-        // dd($this->mode, $this->title, $this->salary, $this->city, $this->schedule, $this->url, $this->tags, $this->featured);
+        //dd($this->selectedCountry, $this->selectedState, $this->mode, $this->title, $this->salary, $this->city, $this->schedule, $this->url, $this->tags, $this->featured);
         $this->validate([
             'title' => 'required',
             'salary' => 'required',
@@ -112,8 +112,16 @@ class CreateJob extends Component
 
     protected function convertToArray($input)
     {
+        // If the input is an array, we need to handle it accordingly
+        if (is_array($input)) {
+            // Convert array elements to a string separated by commas
+            $input = implode(',', $input);
+        }
+
+        // Now input is guaranteed to be a string
         return array_map('trim', explode(',', $input));
     }
+
 
     public function selectedStateAndCountry($state, $country)
     {
