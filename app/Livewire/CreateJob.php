@@ -107,7 +107,7 @@ class CreateJob extends Component
         ]);
 
         flash()->success('Job creation successful.');
-        return redirect()->route('employer.home');
+        return redirect()->route('employer.create');
     }
 
     protected function convertToArray($input)

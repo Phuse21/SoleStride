@@ -136,6 +136,7 @@ class EditJob extends Component
     }
 
 
+
     public function render()
     {
         return view('livewire.edit-job');

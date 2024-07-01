@@ -20,7 +20,7 @@
     <div class="flex flex-col">
         <div class="space-x-2">
             @foreach ($job->tags as $tag)
-            <x-tag :$tag size="sm" />
+                <x-tag :$tag size="sm" />
             @endforeach
         </div>
 
@@ -40,24 +40,27 @@
                 </svg></a>
 
 
+            <div>
+                <button wire:click="deleteJob({{ $job->id }})" class="px-3 py-2">
+                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M10 11V17" stroke="#db1f1f" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            <path d="M14 11V17" stroke="#db1f1f" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            <path d="M4 7H20" stroke="#db1f1f" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z"
+                                stroke="#db1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#db1f1f"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </button>
 
-
-            <a href=""><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <path d="M10 11V17" stroke="#db1f1f" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round"></path>
-                        <path d="M14 11V17" stroke="#db1f1f" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round"></path>
-                        <path d="M4 7H20" stroke="#db1f1f" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round"></path>
-                        <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z"
-                            stroke="#db1f1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#db1f1f"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </g>
-                </svg></a>
+            </div>
         </div>
     </div>
 </x-panel>
