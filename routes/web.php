@@ -22,7 +22,10 @@ Route::group([
 ], function () {
     Route::get('/home', [EmployerController::class, 'index'])->name('employer.home');
     Route::get('/create', [JobController::class, 'create'])->name('employer.create');
+    Route::get('/jobs-posted', [EmployerController::class, 'jobsPosted'])->name('employer.jobsPosted');
+    Route::get('/job-edit/{job}', [JobController::class, 'edit'])->name('employer.jobsEdit');
 });
+
 
 
 Route::group([

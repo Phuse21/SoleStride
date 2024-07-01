@@ -25,14 +25,6 @@ class JobController extends Controller
         return view('employer.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-
-
-    /**
-     * Display the specified resource.
-     */
 
     public function show($jobId)
     {
@@ -40,27 +32,16 @@ class JobController extends Controller
     }
 
 
+
+    public function edit($jobId)
+    {
+        return view('employer.editJob', ['jobId' => $jobId]);
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Job $job)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateJobRequest $request, Job $job)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Job $job)
-    {
-        //
-    }
 }

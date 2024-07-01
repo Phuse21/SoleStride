@@ -22,7 +22,8 @@
                     :active="request()->routeIs('employer.home')">
                     Home
                 </x-nav-link>
-                <x-nav-link wire:navigate href="/posted-jobs" :active="request()->is('/careers')">Jobs Posted
+                <x-nav-link wire:navigate href="{{route('employer.jobsPosted')}}"
+                    :active="request()->routeIs('employer.jobsPosted')">Jobs Posted
                 </x-nav-link>
             </div>
 
