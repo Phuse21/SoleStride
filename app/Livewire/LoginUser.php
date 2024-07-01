@@ -13,6 +13,15 @@ class LoginUser extends Component
     public $email;
     public $password;
 
+    public $redirectUrl;
+
+    public function mount()
+    {
+        // Initialize the redirectUrl property
+        $this->redirectUrl = request()->query('redirect', '/'); // Default to '/' if no redirect URL is provided
+    }
+
+
     public function login()
     {
         //validate
@@ -35,13 +44,13 @@ class LoginUser extends Component
 
         flash()->flash('success', 'Welcome ' . $user->name . '!');
 
-        //if applicant redirect to home
+        //if employer redirect to employer home
         if ($user->role == 'employer') {
             return redirect()->route('employer.home');
         }
 
-        return redirect()->route('home');
-
+        // Redirect to the intended URL if provided
+        return redirect($this->redirectUrl);
     }
 
     public function destroy()

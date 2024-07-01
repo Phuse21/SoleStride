@@ -6,12 +6,6 @@
             <x-job-details-card :job="$job" />
         </div>
 
-        @guest
-        <div class="w-1/3">
-            <livewire:login-user />
-        </div>
-        @endguest
-        @auth
         <div class="w-1/3">
 
             <div>
@@ -19,6 +13,6 @@
                     alt="we-are-hiring-concept-collage" class="rounded-xl">
             </div>
         </div>
-        @endauth
+
     </div>
 </div>

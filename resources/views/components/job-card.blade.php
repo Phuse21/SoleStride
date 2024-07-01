@@ -15,7 +15,7 @@
 
     <div class="flex justify-between items-center mt-auto">
         <div class="space-x-1">
-            @foreach ($job->tags as $tag)
+            @foreach ($job->tags->take(2) as $tag)
                 <x-tag :tag="$tag" size="sm" />
             @endforeach
         </div>
