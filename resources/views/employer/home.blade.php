@@ -27,7 +27,7 @@
             </div>
             <div>
                 <span class="block text-2xl font-bold">62</span>
-                <span class="block text-gray-500">Students</span>
+                <span class="block text-gray-500">Total Jobs Posted</span>
             </div>
         </div>
         <div class="flex items-center p-8 bg-white shadow rounded-lg">
@@ -40,7 +40,7 @@
             </div>
             <div>
                 <span class="block text-2xl font-bold">6.8</span>
-                <span class="block text-gray-500">Average mark</span>
+                <span class="block text-gray-500">Active Jobs</span>
             </div>
         </div>
         <div class="flex items-center p-8 bg-white shadow rounded-lg">
@@ -54,7 +54,7 @@
             <div>
                 <span class="inline-block text-2xl font-bold">9</span>
                 <span class="inline-block text-xl text-gray-500 font-semibold">(14%)</span>
-                <span class="block text-gray-500">Underperforming students</span>
+                <span class="block text-gray-500">Job Requests</span>
             </div>
         </div>
         <div class="flex items-center p-8 bg-white shadow rounded-lg">
@@ -67,7 +67,7 @@
             </div>
             <div>
                 <span class="block text-2xl font-bold">83%</span>
-                <span class="block text-gray-500">Finished homeworks</span>
+                <span class="block text-gray-500">Shortlisted Applicants</span>
             </div>
         </div>
     </section>
@@ -81,38 +81,10 @@
                     News</div>
             </div>
         </div>
-        <div class="flex items-center p-8 bg-white shadow rounded-lg">
-            <div
-                class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-yellow-600 bg-yellow-100 rounded-full mr-6">
-                <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-                    <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
-                    <path fill="#fff"
-                        d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                </svg>
-            </div>
-            <div>
-                <span class="block text-2xl font-bold">25</span>
-                <span class="block text-gray-500">Lections left</span>
-            </div>
-        </div>
-        <div class="flex items-center p-8 bg-white shadow rounded-lg">
-            <div
-                class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-teal-600 bg-teal-100 rounded-full mr-6">
-                <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-            </div>
-            <div>
-                <span class="block text-2xl font-bold">139</span>
-                <span class="block text-gray-500">Hours spent on lections</span>
-            </div>
-        </div>
+
         <div class="row-span-3 bg-white shadow rounded-lg">
             <div class="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
-                <span>Students by average mark</span>
+                <span>Applicants</span>
                 <button type="button"
                     class="inline-flex justify-center rounded-md px-1 -mr-1 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-600"
                     id="options-menu" aria-haspopup="true" aria-expanded="true">
