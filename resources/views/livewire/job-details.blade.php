@@ -14,7 +14,7 @@
         </div>
 
         <x-modal name="contactUs" title="Apply for {{$job->title}} at {{$job->employer->name}}">
-            <livewire:job-apply :job="$job" />
+            <livewire:job-apply :job="$job" :applicant_id="auth()->user()->applicant->id" />
         </x-modal>
     </div>
 </div>

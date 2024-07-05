@@ -11,7 +11,7 @@
 
 <body class="bg-white text-black font-hanken overflow-x-hidden pb-20">
     <div class="px-8">
-        <nav class="flex justify-between items-center border-b border-black/10 sticky top-0 bg-white z-10">
+        <nav class="flex justify-between items-center border-b border-black/10 sticky top-0 bg-white z-5">
             <div>
                 @auth
                     <a wire:navigate href="{{route('home')}}">
@@ -49,7 +49,7 @@
 
                         <div class="hidden md:flex md:flex-col md:items-end md:leading-tight">
                             <span class="font-semibold
-                                                        text-sm">{{auth()->user()->name}}</span>
+                                                            text-sm">{{auth()->user()->name}}</span>
                             <span class="text-xs text-gray-600">{{auth()->user()->role}}</span>
                         </div>
                         <span class="h-12 w-12 ml-2 sm:ml-3 mr-2 p-1 bg-gray-100 rounded-full overflow-hidden">

@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit="login" class="max-w-2xl mx-auto space-y-6">
+    <form wire:submit="apply" class="max-w-2xl mx-auto space-y-6">
 
         <div>
             <x-form.label :name="'cv'" :label="'Upload CV'" />
