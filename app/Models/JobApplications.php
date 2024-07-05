@@ -15,4 +15,9 @@ class JobApplications extends Model
         'status',
         'cv_path',
     ];
+
+    public function job()
+    {
+        return $this->belongsTo(Job::class);
+    }
 }

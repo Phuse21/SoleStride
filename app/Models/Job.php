@@ -36,6 +36,11 @@ class Job extends Model
         return $this->hasOne(JobDetails::class);
     }
 
+    public function job_applications()
+    {
+        return $this->hasMany(JobApplications::class);
+    }
+
 
     public function getLocationAttribute()
     {
@@ -43,5 +48,6 @@ class Job extends Model
         $state = $this->state ?? 'N/A';
         return $state . ', ' . $country;
     }
+
 
 }

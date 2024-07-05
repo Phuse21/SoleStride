@@ -36,8 +36,8 @@
                 </svg>
             </div>
             <div>
-                <span class="block text-2xl font-bold">62</span>
-                <span class="block text-gray-500">Total Jobs Posted</span>
+                <span class="block text-2xl font-bold">{{$jobCount}}</span>
+                <span class="block text-gray-500">Jobs Posted</span>
             </div>
         </div>
         <div class="flex items-center p-8 bg-white shadow rounded-lg">
@@ -82,7 +82,7 @@
                 </svg>
             </div>
             <div>
-                <span class="inline-block text-2xl font-bold">9</span>
+                <span class="inline-block text-2xl font-bold">{{$jobRequests}}</span>
                 <span class="inline-block text-sm text-gray-500 font-semibold">(Up by 14% this month)</span>
                 <span class="block text-gray-500">Job Requests</span>
             </div>
@@ -112,17 +112,6 @@
         <div class="row-span-3 bg-white shadow rounded-lg">
             <div class="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
                 <span>Applicants</span>
-                <button type="button"
-                    class="inline-flex w-1/4 justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                    id="menu-button" aria-expanded="true" aria-haspopup="true">
-                    Sort by
-                    <svg class="-mr-1 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd"
-                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </button>
-                <!-- Refer here for full dropdown menu code: https://tailwindui.com/components/application-ui/elements/dropdowns -->
             </div>
             <div class="overflow-y-auto" style="max-height: 30rem;">
                 <ul class="p-6 space-y-6">
