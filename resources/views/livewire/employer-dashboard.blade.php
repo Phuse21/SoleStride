@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6 mt-4">
+    <section class="grid md:grid-cols-3 xl:grid-cols-4 gap-6 mt-4">
         <div class="flex items-center p-8 bg-white shadow rounded-lg">
             <div
                 class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 hover:bg-purple-200 rounded-full mr-6">
@@ -38,33 +38,6 @@
             <div>
                 <span class="block text-2xl font-bold">{{$jobCount}}</span>
                 <span class="block text-gray-500">Jobs Posted</span>
-            </div>
-        </div>
-        <div class="flex items-center p-8 bg-white shadow rounded-lg">
-            <div
-                class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-600 bg-green-100 hover:bg-green-200 rounded-full mr-6">
-                <svg viewBox="0 -9.65 75.554 75.554" xmlns="http://www.w3.org/2000/svg" fill="#000000"
-                    class="icon line-color h-6 w-6">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <g id="Group_2" data-name="Group 2" transform="translate(-309.723 -164.741)">
-                            <circle id="Ellipse_1" data-name="Ellipse 1" cx="15.049" cy="15.049" r="15.049"
-                                transform="translate(347.784 172.134)" fill="#057a55"></circle>
-                            <path id="Path_7" data-name="Path 7"
-                                d="M362.833,219.487a20.944,20.944,0,0,0,0-41.888H332.167a20.944,20.944,0,1,0,0,41.888Z"
-                                fill="none" stroke="#000000" stroke-linecap="round" stroke-miterlimit="10"
-                                stroke-width="3" opacity="0.15"></path>
-                            <path id="Path_8" data-name="Path 8"
-                                d="M362.833,208.129a20.944,20.944,0,0,0,0-41.888H332.167a20.944,20.944,0,1,0,0,41.888Z"
-                                fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="3"></path>
-                        </g>
-                    </g>
-                </svg>
-            </div>
-            <div>
-                <span class="block text-2xl font-bold">6.8</span>
-                <span class="block text-gray-500">Active Jobs</span>
             </div>
         </div>
         <div class="flex items-center p-8 bg-white shadow rounded-lg">
@@ -110,7 +83,7 @@
 
         <div class="row-span-3 bg-white shadow rounded-lg">
             <div class="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
-                <span>Applicants</span>
+                <span>Pending Applicants</span>
             </div>
             <div class="overflow-y-auto" style="max-height: 30rem;">
                 <ul class="p-6 space-y-6">
@@ -129,76 +102,6 @@
                         </div>
                         <span class="text-gray-600">Calvin Steward</span>
                         <span class="ml-auto font-semibold">2 days ago</span>
-                    </li>
-                    <li class="flex items-center">
-                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/men/80.jpg"
-                                alt="Ralph Richards profile picture">
-                        </div>
-                        <span class="text-gray-600">Ralph Richards</span>
-                        <span class="ml-auto font-semibold">8.7</span>
-                    </li>
-                    <li class="flex items-center">
-                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/men/79.jpg"
-                                alt="Bernard Murphy profile picture">
-                        </div>
-                        <span class="text-gray-600">Bernard Murphy</span>
-                        <span class="ml-auto font-semibold">8.2</span>
-                    </li>
-                    <li class="flex items-center">
-                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/women/78.jpg"
-                                alt="Arlene Robertson profile picture">
-                        </div>
-                        <span class="text-gray-600">Arlene Robertson</span>
-                        <span class="ml-auto font-semibold">8.2</span>
-                    </li>
-                    <li class="flex items-center">
-                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/women/77.jpg" alt="Jane Lane profile picture">
-                        </div>
-                        <span class="text-gray-600">Jane Lane</span>
-                        <span class="ml-auto font-semibold">8.1</span>
-                    </li>
-                    <li class="flex items-center">
-                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/men/76.jpg"
-                                alt="Pat Mckinney profile picture">
-                        </div>
-                        <span class="text-gray-600">Pat Mckinney</span>
-                        <span class="ml-auto font-semibold">7.9</span>
-                    </li>
-                    <li class="flex items-center">
-                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/men/75.jpg"
-                                alt="Norman Walters profile picture">
-                        </div>
-                        <span class="text-gray-600">Norman Walters</span>
-                        <span class="ml-auto font-semibold">7.7</span>
-                    </li>
-                    <li class="flex items-center">
-                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/men/95.jpg"
-                                alt="Norman Walters profile picture">
-                        </div>
-                        <span class="text-gray-600">Norman Walters</span>
-                        <span class="ml-auto font-semibold">7.7</span>
-                    </li>
-                    <li class="flex items-center">
-                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/men/15.jpg"
-                                alt="Norman Walters profile picture">
-                        </div>
-                        <span class="text-gray-600">Norman Walters</span>
-                        <span class="ml-auto font-semibold">7.7</span>
-                    </li>
-                    <li class="flex items-center">
-                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/men/85.jpg">
-                        </div>
-                        <span class="text-gray-600">Adli Barns</span>
-                        <span class="ml-auto font-semibold">7.7</span>
                     </li>
                 </ul>
             </div>

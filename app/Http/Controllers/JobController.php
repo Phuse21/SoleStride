@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use App\Http\Requests\UpdateJobRequest;
+use Illuminate\Support\Facades\Auth;
 
 
 class JobController extends Controller

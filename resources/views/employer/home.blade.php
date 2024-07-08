@@ -1,3 +1,3 @@
-<x-employer.layout>
+<x-layout>
     <livewire:employer-dashboard />
-</x-employer.layout>
+</x-layout>

@@ -1,3 +1,3 @@
-<x-employer.layout>
+<x-layout>
     <livewire:jobs-posted />
-</x-employer.layout>
+</x-layout>

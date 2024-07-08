@@ -39,16 +39,16 @@
 
     <div class="mt-4 w-full border-t-2">
         <h6 class="font-bold mt-2">Job Summary</h6>
-        <p class="mt-2 mb-2">{{ $job->job_details->summary }}</p>
+        <p class="mt-2 mb-2">{{ $job?->job_details?->summary }}</p>
         <ul class="list-disc pl-4">
             <li>
-                <p><strong>Minimum Qualification</strong>: {{$job->job_details->minimum_qualifications}}</p>
+                <p><strong>Minimum Qualification</strong>: {{$job?->job_details?->minimum_qualifications}}</p>
             </li>
             <li>
-                <p><strong>Experience Level</strong>: {{$job->job_details->experience_level}}</p>
+                <p><strong>Experience Level</strong>: {{$job?->job_details?->experience_level}}</p>
             </li>
             <li>
-                <p><strong>Experience Length</strong>: {{$job->job_details->experience_years}}</p>
+                <p><strong>Experience Length</strong>: {{$job?->job_details?->experience_years}}</p>
             </li>
         </ul>
     </div>
@@ -56,7 +56,7 @@
     <div class="mt-8 w-full border-t-2">
         <h6 class="font-bold mt-2">Responsibilities</h6>
         <ul class="mt-2 mb-2 list-disc pl-4">
-            @foreach (json_decode($job->job_details->responsibilities) as $item)
+            @foreach (json_decode($job?->job_details?->responsibilities) ?? [] as $item)
                 <li>{{ $item }}</li>
             @endforeach
         </ul>
@@ -65,7 +65,7 @@
     <div class="mt-8 w-full border-t-2">
         <h6 class="font-bold mt-2">Required Skills</h6>
         <ul class="mt-2 mb-2 list-disc pl-4">
-            @foreach (json_decode($job->job_details->skills) as $item)
+            @foreach (json_decode($job?->job_details?->skills) ?? [] as $item)
                 <li>{{ $item }}</li>
             @endforeach
         </ul>

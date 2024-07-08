@@ -1,3 +1,3 @@
-<x-employer.layout>
+<x-layout>
     <livewire:edit-job :jobId="$jobId" />
-</x-employer.layout>
+</x-layout>

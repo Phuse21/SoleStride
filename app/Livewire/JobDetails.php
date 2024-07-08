@@ -7,8 +7,6 @@ use Livewire\Component;
 
 class JobDetails extends Component
 {
-
-
     public $job;
 
     public function mount($jobId)

@@ -24,6 +24,7 @@ return new class extends Migration {
             $table->string('url');
             $table->boolean('featured')->default(false);
             $table->boolean('active')->default(true);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
