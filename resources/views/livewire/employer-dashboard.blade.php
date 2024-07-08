@@ -82,9 +82,8 @@
                 </svg>
             </div>
             <div>
-                <span class="inline-block text-2xl font-bold">{{$jobRequests}}</span>
-                <span class="inline-block text-sm text-gray-500 font-semibold">(Up by 14% this month)</span>
-                <span class="block text-gray-500">Job Requests</span>
+                <span class="inline-block text-2xl font-bold">{{$applicationsCount}}</span>
+                <span class="block text-gray-500">Job Applications</span>
             </div>
         </div>
         <div class="flex items-center p-8 bg-white shadow rounded-lg">

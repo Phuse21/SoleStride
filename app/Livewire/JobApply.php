@@ -44,6 +44,7 @@ class JobApply extends Component
         JobApplications::create([
             'job_id' => $this->job->id,
             'applicant_id' => $this->applicant_id,
+            'employer_id' => $this->job->employer_id,
             'status' => 'pending',
             'cv_path' => $cvPath,
         ]);

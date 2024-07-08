@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('job_id')->constrained();
             $table->foreignId('applicant_id')->constrained();
+            $table->string('employer_id')->constrained();
             $table->string('cv_path');
             $table->string('status');
             $table->timestamps();

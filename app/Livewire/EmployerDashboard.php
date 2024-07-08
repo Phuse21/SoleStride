@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\JobApplications;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -9,17 +10,20 @@ class EmployerDashboard extends Component
 {
 
     public $jobCount;
-    public $jobRequests;
+    public $applicationsCount;
 
     public function mount()
     {
         $user = Auth::user();
-        $this->jobCount = $user->employer->jobs->count();
+        $employer = $user->employer;
 
-        $jobs = $user->employer->jobs;
-        $this->jobRequests = $jobs->filter(function ($job) {
-            return $job->job_applications->count() < 1;
-        })->count();
+        //job count
+        $this->jobCount = $employer->jobs->count();
+
+        //applications count
+        $this->applicationsCount = JobApplications::where('employer_id', $employer->id)->count();
+
+
     }
 
 
