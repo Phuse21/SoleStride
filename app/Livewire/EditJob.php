@@ -37,14 +37,14 @@ class EditJob extends Component
         $this->jobId = $job->id;
         $this->title = $job->title;
         $this->salary = $job->salary;
+        $this->selectedState = $job->state;
+        $this->selectedCountry = $job->Country;
         $this->city = $job->city;
         $this->schedule = $job->schedule;
         $this->url = $job->url;
         $this->tags = implode(',', $job->tags->pluck('name')->toArray());
         $this->featured = $job->featured;
         $this->mode = $job->mode;
-        $this->selectedState = $job->state;
-        $this->selectedCountry = $job->country;
 
         $details = $job->job_details;
         $this->summary = $details->summary;
@@ -53,7 +53,9 @@ class EditJob extends Component
         $this->experience_years = $details->experience_years;
         $this->responsibilities = implode(',', json_decode($details->responsibilities, true));
         $this->skills = implode(',', json_decode($details->skills, true));
+
     }
+
 
     public function nextStep()
     {

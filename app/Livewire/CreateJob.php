@@ -70,7 +70,7 @@ class CreateJob extends Component
             'summary' => 'required',
             'minimum_qualifications' => 'required',
             'experience_level' => 'required',
-            'experience_years' => 'required|integer',
+            'experience_years' => 'required|integer|min:1 |max:50',
             'responsibilities' => 'required',
             'skills' => 'required',
         ]);
@@ -107,7 +107,7 @@ class CreateJob extends Component
         ]);
 
         flash()->success('Job creation successful.');
-        return redirect()->route('employer.create');
+        return redirect()->route('employer.jobsPosted');
     }
 
     protected function convertToArray($input)

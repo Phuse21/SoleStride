@@ -1,5 +1,5 @@
 <div x-data="{ step: @entangle('step') }">
-    <x-page-heading>Create New Job</x-page-heading>
+    <x-page-heading>Edit Job</x-page-heading>
 
     <!-- Stepper -->
     <div class="max-w-md mx-auto mb-6">
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div>
-                        <livewire:country-state wire:model="selectedCountry" wire:model="selectedState" />
+                        <livewire:country-state wire:model.live="selectedCountry" wire:model.live="selectedState" />
                         <div class="flex">
                             <div class="w-1/2">
                                 <x-form.error name="selectedCountry" />
@@ -103,6 +103,9 @@
 
                     <div class="flex space-x-4 items-center">
                         <x-button type="submit">Next</x-button>
+                        <a wire:navigate href="{{ route('employer.jobsPosted') }}">
+                            <x-button type="button" class="bg-red-500 text-white hover:bg-red-700">Cancel</x-button>
+                        </a>
                         <div wire:loading>
                             <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]"
                                 role="status">
@@ -138,7 +141,7 @@
 
                         <div class="w-1/5">
                             <x-form.label name="experience_years" label="Years of Exp" />
-                            <x-form.input type="number" name="experience_years" id="experience_years"
+                            <x-form.input type="number" min="0" max="50" name="experience_years" id="experience_years"
                                 wire:model.defer="experience_years" />
                             <x-form.error name="experience_years" />
                         </div>

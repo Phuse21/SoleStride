@@ -139,7 +139,7 @@
 
                         <div class="w-1/5">
                             <x-form.label name="experience_years" label="Years of Exp" />
-                            <x-form.input type="number" name="experience_years" id="experience_years"
+                            <x-form.input type="number" min="0" max="50" name="experience_years" id="experience_years"
                                 wire:model="experience_years" />
                             <x-form.error name="experience_years" />
                         </div>
