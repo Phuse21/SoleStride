@@ -72,9 +72,10 @@
                         </div>
 
                         <div class="w-1/2">
-                            <x-form.label :name="'field'" :label="'Field'" />
-                            <x-form.input type="text" :name="'field'" :id="'field'" wire:model="field" />
-                            <x-form.error name="field" />
+                            <x-form.label :name="'date_of_birth'" :label="'Date of Birth'" />
+                            <x-form.input type="date" :name="'date_of_birth'" :id="'date_of_birth'"
+                                wire:model="date_of_birth" />
+                            <x-form.error name="date_of_birth" />
                         </div>
                     </div>
                     <div class="flex space-x-4">

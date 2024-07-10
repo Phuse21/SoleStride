@@ -9,7 +9,7 @@
     <div x-on:click="show = false" class="fixed inset-0 bg-black bg-opacity-50"></div>
 
     {{-- Modal Body --}}
-    <div class="bg-white z-50 rounded-lg m-4 md:m-6 lg:m-8 xl:m-12 p-4 w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl overflow-y-auto"
+    <div class="bg-white z-50 rounded-lg m-4 md:m-6 lg:m-8 xl:m-12 p-4 w-full max-w-md md:max-w-xl overflow-y-auto"
         x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-90"
         x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-300"
         x-transition:leave-start="opacity-100 transform scale-100"

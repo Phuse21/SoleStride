@@ -50,7 +50,7 @@ class JobApply extends Component
         ]);
 
         $this->resetForm();
-        $this->dispatch('close-modal');
+        $this->dispatch('close-modal', ['name' => 'apply']);
         flash()->success('Application submitted successfully.');
     }
 

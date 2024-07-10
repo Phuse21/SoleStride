@@ -83,27 +83,23 @@
 
         <div class="row-span-3 bg-white shadow rounded-lg">
             <div class="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
-                <span>Pending Applicants</span>
+                <span class="text-bold">Pending Applicants</span>
             </div>
             <div class="overflow-y-auto" style="max-height: 30rem;">
-                <ul class="p-6 space-y-6">
-                    <li class="flex items-center">
-                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/women/82.jpg"
-                                alt="Annette Watson profile picture">
-                        </div>
-                        <span class="text-gray-600">Annette Watson</span>
-                        <span class="ml-auto font-semibold">1 hr ago</span>
-                    </li>
-                    <li class="flex items-center">
-                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/men/81.jpg"
-                                alt="Calvin Steward profile picture">
-                        </div>
-                        <span class="text-gray-600">Calvin Steward</span>
-                        <span class="ml-auto font-semibold">2 days ago</span>
-                    </li>
+                <ul class="p-4 space-y-6">
+                    @foreach($applicants as $application)
+                        <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10"
+                            x-data @click="$dispatch('open-modal', {name: 'application'})"
+                            wire:click="$dispatch('viewApplicantDetails', [{{ $application->id }}])">
+                            <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                                <img src="{{asset($application->applicants->profile_photo)}}">
+                            </div>
+                            <span class=" font-semibold">{{ $application->applicants->user->name ?? 'Unknown' }}</span>
+                            <span class="ml-auto text-gray-600">{{ $application->created_at->diffForHumans() }}</span>
+                        </li>
+                    @endforeach
                 </ul>
+
             </div>
         </div>
         <div class="flex flex-col row-span-3 bg-white shadow rounded-lg">
@@ -118,4 +114,8 @@
             </div>
         </div>
     </section>
+
+    <x-modal name="application" title="Pending Application">
+        <livewire:applications :applicants="$applicants" />
+    </x-modal>
 </div>

@@ -25,7 +25,7 @@ class RegisterUser extends Component
     public $employer;
     public $logo;
     public $education;
-    public $field;
+    public $date_of_birth;
     public $country;
     public $phone;
     public $street_address;
@@ -80,7 +80,7 @@ class RegisterUser extends Component
 
             $applicantAttributes = $this->validate([
                 'education' => 'required',
-                'field' => 'required',
+                'date_of_birth' => 'required',
                 'country' => 'required',
                 'phone' => 'required',
                 'street_address' => 'required|min:3|max:255',
@@ -118,7 +118,7 @@ class RegisterUser extends Component
             $profilePhotoPath = $applicantAttributes['profile_photo']->store('profile_photos');
             $user->applicant()->create([
                 'education' => $applicantAttributes['education'],
-                'field' => $applicantAttributes['field'],
+                'date_of_birth' => $applicantAttributes['date_of_birth'],
                 'country' => $applicantAttributes['country'],
                 'phone' => $applicantAttributes['phone'],
                 'street_address' => $applicantAttributes['street_address'],
@@ -157,7 +157,7 @@ class RegisterUser extends Component
     private function clearApplicantData()
     {
         $this->education = null;
-        $this->field = null;
+        $this->date_of_birth = null;
         $this->country = null;
         $this->phone = null;
         $this->street_address = null;

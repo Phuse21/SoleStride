@@ -13,4 +13,9 @@ class Applicants extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function job_applications()
+    {
+        return $this->hasMany(JobApplications::class, 'applicant_id');
+    }
 }

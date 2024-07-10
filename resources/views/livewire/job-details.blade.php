@@ -13,9 +13,11 @@
             </div>
         </div>
         @auth
-            <x-modal name="apply" title="Apply for {{$job->title}} at {{$job->employer->name}}">
-                <livewire:job-apply :job="$job" :applicant_id="auth()->user()->applicant->id" />
-            </x-modal>
+            @if (!empty(auth()->user()) && auth()->user()->applicant)
+                <x-modal name="apply" title="Apply for {{$job->title}} at {{$job->employer->name}}">
+                    <livewire:job-apply :job="$job" :applicant_id="auth()->user()->applicant->id" />
+                </x-modal>
+            @endif
         @endauth
     </div>
 </div>
