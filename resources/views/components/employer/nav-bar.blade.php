@@ -16,20 +16,21 @@
         </x-nav-link>
     </div>
 
-
     <div class="flex flex-shrink-0 items-center">
-        <button class="inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg">
+        <a wire:navigate href="{{route('employer.profile')}}">
+            <div class="inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg">
 
-            <div class="hidden md:flex md:flex-col md:items-end md:leading-tight">
-                <span class="font-semibold
-                                    text-sm">{{auth()->user()->name}}</span>
-                <span class="text-xs text-gray-600">{{auth()->user()->role}}</span>
+                <div class="hidden md:flex md:flex-col md:items-end md:leading-tight">
+                    <span class="font-semibold
+                                        text-sm">{{auth()->user()->name}}</span>
+                    <span class="text-xs text-gray-600">{{auth()->user()->role}}</span>
+                </div>
+                <span class="h-12 w-12 ml-2 sm:ml-3 mr-2 p-1 bg-gray-100 rounded-full overflow-hidden">
+                    <img src="{{asset(auth()->user()->employer->logo)}}" alt="user profile photo"
+                        class="h-full w-full object-cover rounded-full">
+                </span>
             </div>
-            <span class="h-12 w-12 ml-2 sm:ml-3 mr-2 p-1 bg-gray-100 rounded-full overflow-hidden">
-                <img src="{{asset(auth()->user()->employer->logo)}}" alt="user profile photo"
-                    class="h-full w-full object-cover rounded-full">
-            </span>
-        </button>
+        </a>
         <div class="flex space-x-2 font-bold items-center border-l pl-3 ml-3">
             <x-nav-link wire:navigate>
                 <div class="relative mt-1">

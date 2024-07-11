@@ -15,7 +15,7 @@
     </div>
 
     <div class="flex flex-shrink-0 items-center ml-auto">
-        <a wire:navigate href="">
+        <a wire:navigate href="{{route('applicant.profile')}}">
             <div class="inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg">
 
                 <div class="hidden md:flex md:flex-col md:items-end md:leading-tight">

@@ -22,4 +22,9 @@ class EmployerController extends Controller
     {
         return view('employer.editJob', ['job' => $job]);
     }
+
+    public function profile()
+    {
+        return view('profile');
+    }
 }

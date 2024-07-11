@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SearchController;
@@ -25,6 +25,7 @@ Route::group([
     Route::get('/jobs-posted', [EmployerController::class, 'jobsPosted'])->name('employer.jobsPosted');
     Route::get('/job-edit/{job}', [JobController::class, 'edit'])->name('employer.jobsEdit');
     Route::get('/jobs-market', [JobController::class, 'index'])->name('employer.jobsMarket');
+    Route::get('/profile', [EmployerController::class, 'profile'])->name('employer.profile');
 });
 
 
@@ -32,7 +33,8 @@ Route::group([
 Route::group([
     'middleware' => 'auth'
 ], function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home', [ApplicantController::class, 'index'])->name('home');
+    Route::get('/profile', [ApplicantController::class, 'profile'])->name('applicant.profile');
 });
 
 
