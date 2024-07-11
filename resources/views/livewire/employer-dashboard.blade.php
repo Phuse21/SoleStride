@@ -65,7 +65,7 @@
                 <img src="https://i.ibb.co/vdMT1yz/planning-2755487.png" alt="planning-2755487" class="w-6 h-6">
             </div>
             <div>
-                <span class="block text-2xl font-bold">3</span>
+                <span class="block text-2xl font-bold">{{$shortlistedCount}}</span>
                 <span class="block text-gray-500">Shortlisted Applicants</span>
             </div>
         </div>
@@ -88,15 +88,15 @@
             <div class="overflow-y-auto" style="max-height: 30rem;">
                 <ul class="p-4 space-y-6">
                     @foreach($applicants as $application)
-                        <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10"
-                            x-data @click="$dispatch('open-modal', {name: 'application'})"
-                            wire:click="$dispatch('viewApplicantDetails', [{{ $application->id }}])">
-                            <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                                <img src="{{asset($application->applicants->profile_photo)}}">
-                            </div>
-                            <span class=" font-semibold">{{ $application->applicants->user->name ?? 'Unknown' }}</span>
-                            <span class="ml-auto text-gray-600">{{ $application->created_at->diffForHumans() }}</span>
-                        </li>
+                    <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10"
+                        x-data @click="$dispatch('open-modal', {name: 'application'})"
+                        wire:click="$dispatch('viewApplicantDetails', [{{ $application->id }}])">
+                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                            <img src="{{asset($application->applicants->profile_photo)}}">
+                        </div>
+                        <span class=" font-semibold">{{ $application->applicants->user->name ?? 'Unknown' }}</span>
+                        <span class="ml-auto text-gray-600">{{ $application->created_at->diffForHumans() }}</span>
+                    </li>
                     @endforeach
                 </ul>
 

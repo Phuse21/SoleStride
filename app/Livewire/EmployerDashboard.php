@@ -12,6 +12,7 @@ class EmployerDashboard extends Component
     public $jobCount;
     public $applicationsCount;
     public $applicants;
+    public $shortlistedCount;
 
     public function mount()
     {
@@ -31,6 +32,9 @@ class EmployerDashboard extends Component
 
         // Count the number of applications
         $this->applicationsCount = $applications->count();
+
+        //count shortlisted applications
+        $this->shortlistedCount = $applications->where('status', 'shortlisted')->count();
 
         // Assign the applications to the applicants property
         $this->applicants = $applications->where('status', 'pending');
