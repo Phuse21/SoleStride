@@ -17,7 +17,7 @@
 
         <div class="space-x-2 flex-shrink-0">
             @foreach ($job->tags as $tag)
-                <x-tag :$tag size="sm" />
+            <x-tag :$tag size="sm" />
             @endforeach
         </div>
     </div>
@@ -59,7 +59,7 @@
         <h6 class="font-bold mt-2">Responsibilities</h6>
         <ul class="mt-2 mb-2 list-disc pl-4">
             @foreach (json_decode($job?->job_details?->responsibilities) ?? ['N/A'] as $item)
-                <li>{{ $item }}</li>
+            <li>{{ $item }}</li>
             @endforeach
         </ul>
     </div>
@@ -68,20 +68,22 @@
         <h6 class="font-bold mt-2">Required Skills</h6>
         <ul class="mt-2 mb-2 list-disc pl-4">
             @foreach (json_decode($job?->job_details?->skills) ?? ['N/A'] as $item)
-                <li>{{ $item }}</li>
+            <li>{{ $item }}</li>
             @endforeach
         </ul>
     </div>
 
     <div class="mt-8 w-full border-t-2">
         <div class="flex justify-end mt-2">
-            @auth
-                <x-button type="button" x-data @click="$dispatch('open-modal', {name: 'apply'})">Apply</x-button>
-            @endauth
+            @if (!empty(auth()->user()) && auth()->user()->applicant)
+            <x-button type="button" x-data @click="$dispatch('open-modal', {name: 'apply'})">Apply</x-button>
+            @else
+            <p class="text-red-500 font-bold">Only applicants can apply</p>
+            @endif
 
             @guest
-                <p><a wire:navigate href="{{ route('login', ['redirect' => url()->current()]) }}"
-                        class="text-blue-500">Login</a> to Apply</p>
+            <p><a wire:navigate href="{{ route('login', ['redirect' => url()->current()]) }}"
+                    class="text-blue-500">Login</a> to Apply</p>
             @endguest
         </div>
     </div>
