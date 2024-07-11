@@ -60,7 +60,7 @@
             </div>
         </div>
         <div class="flex items-center p-8 bg-white shadow rounded-lg hover:bg-black/5 cursor-pointer" x-data
-            @click="$dispatch('open-modal', {name: 'shortlist'})">
+            @click="$dispatch('open-modal', {name: 'applications'})">
             <div
                 class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16  bg-blue-100 hover:bg-blue-200 rounded-full mr-6">
                 <img src="https://i.ibb.co/vdMT1yz/planning-2755487.png" alt="planning-2755487" class="w-6 h-6">
@@ -69,6 +69,23 @@
                 <span class="block text-2xl font-bold">{{$shortlistedCount}}</span>
                 <span class="block text-gray-500">Shortlisted Applicants</span>
             </div>
+            <x-modal name="applications" title="Shortlisted Applicants">
+                <div class="overflow-y-auto" style="max-height: 30rem;">
+                    <ul class="p-4 space-y-6">
+                        @foreach($shortlistedApplications as $application)
+                        <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10"
+                            x-data @click="$dispatch('open-modal', {name: 'application'})">
+                            <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                                <img src="{{asset($application->applicants->profile_photo)}}">
+                            </div>
+                            <span class=" font-semibold">{{ $application->applicants->user->name ?? 'Unknown' }}</span>
+                            <span class="ml-auto text-gray-600">{{ $application->updated_at->diffForHumans() }}</span>
+                        </li>
+                        @endforeach
+                    </ul>
+
+                </div>
+            </x-modal>
         </div>
     </section>
     <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6 mt-6">
@@ -118,10 +135,5 @@
 
     <x-modal name="application" title="Pending Application">
         <livewire:applications :applicants="$applicants" />
-    </x-modal>
-
-
-    <x-modal name="shortlist" title="Shortlisted Applicants">
-
     </x-modal>
 </div>
