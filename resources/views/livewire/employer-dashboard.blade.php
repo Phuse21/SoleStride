@@ -59,7 +59,8 @@
                 <span class="block text-gray-500">Job Applications</span>
             </div>
         </div>
-        <div class="flex items-center p-8 bg-white shadow rounded-lg">
+        <div class="flex items-center p-8 bg-white shadow rounded-lg hover:bg-black/5 cursor-pointer" x-data
+            @click="$dispatch('open-modal', {name: 'shortlist'})">
             <div
                 class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16  bg-blue-100 hover:bg-blue-200 rounded-full mr-6">
                 <img src="https://i.ibb.co/vdMT1yz/planning-2755487.png" alt="planning-2755487" class="w-6 h-6">
@@ -103,12 +104,12 @@
             </div>
         </div>
         <div class="flex flex-col row-span-3 bg-white shadow rounded-lg">
-            <div class="px-6 py-5 font-semibold border-b border-gray-100">Jobs by Requests</div>
+            <div class="px-6 py-5 font-semibold border-b border-gray-100">Jobs by Applications</div>
             <div class="p-4 flex-grow">
                 <div
                     class="flex items-center justify-center h-full px-4 py-24 text-gray-400 text-3xl font-semibold bg-gray-100 border-2 border-gray-200 border-dashed rounded-md">
 
-                    <livewire:chart-component />
+                    <livewire:chart-component :jobRequests="$jobRequests" />
 
                 </div>
             </div>
@@ -117,5 +118,10 @@
 
     <x-modal name="application" title="Pending Application">
         <livewire:applications :applicants="$applicants" />
+    </x-modal>
+
+
+    <x-modal name="shortlist" title="Shortlisted Applicants">
+
     </x-modal>
 </div>

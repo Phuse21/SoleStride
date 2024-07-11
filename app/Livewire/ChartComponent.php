@@ -8,16 +8,15 @@ class ChartComponent extends Component
 {
 
 
-    public $jobRequests = [
-        ['job' => 'Fraud Analyst', 'requests' => '10'],
-        ['job' => 'Software Developer', 'requests' => '20'],
-        ['job' => 'Business Analyst', 'requests' => '15'],
-        ['job' => 'Data Scientist', 'requests' => '25'],
-        ['job' => 'Software Engineer', 'requests' => '30'],
-    ];
+    public $jobRequests;
 
+    public function mount($jobRequests)
+    {
+        $this->jobRequests = $jobRequests;
+    }
     public function render()
     {
         return view('livewire.chart-component');
     }
+
 }

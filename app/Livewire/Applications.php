@@ -23,7 +23,7 @@ class Applications extends Component
     {
         // Find the application in the cached collection
         $this->application = $this->applications->firstWhere('id', $applicationId);
-        $this->application->load('job');
+        // $this->application->load('job');
     }
 
     public function addToShortlist()
