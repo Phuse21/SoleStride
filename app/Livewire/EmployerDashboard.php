@@ -12,6 +12,7 @@ class EmployerDashboard extends Component
     public $jobCount;
     public $applicationsCount;
     public $applicants;
+    public $applications;
     public $shortlistedCount;
     public $shortlistedApplications;
     public $jobRequests;
@@ -27,28 +28,30 @@ class EmployerDashboard extends Component
 
 
         // Retrieve applications with the necessary relationships
-        $applications = JobApplications::with('applicants.user', 'job')
+        $this->applications = JobApplications::with('applicants.user', 'job')
             ->where('employer_id', $employer->id)
             ->latest()
             ->get();
 
+        // dd($applications);
+
         // Count the number of applications
-        $this->applicationsCount = $applications->count();
+        $this->applicationsCount = $this->applications->count();
 
         // Filter applications by status(shortlisted)
-        $this->shortlistedApplications = $applications->where('status', 'shortlisted');
+        $this->shortlistedApplications = $this->applications->where('status', 'shortlisted');
 
         //count shortlisted applications
         $this->shortlistedCount = $this->shortlistedApplications->count();
 
 
         // Filter applications by status(pending)
-        $this->applicants = $applications->where('status', 'pending');
+        $this->applicants = $this->applications->where('status', 'pending');
 
         // dd($this->applicants);
 
         // Group job requests for the chart and generate random colors
-        $this->jobRequests = $applications->groupBy('job_id')->map(function ($group) {
+        $this->jobRequests = $this->applications->groupBy('job_id')->map(function ($group) {
             $job = $group->first()->job; // Get the job associated with the group
             return [
                 'job' => $job ? $job->title : 'Unknown Job', // Use job title or 'Unknown Job' if null

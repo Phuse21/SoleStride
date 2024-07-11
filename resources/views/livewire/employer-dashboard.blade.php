@@ -40,7 +40,8 @@
                 <span class="block text-gray-500">Jobs Posted</span>
             </div>
         </div>
-        <div class="flex items-center p-8 bg-white shadow rounded-lg">
+        <div class="flex items-center p-8 bg-white shadow rounded-lg hover:bg-black/5 cursor-pointer" x-data
+            @click="$dispatch('open-modal', {name: 'applications'})">
             <div
                 class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 bg-yellow-100 hover:bg-yellow-200 rounded-full mr-6">
                 <svg fill="#f5ae32" viewBox="0 0 16 16" id="request-send-16px" xmlns="http://www.w3.org/2000/svg"
@@ -58,9 +59,35 @@
                 <span class="inline-block text-2xl font-bold">{{$applicationsCount}}</span>
                 <span class="block text-gray-500">Job Applications</span>
             </div>
+            <x-modal name="applications" title="Shortlisted Applicants">
+                <div class="overflow-y-auto" style="max-height: 30rem;">
+                    <ul class="p-4 space-y-6">
+                        @if($applications && $applications->count() > 0)
+                        <li class="flex items-center cursor-pointer p-2 rounded border-b border-black/10">
+
+                            <span class="text-gray-600 font-bold">{{  'Name' }}</span>
+                            <span class="ml-auto text-gray-600">{{ 'Status' }}</span>
+                        </li>
+                        @foreach($applications as $application)
+                        <li
+                            class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10">
+                            <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                                <img src="{{asset($application->applicants->profile_photo)}}" alt="Profile Photo">
+                            </div>
+                            <span class="text-gray-600">{{ $application->applicants->user->name ?? 'Unknown' }}</span>
+                            <span class="ml-auto font-semibold">{{ $application->status ?? 'N/A' }}</span>
+                        </li>
+                        @endforeach
+                        @else
+                        <li class="text-center text-gray-500">No applications found.</li>
+                        @endif
+                    </ul>
+
+                </div>
+            </x-modal>
         </div>
         <div class="flex items-center p-8 bg-white shadow rounded-lg hover:bg-black/5 cursor-pointer" x-data
-            @click="$dispatch('open-modal', {name: 'applications'})">
+            @click="$dispatch('open-modal', {name: 'shortlisted'})">
             <div
                 class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16  bg-blue-100 hover:bg-blue-200 rounded-full mr-6">
                 <img src="https://i.ibb.co/vdMT1yz/planning-2755487.png" alt="planning-2755487" class="w-6 h-6">
@@ -69,12 +96,18 @@
                 <span class="block text-2xl font-bold">{{$shortlistedCount}}</span>
                 <span class="block text-gray-500">Shortlisted Applicants</span>
             </div>
-            <x-modal name="applications" title="Shortlisted Applicants">
+            <x-modal name="shortlisted" title="Shortlisted Applicants">
                 <div class="overflow-y-auto" style="max-height: 30rem;">
                     <ul class="p-4 space-y-6">
+                        @if ($shortlistedApplications && $shortlistedApplications->count() > 0)
+                        <li class="flex items-center cursor-pointer p-2 rounded border-b border-black/10">
+
+                            <span class="font-semibold">{{  'Name' }}</span>
+                            <span class="ml-auto text-gray-600">{{ 'Shortlist Time' }}</span>
+                        </li>
                         @foreach($shortlistedApplications as $application)
-                        <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10"
-                            x-data @click="$dispatch('open-modal', {name: 'application'})">
+                        <li
+                            class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10">
                             <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
                                 <img src="{{asset($application->applicants->profile_photo)}}">
                             </div>
@@ -82,6 +115,9 @@
                             <span class="ml-auto text-gray-600">{{ $application->updated_at->diffForHumans() }}</span>
                         </li>
                         @endforeach
+                        @else
+                        <li class="text-center text-gray-500">No applications found.</li>
+                        @endif
                     </ul>
 
                 </div>
@@ -105,6 +141,7 @@
             </div>
             <div class="overflow-y-auto" style="max-height: 30rem;">
                 <ul class="p-4 space-y-6">
+                    @if ($applicants && $applicants->count() > 0)
                     @foreach($applicants as $application)
                     <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10"
                         x-data @click="$dispatch('open-modal', {name: 'application'})"
@@ -116,6 +153,7 @@
                         <span class="ml-auto text-gray-600">{{ $application->created_at->diffForHumans() }}</span>
                     </li>
                     @endforeach
+                    @endif
                 </ul>
 
             </div>
