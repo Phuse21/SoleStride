@@ -53,6 +53,26 @@
                         </div>
 
                         <div class="w-1/2">
+                            <x-form.label :name="'position'" :label="'Position in Company'" />
+                            <x-form.select name="position" id="position" wire:model="position">
+                                <option value="">--Please Select--</option>
+                                <option value="Any">CEO/CTO</option>
+                                <option value="hr">HR</option>
+                                <option value="team lead">Team Lead</option>
+                                <option value="unit lead">Unit Lead</option>
+                                <option value="other">Other</option>
+                            </x-form.select>
+                            <x-form.error name="position" />
+                        </div>
+                    </div>
+                    <div class="flex space-x-4">
+                        <div class="w-1/2">
+                            <x-form.label :name="'linkedin'" :label="'Linkedin'" />
+                            <x-form.input type="text" :name="'linkedin'" :id="'linkedin'" wire:model="linkedin" />
+                            <x-form.error name="linkedin" />
+                        </div>
+
+                        <div class="w-1/2">
                             <x-form.label :name="'logo'" :label="'Company Logo'" />
                             <x-form.file :name="'logo'" :id="'logo'" wire:model="logo" />
                             <x-form.error name="logo" />

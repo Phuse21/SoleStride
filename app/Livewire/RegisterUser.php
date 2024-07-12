@@ -23,6 +23,8 @@ class RegisterUser extends Component
     public $password_confirmation;
     public $role;
     public $employer;
+    public $position;
+    public $url;
     public $logo;
     public $education;
     public $date_of_birth;
@@ -71,6 +73,8 @@ class RegisterUser extends Component
         if ($this->role === 'employer') {
             $employerAttributes = $this->validate([
                 'employer' => 'required|min:3|max:255',
+                'position' => 'required',
+                'url' => 'nullable|url',
                 'logo' => 'required|image',
             ]);
         }
@@ -109,6 +113,8 @@ class RegisterUser extends Component
             $logoPath = $employerAttributes['logo']->store('logos');
             $user->employer()->create([
                 'name' => $employerAttributes['employer'],
+                'position' => $employerAttributes['position'],
+                'url' => $employerAttributes['url'],
                 'logo' => 'storage/' . $logoPath
             ]);
         }
@@ -150,6 +156,8 @@ class RegisterUser extends Component
     private function clearEmployerData()
     {
         $this->employer = null;
+        $this->position = null;
+        $this->url = null;
         $this->logo = null;
     }
 
