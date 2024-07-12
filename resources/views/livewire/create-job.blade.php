@@ -180,7 +180,7 @@
                             <x-form.label name="summary" label="Job Summary" />
                             <textarea name="summary" id="summary" wire:model="summary"
                                 placeholder="Provide a brief description of the job."
-                                class="w-full border rounded-md p-2 text-sm h-20"></textarea>
+                                class="w-full border rounded-md p-2 text-sm h-[150px]"></textarea>
                             <x-form.error name="summary" />
                         </div>
                     </div>

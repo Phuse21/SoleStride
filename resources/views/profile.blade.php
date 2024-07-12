@@ -1,11 +1,11 @@
 <x-layout>
     @if (auth()->user()->role === 'employer')
-        <livewire:employer-profile />
+    <livewire:employer-profile />
     @elseif (auth()->user()->role === 'applicant')
-        <livewire:applicant-profile />
+    <livewire:applicant-profile />
     @else
-        @php
-            abort(404);
-        @endphp
+    @php
+    abort(404);
+    @endphp
     @endif
 </x-layout>

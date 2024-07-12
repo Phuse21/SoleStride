@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignIdFor(User::class);
             $table->string('education');
-            $table->string('field');
+            $table->date('date_of_birth');
             $table->string('street_address');
             $table->string('city');
             $table->string('state');
