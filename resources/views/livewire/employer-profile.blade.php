@@ -5,24 +5,26 @@
             <div class="h-fit w-full flex flex-col items-center gap-5">
                 <div
                     class="bg-gradient-to-t from-primary to-btn_gradient_blue/80 text-white h-fit w-full p-3 rounded-lg flex flex-col items-center border border-light_blue relative">
-                    <div class="h-32 w-32 rounded-full overflow-hidden flex items-center justify-center bg-white"
+                    <div class="h-32 w-32 p-1 rounded-full overflow-hidden flex items-center justify-center bg-white"
                         style="font-size: 50px;">
-                        <img src="https://i.ibb.co/zGmPNzP/portrait-engineer-job-site-work-hours.jpg"
-                            class="object-cover h-full w-full">
+                        <img src="{{asset($employer->logo)}}" class="object-cover rounded-full h-full w-full">
                     </div>
-                    <p class="text-white text-xl font-bold font-content capitalize mt-3">Beach and Brooks</p>
-                    <p class="text-base font-light text-white font-content">Edan Reaves</p>
+                    <p class="text-white text-xl font-bold font-content capitalize mt-3">{{$employer->name}}</p>
+                    <p class="text-base font-light text-white font-content">{{$employer->user->name}}</p>
                 </div>
 
                 <div
                     class="bg-white p-3 text-black h-fit w-full rounded-lg flex flex-col items-center border border-light_blue">
                     <div class="flex flex-col items-start justify-start border-light_blue w-full p-2">
                         <p class="text-zinc-400 text-sm font-content w-full capitalize">Total Jobs Posted</p>
-                        <p class="text-base font-medium text-black font-content capitalize">10</p>
+                        <p class="text-base font-medium text-black font-content capitalize">
+                            {{$jobs->count()}}
+                        </p>
                     </div>
                     <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                         <p class="text-zinc-400 text-sm font-content w-full capitalize">Active Jobs</p>
-                        <p class="text-base font-medium text-black font-content capitalize">7</p>
+                        <p class="text-base font-medium text-black font-content capitalize">{{$employer->jobs->count()}}
+                        </p>
                     </div>
                     <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                         <p class="text-zinc-400 text-sm font-content w-full capitalize">Member Since</p>

@@ -1,20 +1,14 @@
-<div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-    @if(empty($jobRequests))
-        <p>No job applications found</p>
-    @else
-        <!-- Debug Output -->
-        <!-- <pre>{{ json_encode($jobRequests, JSON_PRETTY_PRINT) }}</pre> -->
-
-        <div wire:ignore>
+<div>
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <div>
             <canvas id="myChart" style="max-width: 500px;"></canvas>
         </div>
         <div id="chart-legend" style="text-align: center; margin-top: 20px;"></div>
-
         <!-- Load Chart.js from CDN -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
+            document.addEventListener('livewire:initialized', function () {
                 const ctx = document.getElementById('myChart').getContext('2d');
 
                 // Access Livewire data
@@ -68,5 +62,5 @@
                 });
             });
         </script>
-    @endif
+    </div>
 </div>

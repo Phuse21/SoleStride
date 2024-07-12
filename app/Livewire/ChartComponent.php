@@ -12,6 +12,7 @@ class ChartComponent extends Component
 
     public function mount($jobRequests)
     {
+        // dd($jobRequests);
         $this->jobRequests = $jobRequests;
     }
     public function render()
