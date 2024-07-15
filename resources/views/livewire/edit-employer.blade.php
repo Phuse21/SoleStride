@@ -3,7 +3,7 @@
 
     <div class="flex space-x-2">
         <div class="flex-1">
-            <form wire:submit.prevent="register" class="max-w-2xl p-4 mx-auto space-y-6">
+            <form wire:submit="updateEmployer" class="max-w-2xl p-4 mx-auto space-y-6">
                 <div class="flex space-x-4">
                     <div class="w-1/2">
                         <x-form.label :name="'name'" :label="'Name'" />
@@ -12,7 +12,7 @@
                     </div>
                     <div class="w-1/2">
                         <x-form.label :name="'employer'" :label="'Company Name'" />
-                        <x-form.input type="text" :name="'employer'" :id="'employer'" wire:model="employer" />
+                        <x-form.input type="text" :name="'employer'" :id="'employer'" wire:model="employer_name" />
                         <x-form.error name="employer" />
                     </div>
                 </div>

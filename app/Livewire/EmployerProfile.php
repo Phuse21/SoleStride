@@ -8,6 +8,7 @@ use Livewire\Component;
 class EmployerProfile extends Component
 {
 
+    public $listeners = ['employerProfileUpdated' => 'update'];
     public $employer;
     public $jobs;
     public $applications;
@@ -20,6 +21,11 @@ class EmployerProfile extends Component
             ->get();
 
         $this->jobs = $this->employer->jobs()->withTrashed()->get();
+    }
+
+    public function update()
+    {
+        $this->render();
     }
     public function render()
     {

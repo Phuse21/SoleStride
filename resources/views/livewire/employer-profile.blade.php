@@ -114,7 +114,8 @@
                     </div>
                 </form>
             </div>
-            <x-button x-data @click="$dispatch('open-modal', {name: 'edit-employer-profile'})">Edit Profile</x-button>
+            <x-button x-data @click="$dispatch('open-modal', {name: 'edit-employer-profile'})">
+                Edit Profile</x-button>
         </div>
     </div>
     <x-modal name="edit-employer-profile" title="Edit Profile">
