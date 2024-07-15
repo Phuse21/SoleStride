@@ -3,7 +3,7 @@
     <div class="w-full mx-auto border-b overflow-y-auto h-full">
         <div class="h-fit w-full flex flex-col items-center gap-5">
             <div
-                class="bg-gradient-to-t from-primary to-btn_gradient_blue/80 text-white h-fit w-full p-3 rounded-lg flex flex-col items-center border border-light_blue relative">
+                class="bg-gradient-to-t from-primary to-btn_gradient_blue/80 text-white h-fit w-full p-3 rounded-lg flex flex-col items-center border relative">
                 <div class="h-32 w-32 rounded-full overflow-hidden flex items-center justify-center bg-white"
                     style="font-size: 50px;">
                     <img src="{{ asset($applicants->profile_photo) }}" class="object-cover h-full w-full">
@@ -60,7 +60,7 @@
         <div class="flex flex-col items-start justify-start w-full h-full col-span-2 gap-3">
             <div class="w-full h-fit p-5 bg-white border rounded-lg border-light_blue">
                 <div
-                    class="flex items-center justify-between pb-3 mb-5 text-lg font-medium capitalize border-b-2 text-primary border-light_blue">
+                    class="flex items-center justify-between pb-3 mb-5 text-lg font-medium capitalize border-b-2 text-primary border-black/20">
                     <span>Basic Information</span>
                 </div>
                 <form class="max-w-2xl mx-auto space-y-6">
@@ -103,6 +103,10 @@
                     </div>
                 </form>
             </div>
+            <x-button x-data @click="$dispatch('open-modal', {name: 'edit-applicant-profile'})">Edit Profile</x-button>
         </div>
     </div>
+    <x-modal name="edit-applicant-profile" title="Edit Profile">
+        <livewire:edit-applicant :applicants="$applicants" />
+    </x-modal>
 </div>

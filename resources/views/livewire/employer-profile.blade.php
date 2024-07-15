@@ -74,46 +74,50 @@
 
                         <label class="w-1/3" title="Nationality">Country</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$employer->company_country}}
+                            {{$employer?->company_country ?? 'N/A'}}
                         </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
 
                         <label class="w-1/3" title="Nationality">Street address</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$employer->company_street_address}}
+                            {{$employer?->company_street_address ?? 'N/A'}}
                         </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
 
                         <label class="w-1/3" title="Nationality">State/province</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$employer->company_state}}
+                            {{$employer?->company_state ?? 'N/A'}}
                         </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
 
                         <label class="w-1/3" title="Nationality">City</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$employer->company_city}}
+                            {{$employer?->company_city ?? 'N/A'}}
                         </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
 
                         <label class="w-1/3" title="Nationality">Phone Number</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$employer->company_phone}}
+                            {{$employer?->company_phone ?? 'N/A'}}
                         </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
 
                         <label class="w-1/3" title="Nationality">Zip</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$employer->company_zip}}
+                            {{$employer?->company_zip ?? 'N/A'}}
                         </div>
                     </div>
                 </form>
             </div>
+            <x-button x-data @click="$dispatch('open-modal', {name: 'edit-employer-profile'})">Edit Profile</x-button>
         </div>
     </div>
+    <x-modal name="edit-employer-profile" title="Edit Profile">
+        <livewire:edit-employer :employer="$employer" />
+    </x-modal>
 </div>

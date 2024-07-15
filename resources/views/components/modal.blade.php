@@ -9,14 +9,14 @@
     <div x-on:click="show = false" class="fixed inset-0 bg-black bg-opacity-50"></div>
 
     {{-- Modal Body --}}
-    <div class="bg-white z-50 rounded-lg m-4 md:m-6 lg:m-8 xl:m-12 p-4 w-full max-w-md md:max-w-xl overflow-y-auto"
+    <div class="bg-white z-50 max-h-[98vh] rounded-lg m-4 md:m-6 lg:m-8 xl:m-12 w-full max-w-md md:max-w-xl overflow-hidden"
         x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-90"
         x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-300"
         x-transition:leave-start="opacity-100 transform scale-100"
         x-transition:leave-end="opacity-0 transform scale-90">
 
         @if (isset($title))
-        <div class="px-4 py-3 flex items-center justify-between border-b border-gray-300">
+        <div class="px-4 py-3 w-full flex items-center justify-between border-b border-gray-300">
             <div class="text-sm font-semibold text-gray-800">{{ $title }}</div>
             <button x-on:click="$dispatch('close-modal')">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -27,7 +27,7 @@
         </div>
         @endif
 
-        <div class="p-4">
+        <div class="p-4 overflow-y-auto max-h-[calc(98vh-4rem)]">
             {{ $slot }}
         </div>
     </div>
