@@ -67,8 +67,49 @@
                 </div>
                 <div class="flex space-x-4">
                     <div class="w-1/2">
+                        <x-form.label :name="'country'" :label="'Country'" />
+                        <x-form.input type="text" :name="'country'" :id="'country'" wire:model="company_country" />
+                        <x-form.error name="country" />
+                    </div>
+
+                    <div class="w-1/2">
+                        <x-form.label :name="'phone'" :label="'Phone'" />
+                        <x-form.input type="text" :name="'phone'" :id="'phone'" wire:model="company_phone" />
+                        <x-form.error name="phone" />
+                    </div>
+                </div>
+
+                <div class="col-span-full">
+                    <x-form.label :name="'street-address'" :label="'Street Address'" />
+                    <x-form.input type="text" :name="'street-address'" :id="'company-street-address'"
+                        wire:model="company_street_address" />
+                    <x-form.error name="street_address" />
+                </div>
+
+                <div class="flex space-x-4">
+                    <div class="w-1.5/4">
+                        <x-form.label :name="'state'" :label="'State'" />
+                        <x-form.input type="text" :name="'state'" :id="'state'" wire:model="company_state" />
+                        <x-form.error name="state" />
+                    </div>
+
+                    <div class="w-1.5/4">
+                        <x-form.label :name="'city'" :label="'City'" />
+                        <x-form.input type="text" :name="'city'" :id="'city'" wire:model="company_city" />
+                        <x-form.error name="city" />
+                    </div>
+
+
+                    <div class="w-1/4">
+                        <x-form.label :name="'zip'" :label="'Zip'" />
+                        <x-form.input type="text" :name="'zip'" :id="'zip'" wire:model="company_zip" />
+                        <x-form.error name="zip" />
+                    </div>
+                </div>
+                <div class="flex space-x-4">
+                    <div class="w-1/2">
                         <x-form.label :name="'linkedin'" :label="'Linkedin'" />
-                        <x-form.input type="text" :name="'linkedin'" :id="'linkedin'" wire:model="linkedin" />
+                        <x-form.input type="text" :name="'linkedin'" :id="'linkedin'" wire:model="url" />
                         <x-form.error name="linkedin" />
                     </div>
 

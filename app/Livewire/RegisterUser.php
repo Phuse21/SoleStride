@@ -24,6 +24,12 @@ class RegisterUser extends Component
     public $role;
     public $employer;
     public $position;
+    public $company_country;
+    public $company_phone;
+    public $company_street_address;
+    public $company_state;
+    public $company_city;
+    public $company_zip;
     public $url;
     public $logo;
     public $education;
@@ -74,6 +80,12 @@ class RegisterUser extends Component
             $employerAttributes = $this->validate([
                 'employer' => 'required|min:3|max:255',
                 'position' => 'required',
+                'company_country' => 'required',
+                'company_phone' => 'required',
+                'company_street_address' => 'required|min:3|max:255',
+                'company_state' => 'required',
+                'company_city' => 'required',
+                'company_zip' => 'required',
                 'url' => 'nullable|url',
                 'logo' => 'required|image',
             ]);
@@ -114,8 +126,14 @@ class RegisterUser extends Component
             $user->employer()->create([
                 'name' => $employerAttributes['employer'],
                 'position' => $employerAttributes['position'],
+                'company_country' => $employerAttributes['company_country'],
+                'company_phone' => $employerAttributes['company_phone'],
+                'company_street_address' => $employerAttributes['company_street_address'],
+                'company_state' => $employerAttributes['company_state'],
+                'company_city' => $employerAttributes['company_city'],
+                'company_zip' => $employerAttributes['company_zip'],
                 'url' => $employerAttributes['url'],
-                'logo' => 'storage/' . $logoPath
+                'logo' => "storage/{$logoPath}"
             ]);
         }
 
@@ -131,7 +149,7 @@ class RegisterUser extends Component
                 'city' => $applicantAttributes['city'],
                 'state' => $applicantAttributes['state'],
                 'zip' => $applicantAttributes['zip'],
-                'profile_photo' => 'storage/' . $profilePhotoPath,
+                'profile_photo' => "storage/{$profilePhotoPath}",
                 'linkedin' => $applicantAttributes['linkedin'],
             ]);
         }
@@ -157,6 +175,12 @@ class RegisterUser extends Component
     {
         $this->employer = null;
         $this->position = null;
+        $this->company_country = null;
+        $this->company_phone = null;
+        $this->company_street_address = null;
+        $this->company_state = null;
+        $this->company_city = null;
+        $this->company_zip = null;
         $this->url = null;
         $this->logo = null;
     }

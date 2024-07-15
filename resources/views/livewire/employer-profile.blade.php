@@ -28,7 +28,8 @@
                     </div>
                     <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                         <p class="text-zinc-400 text-sm font-content w-full capitalize">Member Since</p>
-                        <p class="text-base font-medium text-black font-content capitalize">{{$employer->created_at}}
+                        <p class="text-base font-medium text-black font-content capitalize">
+                            {{Carbon\Carbon::parse($employer->created_at)->format('F j, Y')}}
                         </p>
                     </div>
                     <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
@@ -66,44 +67,50 @@
             <div class="w-full h-fit p-5 bg-white border rounded-lg border-light_blue">
                 <div
                     class="flex items-center justify-between pb-3 mb-5 text-lg font-medium capitalize border-b-2 text-primary border-light_blue">
-                    <span>Basic Information</span>
+                    <span>Company Information</span>
                 </div>
                 <form class="max-w-2xl mx-auto space-y-6">
                     <div class="flex text-sm items-center capitalize text-black">
 
                         <label class="w-1/3" title="Nationality">Country</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            Ghana</div>
+                            {{$employer->company_country}}
+                        </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
 
                         <label class="w-1/3" title="Nationality">Street address</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            Dingo Street 5</div>
+                            {{$employer->company_street_address}}
+                        </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
 
                         <label class="w-1/3" title="Nationality">State/province</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            Greater Accra</div>
+                            {{$employer->company_state}}
+                        </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
 
                         <label class="w-1/3" title="Nationality">City</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            Madina</div>
+                            {{$employer->company_city}}
+                        </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
 
                         <label class="w-1/3" title="Nationality">Phone Number</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            Ghana</div>
+                            {{$employer->company_phone}}
+                        </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
 
-                        <label class="w-1/3" title="Nationality">Education</label>
+                        <label class="w-1/3" title="Nationality">Zip</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            Bachelor Degree</div>
+                            {{$employer->company_zip}}
+                        </div>
                     </div>
                 </form>
             </div>

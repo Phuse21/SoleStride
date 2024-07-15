@@ -1,5 +1,8 @@
 <div>
     <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        @if (empty($jobRequests))
+        <p>No Application yet</p>
+        @else
         <div>
             <canvas id="myChart" style="max-width: 500px;"></canvas>
         </div>
@@ -8,12 +11,13 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         <script>
-            document.addEventListener('livewire:initialized', function () {
-                const ctx = document.getElementById('myChart').getContext('2d');
+        document.addEventListener('livewire:initialized', function() {
+            const ctx = document.getElementById('myChart').getContext('2d');
 
-                // Access Livewire data
-                const jobRequests = @json($jobRequests);
+            // Access Livewire data
+            const jobRequests = @json($jobRequests);
 
+            if (jobRequests.length > 0) {
                 const labels = jobRequests.map(item => item.job);
                 const requests = jobRequests.map(item => item.requests);
                 const backgroundColors = jobRequests.map(item => item.backgroundColor);
@@ -38,7 +42,7 @@
                     },
                     plugins: [{
                         id: 'custom-legend',
-                        afterUpdate: function (chart) {
+                        afterUpdate: function(chart) {
                             const legendContainer = document.getElementById('chart-legend');
                             const ul = document.createElement('ul');
                             const datasets = chart.data.datasets;
@@ -49,9 +53,9 @@
                                     li.style.display = 'inline-block';
                                     li.style.marginRight = '10px';
                                     li.innerHTML = `
-                                                    <span style="background-color:${dataset.backgroundColor[j]};width:10px;height:10px;display:inline-block;"></span>
-                                                    <span style="color:#333;font-size:14px;">${chart.data.labels[j]}</span>
-                                                `;
+                                                            <span style="background-color:${dataset.backgroundColor[j]};width:10px;height:10px;display:inline-block;"></span>
+                                                            <span style="color:#333;font-size:14px;">${chart.data.labels[j]}</span>
+                                                        `;
                                     ul.appendChild(li);
                                 });
                             });
@@ -60,7 +64,9 @@
                         }
                     }]
                 });
-            });
+            }
+        });
         </script>
     </div>
 </div>
+@endif

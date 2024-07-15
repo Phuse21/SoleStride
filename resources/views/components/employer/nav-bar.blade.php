@@ -17,7 +17,7 @@
     </div>
 
     <div class="flex flex-shrink-0 items-center">
-        <a wire:navigate href="{{route('employer.profile')}}">
+        <x-nav-link wire:navigate href="{{route('employer.profile')}}" :active="request()->routeIs('employer.profile')">
             <div class="inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg">
 
                 <div class="hidden md:flex md:flex-col md:items-end md:leading-tight">
@@ -30,7 +30,7 @@
                         class="h-full w-full object-cover rounded-full">
                 </span>
             </div>
-        </a>
+        </x-nav-link>
         <div class="flex space-x-2 font-bold items-center border-l pl-3 ml-3">
             <x-nav-link wire:navigate>
                 <div class="relative mt-1">
