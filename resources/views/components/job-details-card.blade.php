@@ -77,7 +77,7 @@
         <div class="flex justify-end mt-2">
             @if (!empty(auth()->user()) && auth()->user()->applicant)
             <x-button type="button" x-data @click="$dispatch('open-modal', {name: 'apply'})">Apply</x-button>
-            @else
+            @elseif (!empty(auth()->user()) && !auth()->user()->employer)
             <p class="text-red-500 font-bold">Only applicants can apply</p>
             @endif
 
