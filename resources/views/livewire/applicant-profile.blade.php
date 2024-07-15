@@ -77,26 +77,26 @@
                         </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
-                        <label class="w-1/3" title="Nationality">State/province</label>
+                        <label class="w-1/3" title="State">State/province</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
                             {{$applicants->state}}
                         </div>
                     </div>
 
                     <div class="flex text-sm items-center capitalize text-black">
-                        <label class="w-1/3" title="Nationality">City</label>
+                        <label class="w-1/3" title="City">City</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
                             {{$applicants->city}}
                         </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
-                        <label class="w-1/3" title="Nationality">Phone Number</label>
+                        <label class="w-1/3" title="Phone">Phone Number</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
                             {{$applicants->phone}}
                         </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
-                        <label class="w-1/3" title="Nationality">Education</label>
+                        <label class="w-1/3" title="Education">Education</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
                             {{$applicants->education}}
                         </div>
