@@ -7,10 +7,13 @@
                     class="bg-gradient-to-t from-primary to-btn_gradient_blue/80 text-white h-fit w-full p-3 rounded-lg flex flex-col items-center border border-light_blue relative">
                     <div class="h-32 w-32 p-1 rounded-full overflow-hidden flex items-center justify-center bg-white"
                         style="font-size: 50px;">
-                        <img src="{{asset($employer->logo)}}" class="object-cover rounded-full h-full w-full">
+                        <img src="{{asset($employer?->logo ?? 'https://i.ibb.co/Yk3VRHC/user-131563.png')}}"
+                            class="object-cover rounded-full h-full w-full">
                     </div>
-                    <p class="text-white text-xl font-bold font-content capitalize mt-3">{{$employer->name}}</p>
-                    <p class="text-base font-light text-white font-content">{{$employer->user->name}}</p>
+                    <p class="text-white text-xl font-bold font-content capitalize mt-3">
+                        {{$employer?->user?->name ?? 'N/A'}}
+                    </p>
+                    <p class="text-base font-light text-white font-content">{{$employer?->user?->email ?? 'N/A'}}}</p>
                 </div>
 
                 <div
@@ -18,18 +21,19 @@
                     <div class="flex flex-col items-start justify-start border-light_blue w-full p-2">
                         <p class="text-zinc-400 text-sm font-content w-full capitalize">Total Jobs Posted</p>
                         <p class="text-base font-medium text-black font-content capitalize">
-                            {{$jobs->count()}}
+                            {{$jobs?->count() ?? 'N/A'}}
                         </p>
                     </div>
                     <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                         <p class="text-zinc-400 text-sm font-content w-full capitalize">Active Jobs</p>
-                        <p class="text-base font-medium text-black font-content capitalize">{{$employer->jobs->count()}}
+                        <p class="text-base font-medium text-black font-content capitalize">
+                            {{$employer?->jobs?->count() ?? 'N/A'}}
                         </p>
                     </div>
                     <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                         <p class="text-zinc-400 text-sm font-content w-full capitalize">Member Since</p>
                         <p class="text-base font-medium text-black font-content capitalize">
-                            {{Carbon\Carbon::parse($employer->created_at)->format('F j, Y')}}
+                            {{Carbon\Carbon::parse($employer?->created_at)->format('F j, Y') ?? 'N/A'}}
                         </p>
                     </div>
                     <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
@@ -53,7 +57,8 @@
                     <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                         <p class="text-zinc-400 text-sm font-content w-full capitalize">Position</p>
                         <div class="flex items-center justify-between w-full">
-                            <p class="text-base font-medium text-black font-content capitalize">{{$employer->position}}
+                            <p class="text-base font-medium text-black font-content capitalize">
+                                {{$employer?->position ?? 'N/A'}}
                             </p>
                         </div>
                     </div>
@@ -70,6 +75,13 @@
                     <span>Company Information</span>
                 </div>
                 <form class="max-w-2xl mx-auto space-y-6">
+                    <div class="flex text-sm items-center capitalize text-black">
+
+                        <label class="w-1/3" title="Company Name">Company Name</label>
+                        <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
+                            {{$employer?->name ?? 'N/A'}}
+                        </div>
+                    </div>
                     <div class="flex text-sm items-center capitalize text-black">
 
                         <label class="w-1/3" title="Nationality">Country</label>
@@ -114,11 +126,21 @@
                     </div>
                 </form>
             </div>
-            <x-button x-data @click="$dispatch('open-modal', {name: 'edit-employer-profile'})">
-                Edit Profile</x-button>
+            <div class="flex items-center justify-between space-x-[210px]">
+                <x-button x-data @click="$dispatch('open-modal', {name: 'edit-employer-profile'})">
+                    Edit Profile</x-button>
+                <button
+                    class="relative inline-flex items-center hover:bg-yellow-400 text-yellow-400 hover:text-white border border-yellow-400 font-bold py-2 px-4 rounded-md"
+                    x-data @click="$dispatch('open-modal', {name: 'update-password'})">
+                    Update Password</button>
+            </div>
         </div>
     </div>
     <x-modal name="edit-employer-profile" title="Edit Profile">
         <livewire:edit-employer :employer="$employer" />
+    </x-modal>
+
+    <x-modal name="update-password" title="Update Password">
+        <livewire:update-password />
     </x-modal>
 </div>
