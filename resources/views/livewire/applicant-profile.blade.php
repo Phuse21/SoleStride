@@ -6,10 +6,10 @@
                 class="bg-gradient-to-t from-primary to-btn_gradient_blue/80 text-white h-fit w-full p-3 rounded-lg flex flex-col items-center border relative">
                 <div class="h-32 w-32 rounded-full overflow-hidden flex items-center justify-center bg-white"
                     style="font-size: 50px;">
-                    <img src="{{ asset($applicants->profile_photo) }}" class="object-cover h-full w-full">
+                    <img src="{{ asset($applicant->profile_photo) }}" class="object-cover h-full w-full">
                 </div>
-                <p class="text-white text-xl font-bold font-content capitalize mt-3">{{$applicants->user->name}}</p>
-                <p class="text-base font-light text-white font-content">{{$applicants->user->email}}</p>
+                <p class="text-white text-xl font-bold font-content capitalize mt-3">{{$applicant->user->name}}</p>
+                <p class="text-base font-light text-white font-content">{{$applicant->user->email}}</p>
             </div>
 
             <div
@@ -27,19 +27,19 @@
                 <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                     <p class="text-zinc-400 text-sm font-content w-full capitalize">Date of Birth</p>
                     <p class="text-base font-medium text-black font-content capitalize">
-                        {{ Carbon\Carbon::parse($applicants->date_of_birth)->format('F j, Y') }}
+                        {{ Carbon\Carbon::parse($applicant->date_of_birth)->format('F j, Y') }}
                     </p>
                     </p>
                 </div>
                 <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                     <p class="text-zinc-400 text-sm font-content w-full capitalize">Country</p>
-                    <p class="text-base font-medium text-black font-content capitalize">{{$applicants->country}}</p>
+                    <p class="text-base font-medium text-black font-content capitalize">{{$applicant->country}}</p>
                 </div>
                 <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                     <p class="text-zinc-400 text-sm font-content w-full capitalize">Socials</p>
                     <div class="flex items-center justify-between w-full">
                         Linkedin
-                        <a href="{{$applicants?->linkedin ?? '#'}}" target="_blank" class="flex flex-row items-center">
+                        <a href="{{$applicant?->linkedin ?? '#'}}" target="_blank" class="flex flex-row items-center">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="h-12 w-12">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -67,38 +67,38 @@
                     <div class="flex text-sm items-center capitalize text-black">
                         <label class="w-1/3" title="Nationality">Nationality</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$applicants->country}}
+                            {{$applicant->country}}
                         </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
                         <label class="w-1/3" title="Street address">Street address</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$applicants->street_address}}
+                            {{$applicant->street_address}}
                         </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
                         <label class="w-1/3" title="State">State/province</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$applicants->state}}
+                            {{$applicant->state}}
                         </div>
                     </div>
 
                     <div class="flex text-sm items-center capitalize text-black">
                         <label class="w-1/3" title="City">City</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$applicants->city}}
+                            {{$applicant->city}}
                         </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
                         <label class="w-1/3" title="Phone">Phone Number</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$applicants->phone}}
+                            {{$applicant->phone}}
                         </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
                         <label class="w-1/3" title="Education">Education</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$applicants->education}}
+                            {{$applicant->education}}
                         </div>
                     </div>
                 </form>
@@ -107,6 +107,6 @@
         </div>
     </div>
     <x-modal name="edit-applicant-profile" title="Edit Profile">
-        <livewire:edit-applicant :applicants="$applicants" />
+        <livewire:edit-applicant :applicant="$applicant" />
     </x-modal>
 </div>

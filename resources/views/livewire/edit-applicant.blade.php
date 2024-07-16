@@ -3,7 +3,7 @@
 
     <div class="flex space-x-2">
         <div class="flex-1">
-            <form wire:submit.prevent="register" class="max-w-2xl mx-auto px-4 space-y-6">
+            <form wire:submit="updateApplicant" class="max-w-2xl mx-auto px-4 space-y-6">
                 <div class="flex space-x-4">
                     <div class="w-1/2">
                         <x-form.label :name="'name'" :label="'Name'" />
