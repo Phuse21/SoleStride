@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class CreateJobMail extends Mailable
+class EditJobMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,7 +28,7 @@ class CreateJobMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Job Created',
+            subject: 'Job Updated',
         );
     }
 
@@ -38,7 +38,7 @@ class CreateJobMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.create-job-mail',
+            view: 'mail.edit-job-mail',
         );
     }
 

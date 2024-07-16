@@ -2,9 +2,11 @@
 
 namespace App\Livewire;
 
+use App\Mail\EditJobMail;
 use App\Models\Job;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class EditJob extends Component
@@ -117,7 +119,10 @@ class EditJob extends Component
                 $job->tag($tag);
             }
         }
+        //send email
+        Mail::to($job->employer->user)->queue(new EditJobMail($job));
 
+        //flash message
         flash()->success('Job Updated successful.');
         return redirect()->route('employer.jobsPosted');
     }
