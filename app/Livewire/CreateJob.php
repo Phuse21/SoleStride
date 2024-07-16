@@ -110,7 +110,7 @@ class CreateJob extends Component
         ]);
 
 
-        Mail::to($job->employer->user)->send(new CreateJobMail($job));
+        Mail::to($job->employer->user)->queue(new CreateJobMail($job));
 
 
         flash()->success('Job creation successful.');

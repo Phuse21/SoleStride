@@ -10,10 +10,10 @@
 <body class="bg-gray-100">
     <div class="max-w-xl mx-auto p-5 bg-white shadow-md mt-10">
         <div class="bg-blue-600 text-white text-center py-3">
-            <h2 class="text-xl font-semibold">SoleStride Jobs</h2>
+            <p class="text-xl font-semibold">SoleStride Jobs</p>
         </div>
         <div class="p-6">
-            <h1 class="text-2xl font-semibold text-gray-800 mb-4">Job Created Successfully</h1>
+            <p class="text-2xl font-semibold text-gray-800 mb-4">Job Created Successfully</p>
             <p class="text-gray-700 mb-4">Your job has been created successfully. Below are the details of the job:</p>
             <div class="my-4">
                 <p class="text-gray-800"><strong>Job Title:</strong> {{ $job?->title ?? 'N/A' }}</p>
