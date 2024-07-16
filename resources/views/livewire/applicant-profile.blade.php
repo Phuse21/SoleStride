@@ -103,10 +103,21 @@
                     </div>
                 </form>
             </div>
-            <x-button x-data @click="$dispatch('open-modal', {name: 'edit-applicant-profile'})">Edit Profile</x-button>
+            <div class="flex items-center justify-between space-x-[210px]">
+                <x-button x-data @click="$dispatch('open-modal', {name: 'edit-applicant-profile'})">Edit Profile
+                </x-button>
+                <button
+                    class="relative inline-flex items-center hover:bg-yellow-400 text-yellow-400 hover:text-white border border-yellow-400 font-bold py-2 px-4 rounded-md"
+                    x-data @click="$dispatch('open-modal', {name: 'update-password'})">
+                    Update Password</button>
+            </div>
         </div>
     </div>
     <x-modal name="edit-applicant-profile" title="Edit Profile">
         <livewire:edit-applicant :applicant="$applicant" />
+    </x-modal>
+
+    <x-modal name="update-password" title="Update Password">
+        <livewire:update-password />
     </x-modal>
 </div>
