@@ -32,7 +32,7 @@ class EditApplicant extends Component
         'city' => 'required',
         'state' => 'required',
         'zip' => 'required',
-        'profile_photo' => 'required',
+        'profile_photo' => 'nullable|image|max:1024',
         'linkedin' => 'required',
     ];
 
@@ -48,13 +48,14 @@ class EditApplicant extends Component
         $this->city = $this->applicant->city;
         $this->state = $this->applicant->state;
         $this->zip = $this->applicant->zip;
-        $this->profile_photo = $this->applicant->profile_photo;
+        // $this->profile_photo = $this->applicant->profile_photo;
         $this->linkedin = $this->applicant->linkedin;
     }
 
 
     public function updateApplicant()
     {
+
 
         $this->validate();
 

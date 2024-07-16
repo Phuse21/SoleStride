@@ -33,7 +33,7 @@ class EditEmployer extends Component
         'company_city' => 'required',
         'company_zip' => 'required',
         'url' => 'nullable|url',
-        'logo' => 'required|image',
+        'logo' => 'nullable|image|max:1024',
     ];
 
 
@@ -51,7 +51,7 @@ class EditEmployer extends Component
         $this->company_city = $this->employer->company_city;
         $this->company_zip = $this->employer->company_zip;
         $this->url = $this->employer->url;
-        $this->logo = $this->employer->logo;
+        // $this->logo = $this->employer->logo;
     }
 
 
