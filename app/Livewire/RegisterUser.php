@@ -2,11 +2,13 @@
 
 namespace App\Livewire;
 
+use App\Mail\RegisterUserMail;
 use App\Models\User;
 
 use Illuminate\Support\Facades\Hash;
 
 
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -153,6 +155,9 @@ class RegisterUser extends Component
                 'linkedin' => $applicantAttributes['linkedin'],
             ]);
         }
+
+        //send email for user registration
+        Mail::to($user)->queue(new RegisterUserMail($user));
 
         // Auth::login($user)
         flash()->success('User created successfully.');
