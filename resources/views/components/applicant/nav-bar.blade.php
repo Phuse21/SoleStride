@@ -9,7 +9,8 @@
 
         <x-nav-link wire:navigate href="{{route('home')}}" :active="request()->routeIs('home')">Home
         </x-nav-link>
-        <x-nav-link wire:navigate href="/careers" :active="request()->is('/careers')">Applications</x-nav-link>
+        <x-nav-link wire:navigate href="{{route('applications')}}" :active="request()->is('/applications')">Applications
+        </x-nav-link>
         <x-nav-link wire:navigate href="/salaries" :active="request()->is('/salaries')">Salaries</x-nav-link>
 
     </div>

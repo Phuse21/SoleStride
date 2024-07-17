@@ -35,6 +35,8 @@ Route::group([
 ], function () {
     Route::get('/home', [ApplicantController::class, 'index'])->name('home');
     Route::get('/profile', [ApplicantController::class, 'profile'])->name('applicant.profile');
+    Route::get('/applications', [ApplicantController::class, 'applications'])->name('applications');
+
 });
 
 

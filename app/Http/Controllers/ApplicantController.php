@@ -15,4 +15,9 @@ class ApplicantController extends Controller
     {
         return view('profile');
     }
+
+    public function applications()
+    {
+        return view('applicants.applications');
+    }
 }

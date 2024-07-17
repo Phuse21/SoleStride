@@ -18,4 +18,8 @@ class Employer extends Model
         return $this->hasMany(Job::class);
     }
 
+    public function job_applications()
+    {
+        return $this->hasMany(JobApplications::class);
+    }
 }

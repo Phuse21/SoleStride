@@ -21,6 +21,11 @@ class JobApplications extends Model
         return $this->belongsTo(Job::class);
     }
 
+    public function employer()
+    {
+        return $this->belongsTo(Employer::class);
+    }
+
     public function applicants()
     {
         return $this->belongsTo(Applicants::class, 'applicant_id');

@@ -14,12 +14,18 @@
     </div>
 
     <div class="flex justify-between items-center mt-auto">
+
         <div class="space-x-1">
-            @foreach ($job->tags->take(2) as $tag)
-                <x-tag :tag="$tag" size="sm" />
-            @endforeach
+            @if (!empty($job->tags) && !$job->tags->isEmpty())
+                @foreach ($job->tags->take(2) as $tag)
+                    <x-tag :tag="$tag" size="sm" />
+                @endforeach
+            @else
+                <p>No Tags</p>
+            @endif
         </div>
 
         <x-employer-logo :employer="$job->employer" :width="50" :height="42" />
     </div>
+
 </x-panel>
