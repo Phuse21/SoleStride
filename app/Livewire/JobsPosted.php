@@ -2,7 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Mail\DeleteJobMail;
 use App\Models\Job;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -24,8 +26,12 @@ class JobsPosted extends Component
     #[On('sweetalert:confirmed')]
     public function onConfirmed(array $payload)
     {
-        // Use the stored job ID
-        $this->jobs->find($this->jobId)->delete();
+        //find the job Using the stored job ID
+        $job = Job::findOrFail($this->jobId);
+
+        $job->delete();
+        //send email
+        Mail::to($job->employer->user)->queue(new DeleteJobMail($job));
         flash()->success('Job deleted successfully');
         $this->mount(); // Re-fetch the jobs
     }
