@@ -2,7 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Mail\ApplyJobMail;
 use App\Models\JobApplications;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -41,13 +43,15 @@ class JobApply extends Component
 
         $cvPath = $this->cv->store('cvs');
 
-        JobApplications::create([
+        $application = JobApplications::create([
             'job_id' => $this->job->id,
             'applicant_id' => $this->applicant_id,
             'employer_id' => $this->job->employer_id,
             'status' => 'pending',
             'cv_path' => $cvPath,
         ]);
+        //send email
+        Mail::to($application->applicants->user)->queue(new ApplyJobMail($application));
 
         $this->resetForm();
         $this->dispatch('close-modal', ['name' => 'apply']);
