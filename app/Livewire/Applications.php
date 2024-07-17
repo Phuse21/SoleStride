@@ -2,7 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Mail\ApplicationShortlistedMail;
+use App\Mail\ApplicationsMail;
 use App\Models\JobApplications;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class Applications extends Component
@@ -29,6 +32,10 @@ class Applications extends Component
     public function addToShortlist()
     {
         $this->application->update(['status' => 'shortlisted']);
+
+        $application = $this->application;
+        //send email
+        Mail::to($application->applicants->user)->queue(new ApplicationShortlistedMail($application));
         $this->dispatch('pending');
         flash()->success('Application shortlisted');
         $this->dispatch('close-modal', ['name' => 'application']);

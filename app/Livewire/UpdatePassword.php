@@ -39,7 +39,7 @@ class UpdatePassword extends Component
             'password' => Hash::make($this->password)
         ]);
 
-        Mail::to($user)->send(new UpdatePasswordMail($user));
+        Mail::to($user)->queue(new UpdatePasswordMail($user));
 
         flash()->success('Password updated successfully.');
         $this->dispatch('close-modal', ['name' => 'update-password']);
