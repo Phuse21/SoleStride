@@ -13,7 +13,8 @@
             <p class="text-lg font-semibold">SoleStride Jobs</p>
         </div>
         <div class="p-6">
-            <p class="text-xl font-semibold text-gray-800 mb-4">Welcome to SoleStride Jobs, {{ $user->name }}!</p>
+            <p class="text-xl font-semibold text-gray-800 mb-4">Welcome to SoleStride Jobs, {{ $user?->name ?? 'N/A' }}!
+            </p>
             <p class="text-gray-700 mb-4">Thank you for registering with SoleStride Jobs. We are excited to have you on
                 board. Here are some details about your account:</p>
             <div class="my-4">

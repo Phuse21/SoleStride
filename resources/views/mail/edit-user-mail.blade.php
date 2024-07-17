@@ -13,14 +13,14 @@
             <p class="text-lg font-semibold">SoleStride Jobs</p>
         </div>
         <div class="p-6">
-            <p class="text-xl font-semibold text-gray-800 mb-4">User Details Updated, {{ $user->name }}!</p>
+            <p class="text-xl font-semibold text-gray-800 mb-4">User Details Updated, {{ $user?->name ?? 'N/A' }}!</p>
             <p class="text-gray-700 mb-4">Here are some details about your account:</p>
             <div class="my-4">
                 <p class="text-gray-800"><strong>Name:</strong> {{ $user?->name ?? 'N/A' }}</p>
                 <p class="text-gray-800"><strong>Email:</strong> {{ $user?->email ?? 'N/A' }}</p>
                 <p class="text-gray-800 capitalize"><strong>Account Type:</strong> {{ $user?->role ?? 'N/A' }}</p>
                 @if ($user->role == 'employer')
-                <p class="text-gray-800"><strong>Company Name:</strong> {{ $user?->employer?->name ?? 'N/A' }}</p>
+                    <p class="text-gray-800"><strong>Company Name:</strong> {{ $user?->employer?->name ?? 'N/A' }}</p>
                 @endif
             </div>
             <p class="text-gray-700">If you have any questions or need assistance, feel free to contact our support

@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Mail\EditUserMail;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -81,6 +83,9 @@ class EditEmployer extends Component
         $this->employer->user->update([
             'name' => $this->name,
         ]);
+
+        //send email
+        Mail::to($this->employer->user)->queue(new EditUserMail($this->employer->user));
 
         flash()->success('Profile updated successfully');
 
