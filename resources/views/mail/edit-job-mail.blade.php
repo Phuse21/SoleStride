@@ -14,7 +14,7 @@
         </div>
         <div class="p-6">
             <p class="text-xl font-semibold text-gray-800 mb-4">Job Updated Successfully</p>
-            <p class="text-gray-700 mb-4">Your job has been created successfully. Below are the details of the job:</p>
+            <p class="text-gray-700 mb-4">Your job has been updated successfully. Below are the details of the job:</p>
             <div class="my-4">
                 <p class="text-gray-800"><strong>Job Title:</strong> {{ $job?->title ?? 'N/A' }}</p>
                 <p class="text-gray-800"><strong>City:</strong> {{ $job?->city ?? 'N/A' }}</p>

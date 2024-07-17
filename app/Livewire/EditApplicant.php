@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Mail\EditUserMail;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -80,6 +82,9 @@ class EditApplicant extends Component
         $this->applicant->user->update([
             'name' => $this->name,
         ]);
+
+        //send email
+        Mail::to($this->applicant->user)->queue(new EditUserMail($this->applicant->user));
 
         flash()->success('Profile updated successfully');
 
