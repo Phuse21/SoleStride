@@ -6,8 +6,7 @@
 
             <form action="" class="mt-6">
                 <div class="flex justify-center w-full">
-                    <input type="text" name="search" id="search" placeholder="Web Developer.." class="rounded-xl bg-black/10 border border-black/20 px-5 py-4 w-[50%] focus:outline-none focus:ring-2
-        focus:ring-blue-500 focus:border-transparent">
+                    <livewire:search />
                 </div>
             </form>
         </section>
