@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Mail\ApplicationShortlistedMail;
 use App\Mail\ApplicationsMail;
 use App\Models\JobApplications;
+use App\Notifications\ApplicationShortlistedNotification;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
@@ -36,6 +37,10 @@ class Applications extends Component
         $application = $this->application;
         //send email
         Mail::to($application->applicants->user)->queue(new ApplicationShortlistedMail($application));
+
+        //send notification
+        $application->applicants->user->notify(new ApplicationShortlistedNotification($application));
+
         $this->dispatch('pending');
         flash()->success('Application shortlisted');
         $this->dispatch('close-modal', ['name' => 'application']);

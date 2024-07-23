@@ -12,27 +12,53 @@ class JobIndex extends Component
     public $featuredJobs;
     public $regularJobs;
     public $tags;
+    public $perPageFeatured = 6;
+    public $perPageRegular = 3;
+
+
+
 
     public function mount()
     {
-        $jobs = Job::latest()->with(['employer', 'tags'])->get()->groupBy('featured');
-
-        // Initialize the variables with empty collections if the keys do not exist
-        $this->featuredJobs = $jobs->get(1, collect());
-        $this->regularJobs = $jobs->get(0, collect());
+        // $this->loadJobs();
         $this->tags = Tag::all();
+    }
 
-        // return view('index', [
-        //     'featuredJobs' => $this->featuredJobs,
-        //     'jobs' => $this->regularJobs,
-        //     'tags' => $this->tags
-        // ]);
+    public function loadMoreFeatured()
+    {
+
+        $this->perPageFeatured += 3;
+
+        // $this->loadJobs();
+    }
+
+    public function loadLessFeatured()
+    {
+        $this->perPageFeatured = 6;
     }
 
 
 
+
+    public function loadMoreRegular()
+    {
+
+        $this->perPageRegular += 3;
+    }
+
+    public function loadLessRegular()
+    {
+        $this->perPageRegular = 3;
+    }
+
+
     public function render()
     {
-        return view('livewire.job-index');
+        $jobs = Job::latest()->with(['employer', 'tags'])
+            ->latest('id')
+            ->get()->groupBy('featured');
+        return view('livewire.job-index', [
+            'jobs' => $jobs
+        ]);
     }
 }
