@@ -5,14 +5,12 @@
         </a>
 
     </div>
+
     <div class="space-x-4 font-bold">
         <x-nav-link wire:navigate href="/" :active="request()->is('/')">Home</x-nav-link>
-        <x-nav-link wire:navigate href="/careers" :active="request()->is('/careers')">Careers</x-nav-link>
-        <x-nav-link wire:navigate href="/salaries" :active="request()->is('/salaries')">Salaries</x-nav-link>
-
     </div>
 
-    <div class="space-x-4 font-bold">
+    <div class="font-bold">
         <x-nav-link wire:navigate href="/register" :active="request()->is('register')">Sign Up</x-nav-link>
         <x-nav-link wire:navigate href="/login" :active="request()->is('login')">Login</x-nav-link>
     </div>
