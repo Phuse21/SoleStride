@@ -28,8 +28,11 @@
         </div>
         @forelse ($notifications as $notification)
         <div class="px-4 py-2 hover:bg-gray-100 cursor-pointer" wire:click="markAsRead('{{ $notification->id }}')">
-            <div class="text-blue-600 text-sm">
-                {{ $notification->data['title'] }}
+            <div class="flex items-center justify-between">
+                <div class="text-black text-sm">
+                    {{ $notification->data['title'] }}
+                </div>
+                <div class="text-gray-600 text-2xs">{{ $notification->created_at->diffForHumans() }}</div>
             </div>
             <div class="text-gray-600 text-xs">
                 {{ $notification->data['message'] }}

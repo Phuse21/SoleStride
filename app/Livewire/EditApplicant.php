@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Mail\EditUserMail;
+use App\Notifications\EditUserNotification;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -85,6 +86,9 @@ class EditApplicant extends Component
 
         //send email
         Mail::to($this->applicant->user)->queue(new EditUserMail($this->applicant->user));
+
+        //send notification
+        // $this->applicant->user->notify(new EditUserNotification($this->applicant->user));
 
         flash()->success('Profile updated successfully');
 

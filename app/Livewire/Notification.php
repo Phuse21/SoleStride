@@ -10,20 +10,21 @@ class Notification extends Component
     public $listeners = ['reloadNotifications' => 'refresh'];
     public $notifications;
 
+
     public function mount()
     {
         $this->notifications = auth()->user()->unreadNotifications;
 
     }
 
-    public function markAsRead()
+    public function markAsRead($notificationId)
     {
-        $notification = auth()->user()->notifications()->find($this->notifications->id);
+        $notification = auth()->user()->notifications()->find($notificationId);
         if ($notification) {
             $notification->markAsRead();
         }
 
-        $this->dispatch('reloadNotifications');
+        $this->render();
     }
 
 
