@@ -53,8 +53,8 @@
             </button>
         </div>
 
-        <div x-show="open" class="md:hidden fixed top-12 z-[20%] bg-white rounded-lg shadow-xl right-6"
-            id="mobile-menu">
+        <div x-show="open" @click.away="open = false"
+            class="md:hidden fixed top-12 z-[20%] bg-white rounded-lg shadow-xl right-6" id="mobile-menu">
             <div class="px-2 pb-3 pt-2 sm:px-3 grid">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <x-nav-link wire:navigate href="{{ route('home') }}" :active="request()->routeIs('home')">Home
@@ -81,39 +81,6 @@
             </div>
         </div>
     </div>
-
-    <!-- <div x-show="open" class="w-full">
-        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 grid">
-            <x-nav-link wire:navigate href="{{ route('home') }}" :active="request()->routeIs('home')">Home</x-nav-link>
-            <x-nav-link wire:navigate href="{{ route('applications') }}" :active="request()->is('/applications')">
-                Applications</x-nav-link>
-            <x-nav-link wire:navigate href="/salaries" :active="request()->is('/salaries')">Salaries</x-nav-link>
-        </div>
-        <div class="border-t border-gray-200 pt-4 pb-3">
-            <x-nav-link wire:navigate href="{{ route('applicant.profile') }}">
-                <div class="flex items-center px-5">
-                    <div class="flex-shrink-0">
-                        <span class="h-10 w-10 bg-gray-100 rounded-full overflow-hidden">
-                            <img src="{{ asset(auth()->user()->applicant->profile_photo) }}" alt="user profile photo"
-                                class="h-full w-full object-cover">
-                        </span>
-                    </div>
-                    <div class="ml-3">
-                        <div class="text-base font-medium leading-none text-gray-800">{{ auth()->user()->name }}</div>
-                        <div class="text-sm font-medium leading-none text-gray-600">{{ auth()->user()->role }}</div>
-                    </div>
-                </div>
-            </x-nav-link>
-            <div class="mt-3 space-y-1 px-5">
-                <livewire:logout-user />
-            </div>
-        </div>
-    </div> -->
-
-
-
-    <!-- Mobile menu, show/hide based on menu state. -->
-
 
 
 </nav>
