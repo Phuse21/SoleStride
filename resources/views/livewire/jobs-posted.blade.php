@@ -3,13 +3,12 @@
     <div class="flex space-x-6 mt-4">
 
         <div class="w-2/3 space-y-6">
-            @if($jobs->isEmpty())
-                <p class="text-center">No jobs Posted</p>
-            @else
-                @foreach ($jobs as $job)
-                    <x-employer.show-jobs :$job />
-                @endforeach
-            @endif
+
+            @forelse($jobs as $job)
+            <x-employer.show-jobs :$job />
+            @empty
+            <p class="text-center">No jobs Posted</p>
+            @endforelse
             <div class="text-right">
                 <x-button wire:navigate :href="route('employer.create')">
                     <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor"

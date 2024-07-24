@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Mail\CreateJobMail;
+use App\Notifications\JobCreatedNotification;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -109,9 +110,11 @@ class CreateJob extends Component
             'skills' => json_encode($this->skills),
         ]);
 
-
+        //send email
         Mail::to($job->employer->user)->queue(new CreateJobMail($job));
 
+        //save notification
+        $job->employer->user->notify(new JobCreatedNotification($job));
 
         flash()->success('Job creation successful.');
         return redirect()->route('employer.jobsPosted');

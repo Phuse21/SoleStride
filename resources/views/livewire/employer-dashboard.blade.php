@@ -1,6 +1,6 @@
 <div>
     <div
-        class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between sticky top-[96px] shadow-lg p-2 rounded-b-md z-10 bg-white">
+        class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between sticky top-[96px] shadow-lg p-2 rounded-b-md z-9 bg-white">
         <div class="mr-4">
             <h3 class="text-xl font-semibold mb-2">Employer Dashboard</h3>
             <h4 class="text-sm text-gray-600 ml-0.5">{{auth()->user()->employer->name}}</h4>
@@ -95,19 +95,19 @@
             <div class="overflow-y-auto" style="max-height: 30rem;">
                 <ul class="p-4 space-y-6">
                     @if ($applicants && $applicants->count() > 0)
-                        @foreach($applicants as $application)
-                            <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10"
-                                x-data @click="$dispatch('open-modal', {name: 'application'})"
-                                wire:click="$dispatch('viewApplicantDetails', [{{ $application->id }}])">
-                                <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                                    <img src="{{asset($application->applicants->profile_photo)}}">
-                                </div>
-                                <span class=" font-semibold">{{ $application->applicants->user->name ?? 'Unknown' }}</span>
-                                <span class="ml-auto text-gray-600">{{ $application->created_at->diffForHumans() }}</span>
-                            </li>
-                        @endforeach
+                    @foreach($applicants as $application)
+                    <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10"
+                        x-data @click="$dispatch('open-modal', {name: 'application'})"
+                        wire:click="$dispatch('viewApplicantDetails', [{{ $application->id }}])">
+                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                            <img src="{{asset($application->applicants->profile_photo)}}">
+                        </div>
+                        <span class=" font-semibold">{{ $application->applicants->user->name ?? 'Unknown' }}</span>
+                        <span class="ml-auto text-gray-600">{{ $application->created_at->diffForHumans() }}</span>
+                    </li>
+                    @endforeach
                     @else
-                        <li class="text-center text-gray-500">No pending applications.</li>
+                    <li class="text-center text-gray-500">No pending applications.</li>
                     @endif
                 </ul>
 
@@ -135,22 +135,22 @@
         <div class="overflow-y-auto" style="max-height: 30rem;">
             <ul class="p-4 space-y-6">
                 @if ($shortlistedApplications && $shortlistedApplications->count() > 0)
-                    <li class="flex items-center cursor-pointer p-2 rounded border-b border-black/10">
+                <li class="flex items-center cursor-pointer p-2 rounded border-b border-black/10">
 
-                        <span class="font-semibold">{{  'Applicants' }}</span>
-                        <span class="ml-auto text-gray-600">{{ 'Shortlist Time' }}</span>
-                    </li>
-                    @foreach($shortlistedApplications as $application)
-                        <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10">
-                            <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                                <img src="{{asset($application->applicants->profile_photo)}}">
-                            </div>
-                            <span class=" font-semibold">{{ $application->applicants->user->name ?? 'Unknown' }}</span>
-                            <span class="ml-auto text-gray-600">{{ $application->updated_at->diffForHumans() }}</span>
-                        </li>
-                    @endforeach
+                    <span class="font-semibold">{{  'Applicants' }}</span>
+                    <span class="ml-auto text-gray-600">{{ 'Shortlist Time' }}</span>
+                </li>
+                @foreach($shortlistedApplications as $application)
+                <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10">
+                    <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                        <img src="{{asset($application->applicants->profile_photo)}}">
+                    </div>
+                    <span class=" font-semibold">{{ $application->applicants->user->name ?? 'Unknown' }}</span>
+                    <span class="ml-auto text-gray-600">{{ $application->updated_at->diffForHumans() }}</span>
+                </li>
+                @endforeach
                 @else
-                    <li class="text-center text-gray-500">No applications found.</li>
+                <li class="text-center text-gray-500">No applications found.</li>
                 @endif
             </ul>
 
@@ -161,22 +161,22 @@
         <div class="overflow-y-auto" style="max-height: 30rem;">
             <ul class="p-4 space-y-6">
                 @if($applications && $applications->count() > 0)
-                    <li class="flex items-center cursor-pointer p-2 rounded border-b border-black/10">
+                <li class="flex items-center cursor-pointer p-2 rounded border-b border-black/10">
 
-                        <span class="text-gray-600 font-bold">{{  'Applicants' }}</span>
-                        <span class="ml-auto text-gray-600">{{ 'Status' }}</span>
-                    </li>
-                    @foreach($applications as $application)
-                        <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10">
-                            <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                                <img src="{{asset($application->applicants->profile_photo)}}" alt="Profile Photo">
-                            </div>
-                            <span class="text-gray-600">{{ $application->applicants->user->name ?? 'Unknown' }}</span>
-                            <span class="ml-auto font-semibold">{{ $application->status ?? 'N/A' }}</span>
-                        </li>
-                    @endforeach
+                    <span class="text-gray-600 font-bold">{{  'Applicants' }}</span>
+                    <span class="ml-auto text-gray-600">{{ 'Status' }}</span>
+                </li>
+                @foreach($applications as $application)
+                <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10">
+                    <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                        <img src="{{asset($application->applicants->profile_photo)}}" alt="Profile Photo">
+                    </div>
+                    <span class="text-gray-600">{{ $application->applicants->user->name ?? 'Unknown' }}</span>
+                    <span class="ml-auto font-semibold">{{ $application->status ?? 'N/A' }}</span>
+                </li>
+                @endforeach
                 @else
-                    <li class="text-center text-gray-500">No applications found.</li>
+                <li class="text-center text-gray-500">No applications found.</li>
                 @endif
             </ul>
 

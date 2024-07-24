@@ -16,10 +16,19 @@
 
     <!-- Notifications Dropdown -->
     <div x-show="open" @click.outside="open = false"
-        class="absolute mt-7 py-2 right-[-67px] w-[300px] max-h-[200px] overflow-y-auto bg-white border border-gray-200 rounded-lg shadow-lg">
+        class="absolute mt-7 py-2 right-[-67px] w-[300px] max-h-[200px] overflow-y-auto bg-white border border-gray-200 rounded-lg shadow-lg z-11">
+        <div class="px-2 py-1 w-full flex items-center justify-between border-b border-gray-300">
+            <div class="text-sm font-semibold text-gray-800">Unread Notifications</div>
+            <button x-on:click="open = false">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
         @forelse ($notifications as $notification)
         <div class="px-4 py-2 hover:bg-gray-100 cursor-pointer" wire:click="markAsRead('{{ $notification->id }}')">
-            <div class="text-blue-500 text-sm">
+            <div class="text-blue-600 text-sm">
                 {{ $notification->data['title'] }}
             </div>
             <div class="text-gray-600 text-xs">
@@ -31,5 +40,13 @@
             No notifications
         </div>
         @endforelse
+
+        <!-- Footer with buttons -->
+        <div class="px-2 py-1 w-full flex items-center justify-between border-t border-gray-100">
+            <button class="text-xs text-blue-500" wire:click="markAllAsRead">Mark all as read</button>
+            <button class="text-xs text-blue-500">View
+                All</button>
+        </div>
+
     </div>
 </div>

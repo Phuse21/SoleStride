@@ -3,8 +3,6 @@
 namespace App\Livewire;
 
 use App\Mail\ApplicationShortlistedMail;
-use App\Mail\ApplicationsMail;
-use App\Models\JobApplications;
 use App\Notifications\ApplicationShortlistedNotification;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
