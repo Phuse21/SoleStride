@@ -31,7 +31,7 @@ class Notification extends Component
 
     public function markAllAsRead()
     {
-        auth()->user()->unreadNotifications->markAsRead();
+        $this->notifications->markAsRead();
         $this->mount();
     }
 

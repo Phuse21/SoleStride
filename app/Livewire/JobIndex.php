@@ -5,15 +5,14 @@ namespace App\Livewire;
 use App\Models\Job;
 use App\Models\Tag;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class JobIndex extends Component
 {
 
-    public $featuredJobs;
-    public $regularJobs;
+    use WithPagination;
     public $tags;
-    public $perPageFeatured = 6;
-    public $perPageRegular = 3;
+
 
 
 
@@ -21,44 +20,31 @@ class JobIndex extends Component
     public function mount()
     {
         // $this->loadJobs();
+        $this->resetPage();
         $this->tags = Tag::all();
     }
 
-    public function loadMoreFeatured()
-    {
 
-        $this->perPageFeatured += 3;
-
-        // $this->loadJobs();
-    }
-
-    public function loadLessFeatured()
-    {
-        $this->perPageFeatured = 6;
-    }
-
-
-
-
-    public function loadMoreRegular()
-    {
-
-        $this->perPageRegular += 3;
-    }
-
-    public function loadLessRegular()
-    {
-        $this->perPageRegular = 3;
-    }
 
 
     public function render()
     {
-        $jobs = Job::latest()->with(['employer', 'tags'])
+        $featuredJobs = Job::with(['employer', 'tags'])
             ->latest('id')
-            ->get()->groupBy('featured');
+            ->where('featured', true)
+            ->paginate(6);
+        // dd($featuredJobs);
+
+
+        $regularJobs = Job::with(['employer', 'tags'])
+            ->latest('id')
+            ->where('featured', false)
+            ->paginate(6);
+
+
         return view('livewire.job-index', [
-            'jobs' => $jobs
+            'featuredJobs' => $featuredJobs,
+            'regularJobs' => $regularJobs
         ]);
     }
 }
