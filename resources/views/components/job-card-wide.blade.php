@@ -19,7 +19,7 @@
 
     <div class="space-x-2">
         @foreach ($job->tags as $tag)
-            <x-tag :$tag size="sm" />
+        <x-tag :$tag size="sm" />
         @endforeach
     </div>
 </x-panel>

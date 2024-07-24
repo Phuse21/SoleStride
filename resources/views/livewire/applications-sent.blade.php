@@ -6,9 +6,13 @@
         </div>
         <div class="grid lg:grid-cols-3 gap-8 mt-4 mb-20">
             @forelse($applications->where('status', 'pending') as $job)
+            @if($job->job)
             <x-job-card :job="$job->job" />
+            @else
+            {{$job}}
+            @endif
             @empty
-            <p>No tags</p>
+            <p>No Pending Applications</p>
             @endforelse
         </div>
     </div>
@@ -19,10 +23,10 @@
             <h3 class="text-lg font-bold">Shortlisted Applications</h3>
         </div>
         <div class="grid lg:grid-cols-3 gap-8 mt-4 mb-20">
-            @forelse($applications->where('status', 'shortlisted') as $job)
+            @forelse($applications->where('status', 'shortlisted') ?? [] as $job)
             <x-job-card :job="$job->job" />
             @empty
-            <p>No tags</p>
+            <p>No Shortlisted Applications</p>
             @endforelse
         </div>
     </div>

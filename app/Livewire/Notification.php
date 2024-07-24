@@ -7,13 +7,15 @@ use Livewire\Component;
 class Notification extends Component
 {
 
-    public $listeners = ['reloadNotifications' => 'refresh'];
     public $notifications;
 
 
     public function mount()
     {
-        $this->notifications = auth()->user()->unreadNotifications;
+        $this->notifications = auth()->user()
+            ->unreadNotifications
+            ->take(5);
+
 
     }
 
@@ -24,14 +26,16 @@ class Notification extends Component
             $notification->markAsRead();
         }
 
-        $this->render();
+        $this->mount();
     }
 
-
-    public function refresh()
+    public function markAllAsRead()
     {
-        $this->render();
+        auth()->user()->unreadNotifications->markAsRead();
+        $this->mount();
     }
+
+
     public function render()
     {
         return view('livewire.notification');

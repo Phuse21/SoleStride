@@ -15,9 +15,23 @@ class ApplicationsSent extends Component
 
     public function mount()
     {
-        //retrieve applications with the necessary relationships
-        $this->applications = JobApplications::with('job.tags', 'job', 'job.employer')
+        // $this->applications = JobApplications::with([
+        //     'job.tags',
+        //     'job' => function ($query) {
+        //         $query->withoutTrashed();
+        //     },
+        //     'job.employer'
+        // ])
+        //     ->where('applicant_id', auth()->user()->applicant->id)
+        //     ->get();
+
+
+
+        $this->applications = JobApplications::with('job.tags', 'job.employer')
             ->where('applicant_id', auth()->user()->applicant->id)
+            ->whereHas('job', function ($query) {
+                $query->withoutTrashed();
+            })
             ->get();
 
         // $this->pendingApplications = $this->applications->where('status', 'pending');
