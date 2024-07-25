@@ -29,22 +29,13 @@ class JobIndex extends Component
 
     public function render()
     {
-        $featuredJobs = Job::with(['employer', 'tags'])
-            ->latest('id')
-            ->where('featured', true)
-            ->paginate(6);
         // dd($featuredJobs);
 
 
-        $regularJobs = Job::with(['employer', 'tags'])
-            ->latest('id')
-            ->where('featured', false)
-            ->paginate(6);
 
 
         return view('livewire.job-index', [
-            'featuredJobs' => $featuredJobs,
-            'regularJobs' => $regularJobs
+
         ]);
     }
 }

@@ -11,7 +11,6 @@
         <x-nav-link wire:navigate href="{{ route('home') }}" :active="request()->routeIs('home')">Home</x-nav-link>
         <x-nav-link wire:navigate href="{{ route('applications') }}" :active="request()->is('/applications')">
             Applications</x-nav-link>
-        <x-nav-link wire:navigate href="/salaries" :active="request()->is('/salaries')">Salaries</x-nav-link>
     </div>
 
     <div class="flex-shrink-0 items-center ml-auto hidden md:flex">
@@ -61,7 +60,6 @@
                 </x-nav-link>
                 <x-nav-link wire:navigate href="{{ route('applications') }}" :active="request()->is('/applications')">
                     Applications</x-nav-link>
-                <x-nav-link wire:navigate href="/salaries" :active="request()->is('/salaries')">Salaries</x-nav-link>
             </div>
             <div class="border-t border-gray-700 pb-3 pt-4">
                 <div class="flex items-center px-3">

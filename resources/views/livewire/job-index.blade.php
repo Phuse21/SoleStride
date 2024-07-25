@@ -11,16 +11,8 @@
             </form>
         </section>
 
-        <section class="pt-6 mb-20">
-            <x-section-heading>Featured Jobs</x-section-heading>
-            <div class="grid lg:grid-cols-3 gap-8 my-4">
-                @foreach ($featuredJobs ?? [] as $job)
-                <x-job-card :job="$job" />
-                @endforeach
-            </div>
-            {{$featuredJobs->links()}}
-        </section>
 
+        <livewire:featured-jobs />
 
 
         <section>
@@ -42,17 +34,8 @@
             </div>
         </section>
 
-        <section>
-            <x-section-heading>Recent Jobs</x-section-heading>
-            <div class="my-4 space-y-6">
 
-                @foreach ($regularJobs ?? [] as $job)
-                <x-job-card-wide :$job />
-                @endforeach
-            </div>
-            {{$regularJobs->links()}}
-        </section>
-
+        <livewire:regular-jobs />
 
     </div>
 </div>
