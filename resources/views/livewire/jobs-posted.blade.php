@@ -5,9 +5,9 @@
         <div class="w-2/3 space-y-6">
 
             @forelse($jobs as $job)
-            <x-employer.show-jobs :$job />
+                <x-employer.show-jobs :$job />
             @empty
-            <p class="text-center">No jobs Posted</p>
+                <p class="text-center">No jobs Posted</p>
             @endforelse
             <div class="text-right">
                 <x-button wire:navigate :href="route('employer.create')">
