@@ -1,8 +1,8 @@
 <div>
     <x-section-heading>Posted Jobs</x-section-heading>
-    <div class="flex space-x-6 mt-4">
+    <div class="flex flex-col md:flex-row md:space-x-6 mt-4">
 
-        <div class="w-2/3 space-y-6">
+        <div class="w-full md:w-2/3 space-y-6">
 
             @forelse($jobs as $job)
                 <x-employer.show-jobs :$job />
@@ -21,10 +21,9 @@
             </div>
         </div>
 
-        <div class="w-1/3">
+        <div class="w-full md:w-1/3 hidden md:block">
             <img src="https://i.ibb.co/zGmPNzP/portrait-engineer-job-site-work-hours.jpg"
                 alt="portrait-engineer-job-site-work-hours" class="rounded-xl">
         </div>
     </div>
-
 </div>

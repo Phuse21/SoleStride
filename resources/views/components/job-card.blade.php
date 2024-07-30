@@ -17,11 +17,11 @@
 
         <div class="space-x-1">
             @if (!empty($job->tags) && !$job->tags->isEmpty())
-            @foreach ($job->tags->take(2) as $tag)
-            <x-tag :tag="$tag" size="sm" />
-            @endforeach
+                @foreach ($job->tags->take(2) as $tag)
+                    <x-tag :tag="$tag" size="sm" />
+                @endforeach
             @else
-            <p>No Tags</p>
+                <p>No Tags</p>
             @endif
         </div>
 
