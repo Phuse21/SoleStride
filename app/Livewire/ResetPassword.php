@@ -10,6 +10,7 @@ use Livewire\Component;
 class ResetPassword extends Component
 {
 
+
     public $token;
     public $email;
     public $password;

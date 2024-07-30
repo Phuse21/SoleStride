@@ -48,9 +48,6 @@ Route::get('/tags/{tag:name}', [TagController::class, '_invoke']);
 Route::middleware('guest')->group(function () {
     Route::get('/register', [RegisteredUserController::class, 'create']);
     Route::get('/login', [SessionController::class, 'create'])->name('login');
-    Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])
-        ->name('password.email');
-
     Route::get('/reset-password/{token}', [SessionController::class, 'resetPassword'])->name('password.reset');
 });
 
