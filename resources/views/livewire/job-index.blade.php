@@ -24,11 +24,11 @@
                 <!-- when parameter name and the variable name are the same -->
 
                 @if($tags->isEmpty())
-                <p class="text-center">No tags available</p>
+                    <p class="text-center">No tags available</p>
                 @else
-                @foreach ($tags as $tag)
-                <x-tag :$tag />
-                @endforeach
+                    @foreach ($tags as $tag)
+                        <x-tag :$tag />
+                    @endforeach
                 @endif
 
             </div>

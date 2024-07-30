@@ -6,17 +6,18 @@
             <h2 class="text-gray-600">Log into your account and get started</h2>
         </div>
         <form wire:submit.prevent="login" class="max-w-md mx-auto">
-            <div class="mb-6">
+            <div class="mb-6 w-full md:w-2/3">
                 <x-form.label :name="'email'" :label="'Email'" />
                 <x-form.input type="email" :name="'email'" :id="'email'" wire:model="email" />
                 <x-form.error name="email" />
             </div>
-            <div class="mb-6">
+            <div class="mb-6 w-full md:w-2/3">
                 <x-form.label :name="'password'" :label="'Password'" />
                 <x-form.input type="password" :name="'password'" :id="'password'" wire:model="password" />
                 <x-form.error name="password" />
             </div>
-            <p class="mt-4 mb-4"><a href="#" class="text-blue-500 font-bold">Forgot Password?</a></p>
+            <p class="mt-4 mb-4"><a x-data @click="$dispatch('open-modal', {name: 'forgotten-password'})"
+                    class="text-blue-500 font-bold cursor-pointer">Forgot Password?</a></p>
             <button type="submit"
                 class="w-full md:w-2/3 text-center text-sm bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">Login</button>
             <div wire:loading class="mt-4">
@@ -47,4 +48,7 @@
             </div>
         </div>
     </div>
+    <x-modal name="forgotten-password" title="Forgotten Password">
+        <livewire:forgotten-password />
+    </x-modal>
 </div>

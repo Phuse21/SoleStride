@@ -11,7 +11,7 @@ class Search extends Component
 
     public function updatedSearchQuery()
     {
-        $this->searchResults = Job::where('title', 'like', "{$this->searchQuery}%")->get();
+        $this->searchResults = Job::where('title', 'like', "%{$this->searchQuery}%")->get();
     }
 
     public function render()

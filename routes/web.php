@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApplicantController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SearchController;
@@ -47,6 +48,10 @@ Route::get('/tags/{tag:name}', [TagController::class, '_invoke']);
 Route::middleware('guest')->group(function () {
     Route::get('/register', [RegisteredUserController::class, 'create']);
     Route::get('/login', [SessionController::class, 'create'])->name('login');
+    Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])
+        ->name('password.email');
+
+    Route::get('/reset-password/{token}', [SessionController::class, 'resetPassword'])->name('password.reset');
 });
 
 Route::delete('/logout', [SessionController::class, 'destroy'])->middleware('auth');

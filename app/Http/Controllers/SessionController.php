@@ -24,6 +24,11 @@ class SessionController extends Controller
         return view('auth.login');
     }
 
+
+    public function resetPassword(Request $request, $token)
+    {
+        return view('auth.resetPassword', ['token' => $token, 'email' => $request->email]);
+    }
     /**
      * Store a newly created resource in storage.
      */
