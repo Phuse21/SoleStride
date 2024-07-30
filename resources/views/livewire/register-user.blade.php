@@ -87,33 +87,33 @@
                     </div>
 
                     <div class="flex space-x-4">
-                        <div class="w-1.5/4">
+                        <div class="w-1.4/4 md:w-1.5/4">
                             <x-form.label :name="'state'" :label="'State'" />
                             <x-form.input type="text" :name="'state'" :id="'state'" wire:model="company_state" />
                             <x-form.error name="state" />
                         </div>
 
-                        <div class="w-1.5/4">
+                        <div class="w-1.4/4 md:w-1.5/4">
                             <x-form.label :name="'city'" :label="'City'" />
                             <x-form.input type="text" :name="'city'" :id="'city'" wire:model="company_city" />
                             <x-form.error name="city" />
                         </div>
 
 
-                        <div class="w-1/4">
+                        <div class="w-1.2/4 md:w-1/4">
                             <x-form.label :name="'zip'" :label="'Zip'" />
                             <x-form.input type="text" :name="'zip'" :id="'zip'" wire:model="company_zip" />
                             <x-form.error name="zip" />
                         </div>
                     </div>
-                    <div class="flex space-x-4">
-                        <div class="w-1/2">
+                    <div class="flex flex-col md:flex-row md:space-x-4 space-y-6">
+                        <div class="w-full md:w-1/2">
                             <x-form.label :name="'linkedin'" :label="'Linkedin'" />
                             <x-form.input type="text" :name="'linkedin'" :id="'linkedin'" wire:model="url" />
                             <x-form.error name="linkedin" />
                         </div>
 
-                        <div class="w-1/2">
+                        <div class="w-full md:w-1/2">
                             <x-form.label :name="'logo'" :label="'Company Logo'" />
                             <x-form.file :name="'logo'" :id="'logo'" wire:model="logo" />
                             <x-form.error name="logo" />
@@ -161,33 +161,33 @@
                     </div>
 
                     <div class="flex space-x-4">
-                        <div class="w-1.5/4">
+                        <div class="w-1.4/4 md:w-1.5/4">
                             <x-form.label :name="'city'" :label="'City'" />
                             <x-form.input type="text" :name="'city'" :id="'city'" wire:model="city" />
                             <x-form.error name="city" />
                         </div>
 
-                        <div class="w-1.5/4">
+                        <div class="w-1.4/4 md:w-1.5/4">
                             <x-form.label :name="'state'" :label="'State'" />
                             <x-form.input type="text" :name="'state'" :id="'state'" wire:model="state" />
                             <x-form.error name="state" />
                         </div>
 
-                        <div class="w-1/4">
+                        <div class="md:w-1/4 w-1.2/4">
                             <x-form.label :name="'zip'" :label="'Zip'" />
                             <x-form.input type="text" :name="'zip'" :id="'zip'" wire:model="zip" />
                             <x-form.error name="zip" />
                         </div>
                     </div>
 
-                    <div class="flex space-x-4">
-                        <div class="w-1/2">
+                    <div class="flex flex-col md:flex-row md:space-x-4 space-y-6">
+                        <div class="w-full md:w-1/2">
                             <x-form.label :name="'linkedin'" :label="'Linkedin'" />
                             <x-form.input type="text" :name="'linkedin'" :id="'linkedin'" wire:model="linkedin" />
                             <x-form.error name="linkedin" />
                         </div>
 
-                        <div class="w-1/2">
+                        <div class="w-full md:w-1/2">
                             <x-form.label :name="'profile-photo'" :label="'Profile Photo'" />
                             <x-form.file :name="'profile-photo'" :id="'profile-photo'" wire:model="profile_photo" />
                             <x-form.error name="profile photo" />
