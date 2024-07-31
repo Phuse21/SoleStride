@@ -45,7 +45,7 @@ class ResetPassword extends Component
             flash()->success(__('Password reset successfully.'));
             return redirect()->route('login');
         } else {
-            flash()->error(__('Failed to reset password.'));
+            flash()->error(__('Invalid token.'));
             throw ValidationException::withMessages(['email' => __($status)]);
         }
 

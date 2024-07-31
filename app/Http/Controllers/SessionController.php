@@ -27,7 +27,6 @@ class SessionController extends Controller
 
     public function resetPassword(Request $request, $token)
     {
-        dd($token);
         return view('auth.resetPassword', ['token' => $token, 'email' => $request->email]);
     }
     /**

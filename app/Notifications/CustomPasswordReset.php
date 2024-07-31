@@ -23,7 +23,7 @@ class CustomPasswordReset extends ResetPasswordNotification
 
 
         return (new MailMessage)
-            ->subject('Your Custom Password Reset Request')
+            ->subject('Password Reset')
             ->view('mail.password-reset', [
                 'url' => $url,
             ]);
