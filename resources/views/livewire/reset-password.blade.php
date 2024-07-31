@@ -1,6 +1,6 @@
 <div>
     <div>
-
+        <x-page-heading>Reset Password</x-page-heading>
         <div class="max-w-2xl px-10 py-4">
             <form wire:submit="resetPassword" class="max-w-2xl mx-auto space-y-6 ">
 
