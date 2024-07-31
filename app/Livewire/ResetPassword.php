@@ -70,9 +70,7 @@ class ResetPassword extends Component
         }
 
         // 3. Hash the new password
-        $hashedPassword = Hash::make($credentials['password'], [
-            'rounds' => config('hashing.bcrypt.rounds', 10),
-        ]);
+        $hashedPassword = Hash::make($credentials['password']);
 
         // 4. Update the user's password
         $user = \App\Models\User::where('email', $credentials['email'])->first();
