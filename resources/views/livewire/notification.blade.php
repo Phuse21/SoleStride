@@ -17,7 +17,7 @@
 
         <!-- Notifications Dropdown -->
         <div style="display: none" x-show="open" @click.outside="open = false"
-            class="absolute mt-7 py-2 right-[-67px] w-[300px] overflow-y-auto bg-white border border-gray-200 rounded-lg shadow-lg z-11">
+            class="absolute mt-1 md:mt-7 py-2 right-[-67px] w-[300px] overflow-y-auto bg-white border border-gray-200 rounded-lg shadow-lg z-15">
             <div class="px-2 py-1 w-full flex items-center justify-between border-b border-gray-300">
                 <div class="text-sm font-semibold text-gray-800">Unread Notifications</div>
                 <button x-on:click="open = false">
