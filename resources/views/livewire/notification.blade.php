@@ -48,10 +48,14 @@
             <!-- Footer with buttons -->
             <div class="px-2 py-1 w-full flex items-center justify-between border-t border-gray-100">
                 <button class="text-xs text-blue-500" wire:click="markAllAsRead">Mark all as read</button>
-                <button class="text-xs text-blue-500">View
+                <button x-data @click="$dispatch('open-modal', {name: 'all-notifications'})"
+                    class="text-xs text-blue-500">View
                     All</button>
             </div>
 
         </div>
     </div>
+    <x-modal name="all-notifications" title="All Notifications">
+        <livewire:all-notifications />
+    </x-modal>
 </div>
