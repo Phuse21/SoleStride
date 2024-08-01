@@ -55,7 +55,7 @@
 
         </div>
     </div>
-    <x-modal name="all-notifications" title="All Notifications">
+    <x-modal name="all-notifications" title="All Notifications({{$allNotificationsCount}})">
         <livewire:all-notifications />
     </x-modal>
 </div>

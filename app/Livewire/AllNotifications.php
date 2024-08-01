@@ -12,11 +12,16 @@ class AllNotifications extends Component
     public function mount()
     {
         $this->loadNotifications();
+
+
     }
 
     public function loadNotifications()
     {
         $this->notifications = auth()->user()->notifications()->get();
+
+
+        $this->dispatch('notificationCount', $this->notifications->count());
     }
 
     public function deleteNotification($notificationId)

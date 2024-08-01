@@ -7,7 +7,10 @@ use Livewire\Component;
 class Notification extends Component
 {
 
+    public $listeners = ['notificationCount' => 'countAllNotifications'];
+
     public $notifications;
+    public $allNotificationsCount;
 
 
     public function mount()
@@ -35,6 +38,10 @@ class Notification extends Component
         $this->mount();
     }
 
+    public function countAllNotifications($notificationCount)
+    {
+        $this->allNotificationsCount = $notificationCount;
+    }
 
     public function render()
     {
