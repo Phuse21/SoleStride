@@ -46,7 +46,7 @@ class ApplicationShortlistedNotification extends Notification
         return [
             'application_id' => $this->application->id,
             'title' => 'Application Shortlisted',
-            'message' => 'Your application for the position of ' . $this->application?->job?->title ?? 'N/A' . ' has been shortlisted!',
+            'message' => 'Your application for the position of ' . ($this->application?->job?->title ?? 'N/A') . ' has been shortlisted!',
             'status' => 'shortlisted',
         ];
     }
