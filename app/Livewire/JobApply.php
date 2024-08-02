@@ -37,9 +37,9 @@ class JobApply extends Component
             ->first();
 
         if ($existingApplication) {
-
+            // Allow update only if status is 'pending'
             if ($existingApplication->status === 'pending') {
-                //update the cv for the existing application
+                // Update the CV for the existing application
                 $cvPath = $this->cv->store('cvs');
                 $existingApplication->update([
                     'cv_path' => $cvPath,
@@ -47,8 +47,8 @@ class JobApply extends Component
                 flash()->success('Application updated successfully.');
             } else {
                 flash()->error('You can only update pending applications.');
+                return;
             }
-
         } else {
             // Create a new application if none exists
             $cvPath = $this->cv->store('cvs');
@@ -71,7 +71,6 @@ class JobApply extends Component
         $this->dispatch('close-modal', ['name' => 'apply']);
         $this->reset('cv');
     }
-
 
     public function render()
     {
