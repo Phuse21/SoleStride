@@ -9,6 +9,7 @@ use Livewire\Component;
 
 class JobDetails extends Component
 {
+    public $listeners = ['updatedCV' => 'updateCV'];
     public $job;
     public $hasApplied = false;
     public $cvPath = null;
@@ -30,6 +31,12 @@ class JobDetails extends Component
                 $this->cvPath = $application->cv_path;
             }
         }
+    }
+
+    public function updateCV($cvPath)
+    {
+        $this->cvPath = $cvPath;
+        $this->render();
     }
 
     public function render()

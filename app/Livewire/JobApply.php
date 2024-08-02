@@ -37,31 +37,41 @@ class JobApply extends Component
             ->first();
 
         if ($existingApplication) {
-            flash()->error('You have already applied for this job.');
-            return;
+
+            if ($existingApplication->status === 'pending') {
+                //update the cv for the existing application
+                $cvPath = $this->cv->store('cvs');
+                $existingApplication->update([
+                    'cv_path' => $cvPath,
+                ]);
+                flash()->success('Application updated successfully.');
+            } else {
+                flash()->error('You can only update pending applications.');
+            }
+
+        } else {
+            // Create a new application if none exists
+            $cvPath = $this->cv->store('cvs');
+
+            $application = JobApplications::create([
+                'job_id' => $this->job->id,
+                'applicant_id' => $this->applicant_id,
+                'employer_id' => $this->job->employer_id,
+                'status' => 'pending',
+                'cv_path' => $cvPath,
+            ]);
+
+            // Send email
+            Mail::to($application->applicants->user)->queue(new ApplyJobMail($application));
+
+            flash()->success('Application submitted successfully.');
         }
 
-        $cvPath = $this->cv->store('cvs');
-
-        $application = JobApplications::create([
-            'job_id' => $this->job->id,
-            'applicant_id' => $this->applicant_id,
-            'employer_id' => $this->job->employer_id,
-            'status' => 'pending',
-            'cv_path' => $cvPath,
-        ]);
-        //send email
-        Mail::to($application->applicants->user)->queue(new ApplyJobMail($application));
-
-        $this->resetForm();
+        $this->dispatch('updatedCV', $cvPath);
         $this->dispatch('close-modal', ['name' => 'apply']);
-        flash()->success('Application submitted successfully.');
+        $this->reset('cv');
     }
 
-    public function resetForm()
-    {
-        $this->cv = null;
-    }
 
     public function render()
     {
