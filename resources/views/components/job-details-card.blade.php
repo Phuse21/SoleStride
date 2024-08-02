@@ -1,4 +1,4 @@
-@props(['job'])
+@props(['job', 'hasApplied', 'cvPath'])
 
 <x-panel class="flex flex-col gap-y-4">
     <div class="flex flex-wrap md:flex-nowrap gap-4">
@@ -76,7 +76,20 @@
     <div class="mt-8 w-full border-t-2">
         <div class="flex justify-end mt-2">
             @if (!empty(auth()->user()) && auth()->user()->applicant)
+            @if ($hasApplied)
+            <div class="flex flex-row space-x-4 md:space-x-[370px]">
+                <a href="{{ Storage::url($cvPath) }}" target="_blank"
+                    class="relative text-sm md:text-base inline-flex font-bold py-2 md:px-4 px-3 rounded-md border border-blue-500  text-blue-500 items-center hover:text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    View CV
+                </a>
+                <x-button type="button" x-data @click="$dispatch('open-modal', {name: 'edit-application'})">Edit
+                    Application
+                </x-button>
+
+            </div>
+            @else
             <x-button type="button" x-data @click="$dispatch('open-modal', {name: 'apply'})">Apply</x-button>
+            @endif
             @elseif (!empty(auth()->user()) && !auth()->user()->employer)
             <p class="text-red-500 font-bold">Only applicants can apply</p>
             @endif

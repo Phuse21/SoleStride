@@ -11,15 +11,16 @@ class Notification extends Component
 
     public $notifications;
     public $allNotificationsCount;
+    public $allNotifications;
 
 
     public function mount()
     {
-        $this->notifications = auth()->user()
-            ->unreadNotifications
-            ->take(5);
+        $this->allNotifications = auth()->user()->notifications()->get();
 
+        $this->notifications = $this->allNotifications->whereNull('read_at')->take(5);
 
+        $this->allNotificationsCount = $this->allNotifications->count();
     }
 
     public function markAsRead($notificationId)

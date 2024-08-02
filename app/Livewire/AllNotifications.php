@@ -9,16 +9,14 @@ class AllNotifications extends Component
 
     public $notifications;
 
-    public function mount()
+    public function mount($notifications)
     {
-        $this->loadNotifications();
-
-
+        $this->notifications = $notifications;
     }
 
     public function loadNotifications()
     {
-        $this->notifications = auth()->user()->notifications()->get();
+        // $this->notifications = auth()->user()->notifications()->get();
 
 
         $this->dispatch('notificationCount', $this->notifications->count());
@@ -27,7 +25,7 @@ class AllNotifications extends Component
     public function deleteNotification($notificationId)
     {
         // Find and delete the specific notification
-        $notification = auth()->user()->notifications()->find($notificationId);
+        $notification = $this->notifications->where('id', $notificationId)->first();
 
         if ($notification) {
             $notification->delete();
@@ -38,7 +36,7 @@ class AllNotifications extends Component
     public function deleteAll()
     {
         // Delete all notifications for the authenticated user
-        auth()->user()->notifications()->delete();
+        $this->notifications->delete();
 
         // Refresh notifications list
         $this->loadNotifications();

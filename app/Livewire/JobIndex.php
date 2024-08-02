@@ -30,10 +30,6 @@ class JobIndex extends Component
     public function render()
     {
         // dd($featuredJobs);
-
-
-
-
         return view('livewire.job-index', [
 
         ]);
