@@ -41,8 +41,6 @@ Route::group([
 });
 
 
-
-Route::get('/search', [SearchController::class, '_invoke']);
 Route::get('/tags/{tag:name}', [TagController::class, '_invoke']);
 
 Route::middleware('guest')->group(function () {
@@ -50,5 +48,3 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [SessionController::class, 'create'])->name('login');
     Route::get('/reset-password/{token}', [SessionController::class, 'resetPassword'])->name('password.reset');
 });
-
-Route::delete('/logout', [SessionController::class, 'destroy'])->middleware('auth');
