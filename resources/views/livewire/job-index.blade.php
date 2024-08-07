@@ -2,7 +2,7 @@
     <div class="space-y-6">
 
         <section class="pt-6 text-center">
-            <h1 class="text-3xl font-bold">Let's Find Your Next Job</h1>
+            <h1 class="md:text-3xl text-2xl font-bold">Let's Find Your Next Job</h1>
 
             <form action="" class="mt-6">
                 <div class="flex justify-center w-full">
@@ -17,18 +17,16 @@
 
         <section>
             <x-section-heading>Tags</x-section-heading>
-            <div class="mt-4 space-x-2 flex flex-wrap mb-20">
+            <div class="flex py-4 justify-start gap-4 overflow-x-auto mb-20">
 
 
-
-                <!-- when parameter name and the variable name are the same -->
 
                 @if($tags->isEmpty())
-                    <p class="text-center">No tags available</p>
+                <p class="text-center">No tags available</p>
                 @else
-                    @foreach ($tags as $tag)
-                        <x-tag :$tag />
-                    @endforeach
+                @foreach ($tags as $tag)
+                <x-tag :$tag />
+                @endforeach
                 @endif
 
             </div>
