@@ -12,11 +12,11 @@
 <body class="bg-white text-black font-hanken overflow-x-hidden pb-10">
     <div class="px-8">
         @if (auth()->guest())
-            <x-nav-bar />
+        <x-nav-bar />
         @elseif (auth()->user()->role === 'employer')
-            <x-employer.nav-bar />
+        <x-employer.nav-bar />
         @elseif (auth()->user()->role === 'applicant')
-            <x-applicant.nav-bar />
+        <x-applicant.nav-bar />
         @endif
         <main class="mt-6 max-w-[986px] mx-auto relative">
             {{ $slot }}
@@ -27,59 +27,45 @@
                     <img class="h-16 w-16 md:h-24 md:w-24" src="https://i.ibb.co/C0484RC/2-removebg-preview.png"
                         alt="Your Company">
                     <p class="mb-4 font-mono">"Discover Your Future with SoleStride Jobs"</p>
-                    <ul class="flex space-x-4">
-                        <li>
-                            <a href="#" class="text-black hover:text-gray-400"><i
-                                    class="ri-facebook-circle-line text-2xl"></i></a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-black hover:text-gray-400"><i
-                                    class="ri-instagram-line text-2xl"></i></a>
-                        </li>
-                        <li>
-                            <a href="#" class="text-black hover:text-gray-400"><i
-                                    class="ri-twitter-x-line text-2xl"></i></a>
-                        </li>
-                    </ul>
                 </div>
 
 
                 <div class="grid grid-cols-2">
                     <div class="flex-1 md:ml-20">
-                        <h6 class="md:text-xl text-base font-semibold mb-2 md:mb-4">Useful Links</h6>
+                        <h6 class="md:text-base text-sm font-semibold mb-2 md:mb-4">Useful Links</h6>
                         <ul>
                             <li class="mb-2">
-                                <a href="#" class="text-black text-sm md:text-base  hover:text-gray-400">Home</a>
+                                <a href="#" class="text-black text-xs md:text-sm  hover:text-gray-400">Home</a>
                             </li>
                             <li class="mb-2">
-                                <a href="#" class="text-black text-sm md:text-base hover:text-gray-400">About us</a>
+                                <a href="#" class="text-black text-xs md:text-sm hover:text-gray-400">About us</a>
                             </li>
                             <li class="mb-2">
-                                <a href="#" class="text-black text-sm md:text-base hover:text-gray-400">Contact us</a>
+                                <a href="#" class="text-black text-xs md:text-sm hover:text-gray-400">Contact us</a>
                             </li>
                             <li class="mb-2">
-                                <a href="#" class="text-black text-sm md:text-base hover:text-gray-400">Blog</a>
+                                <a href="#" class="text-black text-xs md:text-sm hover:text-gray-400">Blog</a>
                             </li>
                         </ul>
                     </div>
 
 
                     <div class="flex-1 md:ml-10">
-                        <h6 class="md:text-xl text-base font-semibold mb-2 md:mb-4">Resources</h6>
+                        <h6 class="md:text-base text-sm font-semibold mb-2 md:mb-4">Resources</h6>
                         <ul>
 
                             <li class="mb-2">
-                                <a href="#" class="text-black text-sm md:text-base hover:text-gray-400">Support</a>
+                                <a href="#" class="text-black text-xs md:text-sm hover:text-gray-400">Support</a>
                             </li>
                             <li class="mb-2">
-                                <a href="#" class="text-black text-sm md:text-base hover:text-gray-400">Privacy</a>
+                                <a href="#" class="text-black text-xs md:text-sm hover:text-gray-400">Privacy</a>
                             </li>
                             <li class="mb-2">
-                                <a href="#" class="text-black text-sm md:text-base hover:text-gray-400">Terms and
+                                <a href="#" class="text-black text-xs md:text-sm hover:text-gray-400">Terms and
                                     conditions</a>
                             </li>
                             <li class="mb-2">
-                                <a href="#" class="text-black text-sm md:text-base hover:text-gray-400">Site Map</a>
+                                <a href="#" class="text-black text-xs md:text-sm hover:text-gray-400">Site Map</a>
                             </li>
                         </ul>
                     </div>
