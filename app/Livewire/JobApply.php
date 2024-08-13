@@ -12,13 +12,13 @@ class JobApply extends Component
 {
     use WithFileUploads;
 
-    public $isOpen = false;
+
     public $job;
     public $applicant_id;
     public $cv;
 
     protected $rules = [
-        'cv' => 'required|file|mimes:pdf,doc,docx|max:10240', // 10MB Max
+        'cv' => 'required|file|mimes:pdf|max:10240', // 10MB Max
     ];
 
     public function mount($job, $applicant_id)

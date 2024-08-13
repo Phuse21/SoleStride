@@ -36,7 +36,7 @@ class JobDetails extends Component
     public function updateCV($cvPath)
     {
         $this->cvPath = $cvPath;
-        $this->render();
+        $this->mount($this->job->id);
     }
 
     public function render()
