@@ -37,7 +37,7 @@
                             <x-form.label name="salary" label="Salary" />
                             <div class="relative">
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3 text-gray-500">
-                                    $
+                                    GHS
                                 </span>
                                 <x-form.input type="number" min="0" name="salary" id="salary" wire:model="salary"
                                     class="pl-12" />

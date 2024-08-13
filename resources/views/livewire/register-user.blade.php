@@ -189,7 +189,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row md:space-x-4 space-y-6">
+                <div class="flex flex-col md:flex-row md:gap-4 gap-6">
                     <div class="w-full md:w-1/2">
                         <x-form.label :name="'linkedin'" :label="'Linkedin'" />
                         <x-form.input type="text" :name="'linkedin'" :id="'linkedin'" wire:model="linkedin" />

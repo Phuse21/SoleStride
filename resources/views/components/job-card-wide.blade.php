@@ -13,12 +13,12 @@
             {{ $job->title }}
         </h3>
         <p class="text-sm text-gray-500 mt-4 md:mt-auto">{{$job?->schedule ?? "N/A"}} -
-            From {{ '$' . number_format($job?->salary, 2 ?? "N/A") }}</p>
+            From {{ 'GHS' . ' ' . number_format($job?->salary, 2 ?? "N/A") }}</p>
     </div>
 
     <div class="mt-4 md:mt-0 space-x-2 flex-wrap">
         @foreach ($job->tags as $tag)
-            <x-tag :tag="$tag" size="sm" />
+        <x-tag :tag="$tag" size="sm" />
         @endforeach
     </div>
 </x-panel>

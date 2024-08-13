@@ -11,18 +11,18 @@
             {{$job->title}}
         </div>
         <p class="text-sm mt-4">{{$job?->schedule ?? "N/A"}} -
-            From {{ '$' . number_format($job?->salary, 2 ?? "N/A") }}</p>
+            From {{ 'GHS' . ' ' . number_format($job?->salary, 2 ?? "N/A") }}</p>
     </div>
 
     <div class="flex justify-between items-center mt-auto">
 
         <div class="space-x-1">
             @if (!empty($job->tags) && !$job->tags->isEmpty())
-                @foreach ($job->tags->take(2) as $tag)
-                    <x-tag :tag="$tag" size="sm" />
-                @endforeach
+            @foreach ($job->tags->take(2) as $tag)
+            <x-tag :tag="$tag" size="sm" />
+            @endforeach
             @else
-                <p>No Tags</p>
+            <p>No Tags</p>
             @endif
         </div>
 
