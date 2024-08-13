@@ -16,6 +16,8 @@ Route::get('/', [JobController::class, 'index']);
 
 Route::get('/job-details/{job}', [JobController::class, 'show'])->name('job.details');
 
+Route::get('/tags/{tag:name}', [TagController::class, 'show'])->name('tag.show');
+
 
 Route::group([
     'prefix' => 'employer',
@@ -41,7 +43,6 @@ Route::group([
 });
 
 
-Route::get('/tags/{tag:name}', [TagController::class, '_invoke']);
 
 Route::middleware('guest')->group(function () {
     Route::get('/register', [RegisteredUserController::class, 'create']);

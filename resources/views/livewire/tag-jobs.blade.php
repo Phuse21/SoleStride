@@ -1,5 +1,6 @@
-<x-layout>
-    <x-page-heading>Search Results</x-page-heading>
+<div>
+    {{-- The whole world belongs to you. --}}
+    <x-page-heading>{{$tag->name}}</x-page-heading>
 
     <div class="space-y-6">
         @foreach ($jobs as $job)
@@ -8,5 +9,4 @@
 
         @endforeach
     </div>
-
-</x-layout>
+</div>
