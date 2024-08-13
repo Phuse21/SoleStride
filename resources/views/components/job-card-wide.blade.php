@@ -12,7 +12,8 @@
         <h3 class="text-xl font-bold mt-3 group-hover:text-blue-500 group-hover:transition-color-duration-500">
             {{ $job->title }}
         </h3>
-        <p class="text-sm text-gray-500 mt-4 md:mt-auto">Full Time - From {{ $job->salary }}</p>
+        <p class="text-sm text-gray-500 mt-4 md:mt-auto">{{$job?->schedule ?? "N/A"}} -
+            From {{ '$' . number_format($job?->salary, 2 ?? "N/A") }}</p>
     </div>
 
     <div class="mt-4 md:mt-0 space-x-2 flex-wrap">

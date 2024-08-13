@@ -21,7 +21,7 @@ class JobFactory extends Factory
         return [
             'employer_id' => Employer::factory(),
             'title' => fake()->jobTitle(),
-            'salary' => '$' . number_format(fake()->numberBetween(10000, 100000)),
+            'salary' => fake()->numberBetween(10000, 100000),
             'country' => fake()->country(),
             'state' => fake()->city(),
             'city' => fake()->city(),

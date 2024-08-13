@@ -20,7 +20,7 @@ class ApplicantsFactory extends Factory
         return [
             'user_id' => User::factory(),
             'education' => fake()->word(),
-            'field' => fake()->word(),
+            'date_of_birth' => fake()->date(),
             'street_address' => fake()->streetAddress(),
             'city' => fake()->city(),
             'state' => fake()->stateAbbr(),

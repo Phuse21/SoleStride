@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignIdFor(Employer::class);
             $table->string('title');
-            $table->string('salary');
+            $table->integer('salary');
             $table->string('Country');
             $table->string('state');
             $table->string('city');

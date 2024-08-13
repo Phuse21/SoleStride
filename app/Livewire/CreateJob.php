@@ -31,7 +31,6 @@ class CreateJob extends Component
     public $experience_years;
     public $responsibilities;
     public $skills;
-
     public $selectedState;
     public $selectedCountry;
 

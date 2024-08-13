@@ -35,7 +35,14 @@
 
                         <div class="w-1/2">
                             <x-form.label name="salary" label="Salary" />
-                            <x-form.input type="text" name="salary" id="salary" wire:model="salary" />
+                            <div class="relative">
+                                <span class="absolute left-0 inset-y-0 flex items-center pl-3 text-gray-500">
+                                    $
+                                </span>
+                                <x-form.input type="number" min="0" name="salary" id="salary" wire:model="salary"
+                                    class="pl-12" />
+                            </div>
+
                             <x-form.error name="salary" />
                         </div>
                     </div>

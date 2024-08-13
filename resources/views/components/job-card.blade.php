@@ -10,7 +10,8 @@
         <div class="group-hover:text-blue-500 font-bold text-xl group-hover:transition-color-duration-500">
             {{$job->title}}
         </div>
-        <p class="text-sm mt-4">Full Time - From {{$job->salary}}</p>
+        <p class="text-sm mt-4">{{$job?->schedule ?? "N/A"}} -
+            From {{ '$' . number_format($job?->salary, 2 ?? "N/A") }}</p>
     </div>
 
     <div class="flex justify-between items-center mt-auto">
