@@ -11,7 +11,7 @@
             Uploading...
         </div>
 
-        <x-button type="submit">Submit</x-button>
+        <x-button type="submit" wire:loading.attr="disabled" wire:target="cv">Submit</x-button>
 
         <div wire:loading wire:target="apply">
             <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]"
