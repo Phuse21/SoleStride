@@ -2,15 +2,15 @@
     <x-page-heading>Create New Job</x-page-heading>
 
     <!-- Stepper -->
-    <div class="max-w-md mx-auto mb-6" x-data="{ step: @entangle('step') }">
+    <div class="md:max-w-md max-w-[60%] mx-auto mb-6" x-data="{ step: @entangle('step') }">
         <div class="flex justify-between items-center">
             <div :class="{'bg-blue-600 text-white': step >= 1, 'bg-gray-300': step < 1}"
-                class="w-8 h-8 rounded-full flex items-center justify-center">
+                class="md:w-8 md:h-8 w-6 h-6 rounded-full flex items-center justify-center">
                 1
             </div>
             <div :class="{'bg-blue-600': step > 1}" class="flex-1 h-1 bg-gray-300 mx-2"></div>
             <div :class="{'bg-blue-600 text-white': step >= 2, 'bg-gray-300': step < 2}"
-                class="w-8 h-8 rounded-full flex items-center justify-center">
+                class="md:w-8 md:h-8 w-6 h-6 rounded-full flex items-center justify-center">
                 2
             </div>
         </div>
@@ -24,7 +24,7 @@
     <!-- Step 1 -->
     <div x-show="step === 1">
         <div class="flex-1">
-            <form wire:submit.prevent="nextStep">
+            <form wire:submit="nextStep">
                 <div class="max-w-2xl mx-auto space-y-6">
                     <div class="flex space-x-4">
                         <div class="w-1/2">
@@ -69,8 +69,8 @@
                             <x-form.label name="schedule" label="Schedule" />
                             <x-form.select name="schedule" id="schedule" wire:model="schedule">
                                 <option value="">--Please Select--</option>
-                                <option value="full-time">Full Time</option>
-                                <option value="part-time">Part Time</option>
+                                <option value="Full-time">Full Time</option>
+                                <option value="Part-time">Part Time</option>
                             </x-form.select>
                             <x-form.error name="schedule" />
                         </div>
@@ -87,9 +87,9 @@
                             <x-form.label name="mode" label="Mode" />
                             <x-form.select name="mode" id="mode" wire:model="mode">
                                 <option value="">--Please Select--</option>
-                                <option value="remote">Remote</option>
-                                <option value="on-site">On-Site</option>
-                                <option value="hybrid">Hybrid</option>
+                                <option value="Remote">Remote</option>
+                                <option value="On-site">On-Site</option>
+                                <option value="Hybrid">Hybrid</option>
                             </x-form.select>
                             <x-form.error name="mode" />
                         </div>
@@ -104,20 +104,23 @@
 
                         <div class="w-1/2">
                             <x-form.label name="tags" label="Tags" />
-                            <x-form.input type="text" name="tags" id="tags" wire:model="tags" />
+                            <x-form.input type="text" placeholder="eg:frontend,API" name="tags" id="tags"
+                                wire:model="tags" />
                             <x-form.error name="tags" />
                         </div>
                     </div>
 
                     <div class="flex space-x-4 items-center">
-                        <x-button type="submit">Next</x-button>
-                        <div wire:loading>
-                            <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]"
-                                role="status">
-                                <span
-                                    class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                        <x-button wire:loading.attr="disabled" wire:target="nextStep,selectState" type="submit">Next
+                            <div wire:loading wire:target="nextStep">
+                                <div class="inline-block ml-1 h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                                    role="status">
+                                    <span
+                                        class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                                </div>
                             </div>
-                        </div>
+                        </x-button>
+
                     </div>
                 </div>
             </form>

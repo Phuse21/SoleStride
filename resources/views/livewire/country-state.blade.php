@@ -12,6 +12,9 @@
 
     <div class="w-1/2">
         <x-form.label name="state" label="State/Province" />
+        <div wire:loading wire:target="selectedCountry" class="text-sm text-blue-500">
+            Updating states...
+        </div>
         <x-form.select name="state" id="state" wire:model.live="selectedState">
             <option value="">--Select a state--</option>
             @foreach ($states as $state)
@@ -19,5 +22,6 @@
             @endforeach
         </x-form.select>
         <x-form.error name="selectedState" />
+
     </div>
 </div>

@@ -1,6 +1,6 @@
-<div class="min-h-screen flex flex-col md:flex-row">
+<div class="min-h-screen  overflow-hidden flex flex-col md:flex-row">
     <!-- Left Section -->
-    <div class="w-full md:w-1/2 mt-14 overflow-y-auto p-4 md:p-8">
+    <div class="w-full md:w-1/2 md:mt-14 mt-20 md:overflow-y-auto p-4 md:p-8">
         <div class="flex flex-col items-start space-y-2 mb-8">
             <h1 class="text-2xl font-bold">Welcome</h1>
             <h2 class="text-gray-600">Log into your account and get started</h2>

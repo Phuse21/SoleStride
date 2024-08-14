@@ -22,6 +22,7 @@ export default {
       backgroundImage: {
         'gradient-dark': 'linear-gradient(#1e152e, #161616)',
       },
+
       keyframes: {
         // Keyframes for custom animations
         wave: {
