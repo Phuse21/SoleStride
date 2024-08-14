@@ -70,7 +70,7 @@ class CreateJob extends Component
         $this->skills = $this->convertToArray($this->skills);
 
         $this->validate([
-            'summary' => 'required',
+            'summary' => 'required|min:10|max:1000',
             'minimum_qualifications' => 'required',
             'experience_level' => 'required',
             'experience_years' => 'required|integer|min:1 |max:50',

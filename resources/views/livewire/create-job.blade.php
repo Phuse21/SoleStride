@@ -26,14 +26,14 @@
         <div class="flex-1">
             <form wire:submit="nextStep">
                 <div class="max-w-2xl mx-auto space-y-6">
-                    <div class="flex space-x-4">
-                        <div class="w-1/2">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="md:w-full w-[85%] mx-auto">
                             <x-form.label name="title" label="Title" />
                             <x-form.input type="text" name="title" id="title" wire:model="title" />
                             <x-form.error name="title" />
                         </div>
 
-                        <div class="w-1/2">
+                        <div class="md:w-full w-[85%] mx-auto">
                             <x-form.label name="salary" label="Salary" />
                             <div class="relative">
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3 text-gray-500">
@@ -42,30 +42,34 @@
                                 <x-form.input type="number" min="0" name="salary" id="salary" wire:model="salary"
                                     class="pl-12" />
                             </div>
-
                             <x-form.error name="salary" />
                         </div>
                     </div>
                     <div>
                         <livewire:country-state wire:model="selectedCountry" wire:model="selectedState" />
                         <div class="flex">
-                            <div class="w-1/2">
+                            <div class="w-[85%] ml-7 block md:hidden">
+                                @if ($errors->has('selectedCountry') || $errors->has('selectedState'))
+                                <span class="text-red-500 text-sm">The country and state fields are required.</span>
+                                @endif
+                            </div>
+                            <div class="w-1/2 hidden md:block">
                                 <x-form.error name="selectedCountry" />
                             </div>
-                            <div class="w-1/2 pl-4">
+                            <div class="w-1/2 hidden md:block pl-4">
                                 <x-form.error name="selectedState" />
                             </div>
                         </div>
                     </div>
 
-                    <div class="flex space-x-4">
-                        <div class="w-1/2">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="md:w-full w-[85%] mx-auto">
                             <x-form.label name="city" label="City" />
                             <x-form.input type="text" name="city" id="city" wire:model="city" />
                             <x-form.error name="city" />
                         </div>
 
-                        <div class="w-1/2">
+                        <div class="md:w-full w-[85%] mx-auto">
                             <x-form.label name="schedule" label="Schedule" />
                             <x-form.select name="schedule" id="schedule" wire:model="schedule">
                                 <option value="">--Please Select--</option>
@@ -76,14 +80,14 @@
                         </div>
                     </div>
 
-                    <div class="flex space-x-4">
-                        <div class="w-1/2 form-check">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="md:w-full w-[85%] mx-auto form-checkbox">
                             <x-form.label name="feature" label="Featured (Paid)" />
                             <x-form.checkbox name="feature" id="feature" wire:model="featured" />
                             <x-form.error name="feature" />
                         </div>
 
-                        <div class="w-1/2">
+                        <div class="md:w-full w-[85%] mx-auto">
                             <x-form.label name="mode" label="Mode" />
                             <x-form.select name="mode" id="mode" wire:model="mode">
                                 <option value="">--Please Select--</option>
@@ -95,14 +99,14 @@
                         </div>
                     </div>
 
-                    <div class="flex space-x-4">
-                        <div class="w-1/2">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="md:w-full w-[85%] mx-auto">
                             <x-form.label name="url" label="Url(Optional)" />
                             <x-form.input type="text" name="url" id="url" wire:model="url" />
                             <x-form.error name="url" />
                         </div>
 
-                        <div class="w-1/2">
+                        <div class="md:w-full w-[85%] mx-auto">
                             <x-form.label name="tags" label="Tags" />
                             <x-form.input type="text" placeholder="eg:frontend,API" name="tags" id="tags"
                                 wire:model="tags" />
@@ -110,16 +114,22 @@
                         </div>
                     </div>
 
-                    <div class="flex space-x-4 items-center">
-                        <x-button wire:loading.attr="disabled" wire:target="nextStep,selectState" type="submit">Next
-                            <div wire:loading wire:target="nextStep">
-                                <div class="inline-block ml-1 h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]"
+
+
+                    <div class="flex mx-auto w-full space-x-4 items-center">
+                        <button wire:loading.attr="disabled" wire:target="nextStep,selectState" type="submit"
+                            class="relative md:w-fit w-[85%] md:ml-0 mx-auto text-sm md:text-base inline-flex items-center justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 md:px-4 px-3 rounded-md">
+                            <span class="flex-1 text-center">Next</span>
+
+                            <!-- Spinner-->
+                            <div wire:loading wire:target="nextStep" class="absolute right-3">
+                                <div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]"
                                     role="status">
                                     <span
                                         class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
                                 </div>
                             </div>
-                        </x-button>
+                        </button>
 
                     </div>
                 </div>
@@ -130,10 +140,10 @@
     <!-- Step 2 -->
     <div x-show="step === 2">
         <div class="flex-1">
-            <form wire:submit.prevent="saveJobDetails">
+            <form wire:submit="saveJobDetails">
                 <div class="max-w-2xl mx-auto space-y-6">
-                    <div class="flex space-x-2">
-                        <div class="w-2/5">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="md:w-full w-[85%] mx-auto">
                             <x-form.label name="minimum_qualifications" label="Minimum Qualifications" />
                             <x-form.select name="minimum_qualifications" id="minimum_qualifications"
                                 wire:model="minimum_qualifications">
@@ -147,14 +157,14 @@
                             <x-form.error name="minimum_qualifications" />
                         </div>
 
-                        <div class="w-1/5">
+                        <div class="md:w-full w-[85%] mx-auto">
                             <x-form.label name="experience_years" label="Years of Exp" />
                             <x-form.input type="number" min="0" max="50" name="experience_years" id="experience_years"
                                 wire:model="experience_years" />
                             <x-form.error name="experience_years" />
                         </div>
 
-                        <div class="w-2/5">
+                        <div class="md:w-full w-[85%] mx-auto">
                             <x-form.label name="experience_level" label="Experience Level" />
                             <x-form.select name="experience_level" id="experience_level" wire:model="experience_level">
                                 <option value="">--Please Select--</option>
@@ -167,44 +177,56 @@
                         </div>
                     </div>
 
-                    <div class="flex space-x-4">
-                        <div class="w-1/2">
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="md:w-full w-[85%] mx-auto">
                             <x-form.label name="responsibilities" label="Responsibilities" />
                             <textarea name="responsibilities" id="responsibilities" wire:model="responsibilities"
-                                placeholder="Meet client, Communicate with client etc."
-                                class="w-full border rounded-md p-2 text-sm h-20"></textarea>
+                                placeholder="Meet client, Communicate with client etc." rows="4"
+                                class="w-full border rounded-lg p-2 text-sm"></textarea>
+                            <div class="flex justify-end">
+                                <small class="text-gray-500">Separate responsibilities with comma</small>
+                            </div>
                             <x-form.error name="responsibilities" />
                         </div>
 
-                        <div class="w-1/2">
+                        <div class="md:w-full w-[85%] mx-auto">
                             <x-form.label name="skills" label="Skills" />
                             <textarea name="skills" id="skills" wire:model="skills"
-                                placeholder="Communication, English etc."
-                                class="w-full border rounded-md p-2 text-sm h-20"></textarea>
+                                placeholder="Communication, English etc." rows="4"
+                                class="w-full border rounded-lg p-2 text-sm"></textarea>
+                            <div class="flex justify-end">
+                                <small class="text-gray-500">Separate skills with comma</small>
+                            </div>
                             <x-form.error name="skills" />
                         </div>
                     </div>
 
-                    <div class="flex space-x-4">
-                        <div class="w-full">
-                            <x-form.label name="summary" label="Job Summary" />
-                            <textarea name="summary" id="summary" wire:model="summary"
-                                placeholder="Provide a brief description of the job."
-                                class="w-full border rounded-md p-2 text-sm h-[150px]"></textarea>
-                            <x-form.error name="summary" />
+                    <div class="md:w-full w-[85%] mx-auto">
+                        <x-form.label name="summary" label="Job Summary" />
+                        <textarea name="summary" id="summary" wire:model="summary"
+                            placeholder="Provide a brief description of the job (minimum 30 characters)." rows="4"
+                            class="w-full border rounded-lg p-2 text-sm"></textarea>
+                        <div class="flex justify-end">
+                            <small class="text-gray-500">
+                                <span x-text="$wire.summary.length > 0 ? $wire.summary.length : 0"></span>
+                                out of 1000 characters
+                            </small>
                         </div>
+                        <x-form.error name="summary" />
                     </div>
 
                     <div class="flex space-x-4 items-center">
                         <x-button type="button" @click="step = 1">Back</x-button>
-                        <x-button type="submit">Publish</x-button>
-                        <div wire:loading>
-                            <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]"
-                                role="status">
-                                <span
-                                    class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                        <x-button type="submit" wire:loading.attr="disabled" wire:target="saveJobDetails">Publish
+                            <div wire:loading wire:target="saveJobDetails">
+                                <div class="inline-block h-4 w-4 ml-1 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                                    role="status">
+                                    <span
+                                        class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                                </div>
                             </div>
-                        </div>
+                        </x-button>
+
                     </div>
                 </div>
             </form>
