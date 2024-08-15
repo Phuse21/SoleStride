@@ -95,9 +95,19 @@ class CreateJob extends Component
         $job = Auth::user()->employer->jobs()->create(Arr::except($attributes, ['tags']));
 
         if ($attributes['tags'] ?? false) {
-            foreach (explode(',', $attributes['tags']) as $tag) {
-                $job->tag($tag); // Assuming the Job model has a method 'tag'
+            $tags = explode(',', $attributes['tags']);
+
+            //Trim spaces around tags
+            $tags = array_map('trim', $tags);
+
+            //filter out empty tags
+            $tags = array_filter($tags, fn($tag) => $tag !== '');
+
+            //iterate over each valid tag and attach it to the job
+            foreach ($tags as $tag) {
+                $job->tag($tag);
             }
+
         }
 
         $job->job_details()->create([
