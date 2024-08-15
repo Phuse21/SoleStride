@@ -14,8 +14,8 @@
         <x-nav-link wire:navigate href="{{route('employer.jobsPosted')}}"
             :active="request()->routeIs('employer.jobsPosted')">Jobs Posted
         </x-nav-link>
-        <x-nav-link wire:navigate href="{{route('employer.jobsMarket')}}"
-            :active="request()->routeIs('employer.jobsMarket')">Jobs Market
+        <x-nav-link href="{{route('employer.jobsMarket')}}" :active="request()->routeIs('employer.jobsMarket')">Jobs
+            Market
         </x-nav-link>
     </div>
 

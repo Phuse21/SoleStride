@@ -8,7 +8,7 @@
     </div>
 
     <div class="space-x-4 font-bold hidden md:flex">
-        <x-nav-link wire:navigate href="{{ route('home') }}" :active="request()->routeIs('home')">Home</x-nav-link>
+        <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">Home</x-nav-link>
         <x-nav-link wire:navigate href="{{ route('applications') }}" :active="request()->is('/applications')">
             Applications</x-nav-link>
     </div>
