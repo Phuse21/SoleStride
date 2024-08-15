@@ -30,7 +30,7 @@ class EmployerDashboard extends Component
         // Retrieve applications with the necessary relationships
         $this->applications = JobApplications::with('applicants.user', 'job')
             ->where('employer_id', $employer->id)
-            ->latest()
+            ->latest('id')
             ->get();
 
         // dd($applications);

@@ -17,7 +17,7 @@
 
         <section>
             <x-section-heading>Tags</x-section-heading>
-            <div data-aos="fade-down" class="flex py-4 justify-start gap-4 overflow-x-auto mb-20">
+            <div data-aos="fade-up" class="flex py-4 justify-start gap-4 overflow-x-auto mb-20">
 
 
 

@@ -1,6 +1,6 @@
 @props(['job'])
 
-<x-panel data-aos="fade-down" class="flex flex-col md:flex-row gap-4 relative">
+<x-panel data-aos="fade-up" class="flex flex-col md:flex-row gap-4 relative">
     <div class="flex-shrink-0">
         <x-employer-logo :employer="$job->employer" />
         <a href="{{ route('job.details', ['job' => $job->id]) }}" class="absolute inset-0"></a>
