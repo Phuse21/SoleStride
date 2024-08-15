@@ -13,13 +13,14 @@
                 {{ $job->title }}
             </h3>
             <div class="flex justify-between mt-2">
-                <p class="text-sm text-gray-500">Full Time - From {{ $job->salary }}</p>
+                <p class="text-sm text-gray-500">{{$job?->schedule ?? "N/A"}} -
+                    From {{ 'GHS' . ' ' . number_format($job?->salary, 2 ?? "N/A") }}</p>
             </div>
         </div>
 
         <div class="flex flex-col mt-4 md:mt-0 md:ml-4 items-end">
             <div class="flex space-x-2 flex-wrap justify-end">
-                @foreach ($job->tags as $tag)
+                @foreach ($job->tags->take(3) as $tag)
                     <x-tag :$tag size="sm" />
                 @endforeach
             </div>

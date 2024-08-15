@@ -17,9 +17,12 @@
 
         <!-- Notifications Dropdown -->
         <div style="display: none" x-show="open" @click.outside="open = false" x-on:keydown.escape.window="open = false"
-            class="absolute mt-1 md:mt-7 py-2 right-[-67px] w-[300px] overflow-y-auto bg-white border border-gray-200 rounded-lg shadow-lg z-15">
+            class="flex flex-col absolute mt-1 md:mt-7 py-2 right-[-67px] w-[300px]   bg-white border border-gray-200 rounded-lg shadow-lg z-15">
+
+            <!--fixed Header -->
             <div class="px-2 py-1 w-full flex items-center justify-between border-b border-gray-300">
-                <div class="text-sm font-semibold text-gray-800">Unread Notifications</div>
+                <div class="text-sm font-semibold text-gray-800">Unread
+                    Notifications{{$notifications->count() > 0 ? ' ('.$notifications->count().')' : ''}}</div>
                 <button x-on:click="open = false">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-4 h-4">
@@ -27,25 +30,31 @@
                     </svg>
                 </button>
             </div>
-            @forelse ($notifications as $notification)
-            <div class="px-4 py-2 hover:bg-gray-100 cursor-pointer" wire:click="markAsRead('{{ $notification->id }}')">
-                <div class="flex items-center justify-between">
-                    <div class="text-black text-sm">
-                        {{ $notification->data['title'] }}
-                    </div>
-                    <div class="text-gray-600 text-2xs">{{ $notification->created_at->diffForHumans() }}</div>
-                </div>
-                <div class="text-gray-600 text-xs">
-                    {{ $notification->data['message'] }}
-                </div>
-            </div>
-            @empty
-            <div class="px-4 py-2 text-gray-500">
-                No notifications
-            </div>
-            @endforelse
 
-            <!-- Footer with buttons -->
+            <!-- scrollable content -->
+            <div class="max-h-[300px] overflow-y-auto">
+                @forelse ($notifications as $notification)
+                <div class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    wire:click="markAsRead('{{ $notification->id }}')">
+                    <div class="flex items-center justify-between">
+                        <div class="text-black text-sm">
+                            {{ $notification->data['title'] }}
+                        </div>
+                        <div class="text-gray-600 text-2xs">{{ $notification->created_at->diffForHumans() }}</div>
+                    </div>
+                    <div class="text-gray-600 text-xs">
+                        {{ $notification->data['message'] }}
+                    </div>
+                </div>
+                @empty
+                <div class="px-4 py-2 text-gray-500">
+                    No notifications
+                </div>
+                @endforelse
+            </div>
+
+
+            <!--fixed Footer with buttons -->
             <div class="px-2 py-1 w-full flex items-center justify-between border-t border-gray-100">
                 <button class="text-xs text-blue-500" wire:click="markAllAsRead">Mark all as read</button>
                 <button x-data @click="$dispatch('open-modal', {name: 'all-notifications'})"
