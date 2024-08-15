@@ -6,6 +6,7 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "@types/axios": "^0.14.0",
         "autoprefixer": "^10.4.19",
         "axios": "^1.6.4",
         "laravel-vite-plugin": "^1.0",
@@ -14,6 +15,7 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "aos": "^2.3.4",
         "apexcharts": "^3.49.1",
         "flowbite": "^2.3.0"
     }

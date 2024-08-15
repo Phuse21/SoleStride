@@ -1,6 +1,6 @@
 @props(['job'])
 
-<x-panel class="flex flex-col md:flex-row gap-4 relative">
+<x-panel data-aos="fade-down" class="flex flex-col md:flex-row gap-4 relative">
     <div class="flex-shrink-0">
         <x-employer-logo :employer="$job->employer" />
         <a href="{{ route('job.details', ['job' => $job->id]) }}" class="absolute inset-0"></a>
@@ -18,7 +18,7 @@
 
     <div class="mt-4 md:mt-0 space-x-2 flex-wrap">
         @foreach ($job->tags as $tag)
-        <x-tag :tag="$tag" size="sm" />
+            <x-tag :tag="$tag" size="sm" />
         @endforeach
     </div>
 </x-panel>

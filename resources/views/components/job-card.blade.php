@@ -1,6 +1,6 @@
 @props(['job'])
 
-<x-panel class="flex flex-col text-center relative">
+<x-panel data-aos="fade-down" class="flex flex-col text-center relative">
     <div class="self-start text-sm group-hover:font-bold ">{{$job?->employer?->name ?? "N/A"}}
 
         <a href="{{ route('job.details', ['job' => $job->id]) }}" class="absolute inset-0"></a>
@@ -18,11 +18,11 @@
 
         <div class="space-x-1">
             @if (!empty($job->tags) && !$job->tags->isEmpty())
-            @foreach ($job->tags->take(2) as $tag)
-            <x-tag :tag="$tag" size="sm" />
-            @endforeach
+                @foreach ($job->tags->take(2) as $tag)
+                    <x-tag :tag="$tag" size="sm" />
+                @endforeach
             @else
-            <p>No Tags</p>
+                <p>No Tags</p>
             @endif
         </div>
 

@@ -15,7 +15,7 @@
 @endphp
 @if (isset($tag))
 
-    <a href="{{ route('tag.show', [$tag->name]) }}" {{ $attributes(['class' => $classes])}}>
+    <a data-aos="fade-right" href="{{ route('tag.show', [$tag->name]) }}" {{ $attributes(['class' => $classes])}}>
         {{ $tag->name }}
     </a>
 @endif
