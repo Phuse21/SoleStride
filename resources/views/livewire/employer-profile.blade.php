@@ -13,7 +13,7 @@
                     <p class="text-white text-xl font-bold font-content capitalize mt-3">
                         {{$employer?->user?->name ?? 'N/A'}}
                     </p>
-                    <p class="text-base font-light text-white font-content">{{$employer?->user?->email ?? 'N/A'}}}</p>
+                    <p class="text-base font-light text-white font-content">{{$employer?->user?->email ?? 'N/A'}}</p>
                 </div>
 
                 <div

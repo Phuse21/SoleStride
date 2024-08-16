@@ -1,6 +1,6 @@
 @props(['job'])
 
-<x-panel class="flex flex-row gap-x-4 relative p-4">
+<x-panel data-aos="fade-down" class="flex flex-row gap-x-4 relative p-4">
     <div class="flex-shrink-0">
         <x-employer-logo :employer="$job->employer" />
     </div>

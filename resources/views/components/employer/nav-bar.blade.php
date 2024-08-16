@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }"
     class="flex justify-between items-center border-b border-black/10 sticky top-0 bg-white z-10 pt-3">
     <div>
-        <a wire:navigate href="{{ route('home') }}">
+        <a wire:navigate href="{{ route('employer.home') }}">
             <img class="h-12 w-12 md:h-24 md:w-24" src="https://i.ibb.co/C0484RC/2-removebg-preview.png"
                 alt="Your Company">
         </a>
@@ -11,8 +11,8 @@
         <x-nav-link href="{{route('employer.home')}}" :active="request()->routeIs('employer.home')">
             Home
         </x-nav-link>
-        <x-nav-link wire:navigate href="{{route('employer.jobsPosted')}}"
-            :active="request()->routeIs('employer.jobsPosted')">Jobs Posted
+        <x-nav-link href="{{route('employer.jobsPosted')}}" :active="request()->routeIs('employer.jobsPosted')">Jobs
+            Posted
         </x-nav-link>
         <x-nav-link href="{{route('employer.jobsMarket')}}" :active="request()->routeIs('employer.jobsMarket')">Jobs
             Market
