@@ -1,6 +1,6 @@
 <div class="min-h-screen  overflow-hidden flex flex-col md:flex-row">
     <!-- Left Section -->
-    <div data-aos="fade-right" class="w-full md:w-1/2 md:mt-14 mt-20 md:overflow-y-auto p-4 md:p-8">
+    <div class="w-full md:w-1/2 md:mt-14 mt-20 md:overflow-y-auto p-4 md:p-8">
         <div class="flex flex-col items-start space-y-2 mb-8">
             <h1 class="text-2xl font-bold">Welcome</h1>
             <h2 class="text-gray-600">Log into your account and get started</h2>
@@ -19,8 +19,9 @@
             <p class="mt-4 mb-4"><a x-data @click="$dispatch('open-modal', {name: 'forgotten-password'})"
                     class="text-blue-500 font-bold cursor-pointer">Forgot Password?</a></p>
             <button type="submit"
-                class="flex flex-row justify-between w-full md:w-2/3 text-center text-sm bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">Login
-                <div wire:loading>
+                class="relative inline-flex justify-center w-full md:w-2/3 text-center text-sm bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">
+                <span class="flex-1 text-center">Login</span>
+                <div wire:loading class="absolute right-3">
                     <div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]"
                         role="status">
                         <span
@@ -34,7 +35,7 @@
         </form>
     </div>
     <!-- Right Section -->
-    <div data-aos="fade-left" class="hidden md:block w-full md:w-1/2 relative h-64 md:h-screen">
+    <div class="hidden md:block w-full md:w-1/2 relative h-64 md:h-screen">
         <img src="https://i.ibb.co/RyNjv7p/copy-space-blank-commercial-advertisement.jpg"
             alt="portrait-engineer-job-site-work-hours" class="absolute inset-0 w-full h-full object-cover rounded-xl">
         <div class="absolute inset-0 bg-blue-400 opacity-50 rounded-xl"></div>
