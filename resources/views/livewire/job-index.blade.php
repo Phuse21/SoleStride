@@ -30,7 +30,7 @@
                 @endif
 
             </div>
-        </sectidiv
+        </section>
 
 
         <livewire:regular-jobs />

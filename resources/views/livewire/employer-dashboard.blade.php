@@ -142,13 +142,13 @@
                 </li>
                 @endif
                 <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10">
-                    <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                    <div class="md:h-10 md:w-10 h-8 w-8 mr-3 bg-gray-100 rounded-full overflow-hidden">
                         <img src="{{ asset($application->applicants->profile_photo) }}">
                     </div>
-                    <span class="font-semibold">{{ $application->applicants->user->name ?? 'Unknown' }}</span>
+                    <span class="md:text-base text-sm">{{ $application->applicants->user->name ?? 'Unknown' }}</span>
                     <div class="ml-auto space-x-2">
-                        <button class="text-green-500 no-underline hover:underline">Accept</button>
-                        <button class="text-red-500 no-underline hover:underline">Decline</button>
+                        <button class="text-green-500 md:text-base text-sm no-underline hover:underline">Accept</button>
+                        <button class="text-red-500 md:text-base text-sm no-underline hover:underline">Decline</button>
                     </div>
                 </li>
                 @empty
@@ -171,11 +171,15 @@
                 </li>
                 @foreach($applications as $application)
                 <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10">
-                    <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                    <div class="md:h-10 md:w-10 h-8 w-8 mr-3 bg-gray-100 rounded-full overflow-hidden">
                         <img src="{{asset($application->applicants->profile_photo)}}" alt="Profile Photo">
                     </div>
-                    <span class="text-gray-600">{{ $application->applicants->user->name ?? 'Unknown' }}</span>
-                    <span class="ml-auto font-semibold">{{ $application->status ?? 'N/A' }}</span>
+                    <span
+                        class="text-gray-600 md:text-base text-sm">{{ $application->applicants->user->name ?? 'Unknown' }}</span>
+                    <span class="ml-auto font-semibold md:text-base text-sm {{ $application->status === 'shortlisted' ? 'text-yellow-500' : (
+                            $application->status === 'accepted' ? 'text-green-500' : 'text-gray-700') }}">
+                        {{ $application->status ?? 'N/A' }}
+                    </span>
                 </li>
                 @endforeach
                 @else
