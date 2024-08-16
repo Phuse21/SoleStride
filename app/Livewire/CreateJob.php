@@ -135,10 +135,14 @@ class CreateJob extends Component
         if (is_array($input)) {
             // Convert array elements to a string separated by commas
             $input = implode(',', $input);
+
         }
 
         // Now input is guaranteed to be a string
-        return array_map('trim', explode(',', $input));
+        $inputArray = array_map('trim', explode(',', $input));
+
+        //return filtered empty tags
+        return array_filter($inputArray, fn($tag) => $tag !== '');
     }
 
 
