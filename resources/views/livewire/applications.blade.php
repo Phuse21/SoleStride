@@ -44,9 +44,14 @@
                 </p>
             </div>
             <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
-                <p class="text-zinc-400 text-sm font-content w-full capitalize">Socials</p>
-                <div class="flex items-center justify-between w-full">
-                    Linkedin
+                <p class="text-zinc-400 text-sm font-content w-full capitalize">Phone</p>
+                <p class="text-base font-medium text-black font-content capitalize">
+                    <span class="text-lg">+</span> {{$this->application?->applicants?->phone ?? "N/A"}}
+                </p>
+            </div>
+            <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
+                <p class="text-zinc-400 text-sm font-content w-full capitalize">Linkedin</p>
+                <div class="flex items-center ">
                     <a href="{{$this->application?->applicants?->linkedin ?? '#'}}" target="_blank"
                         class="flex flex-row items-center">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="h-12 w-12">
@@ -63,16 +68,18 @@
             </div>
             <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                 <p class="text-zinc-400 text-sm font-content w-full capitalize">CV</p>
-                <div class="flex items-center justify-between w-full">
-                    <p class="text-base font-medium text-black font-content capitalize">cv</p>
+                <div class="flex items-center mt-2">
                     <a href="{{ Storage::url($application?->cv_path) }}" target="_blank"
                         class="border border-blue-500 text-blue-500 py-1 px-3 rounded-lg hover:text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
                         view
                     </a>
                 </div>
             </div>
-            <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
+            <div class="w-full flex flex-row justify-between mt-2 border-t border-light_blue p-2">
                 <x-button wire:click="addToShortlist">Add to shortlist</x-button>
+                <button
+                    class="relative inline-flex items-center bg-red-500 hover:bg-white text-white hover:text-red-500 hover:border-2 border-red-500 font-bold py-2 hover:py-1 hover:px-3 px-4 rounded-md">
+                    Decline</button>
             </div>
         </div>
 

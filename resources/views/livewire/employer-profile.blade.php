@@ -126,7 +126,7 @@
                     </div>
                 </form>
             </div>
-            <div class="flex items-center justify-between space-x-[210px]">
+            <div class="w-full flex flex-row justify-between">
                 <x-button x-data @click="$dispatch('open-modal', {name: 'edit-employer-profile'})">
                     Edit Profile</x-button>
                 <button

@@ -72,6 +72,7 @@ class EmployerDashboard extends Component
     public function loadPendingApplications()
     {
         $this->applicants = $this->applicants->where('status', 'pending');
+        $this->mount();
     }
 
     public function render()

@@ -73,16 +73,18 @@
                 </x-nav-link>
             </div>
             <div class="border-t border-gray-700 pb-3 pt-4">
-                <div class="flex items-center px-3">
-                    <div class="flex-shrink-0">
-                        <img class="h-10 w-10 rounded-full" src="{{asset(auth()->user()->employer->logo)}}"
-                            alt="Profile Picture">
+                <x-nav-link href="{{route('employer.profile')}}" :active="request()->routeIs('employer.profile')">
+                    <div class="flex items-center px-3">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="{{asset(auth()->user()->employer->logo)}}"
+                                alt="Profile Picture">
+                        </div>
+                        <div class="ml-3">
+                            <div class="leading-none font-semibold text-sm">{{ auth()->user()->name }}</div>
+                            <div class="text-sm font-medium leading-none text-gray-500">{{ auth()->user()->role }}</div>
+                        </div>
                     </div>
-                    <div class="ml-3">
-                        <div class="leading-none font-semibold text-sm">{{ auth()->user()->name }}</div>
-                        <div class="text-sm font-medium leading-none text-gray-500">{{ auth()->user()->role }}</div>
-                    </div>
-                </div>
+                </x-nav-link>
                 <div class="mt-3 flex items-center space-y-1 px-2">
                     <livewire:logout-user />
                     <span class="text-sm font-medium leading-none text-red-500">Logout </span>
