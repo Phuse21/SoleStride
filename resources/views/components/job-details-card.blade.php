@@ -1,25 +1,31 @@
 @props(['job', 'hasApplied', 'cvPath'])
 
 <x-panel class="flex flex-col gap-y-4">
-    <div class="flex flex-wrap md:flex-nowrap gap-4">
-        <div class="flex-shrink-0">
-            <x-employer-logo :employer="$job->employer" />
+    <div class="flex flex-col md:justify-between lg:flex-row gap-4">
+
+        <div class="flex md:w-3/5 flex-row gap-4">
+            <div class="flex-shrink-0">
+                <x-employer-logo :employer="$job->employer" />
+            </div>
+
+            <div class="flex-1 flex flex-col">
+                <a href=""
+                    class="text-sm text-gray-500 group-hover:font-bold group-hover:text-black group-hover:transition-color duration-500">{{ $job->employer->name }}</a>
+                <h3 class="text-xl font-bold mt-3 group-hover:text-blue-500 group-hover:transition-color duration-500">
+                    {{ $job->title }}
+                </h3>
+                <p class="text-sm text-gray-500 mt-auto">{{$job?->schedule ?? "N/A"}} -
+                    From {{ 'GHS' . ' ' . number_format($job?->salary, 2 ?? "N/A") }}</p>
+            </div>
         </div>
 
-        <div class="flex-1 flex flex-col">
-            <a href=""
-                class="text-sm text-gray-500 group-hover:font-bold group-hover:text-black group-hover:transition-color duration-500">{{ $job->employer->name }}</a>
-            <h3 class="text-xl font-bold mt-3 group-hover:text-blue-500 group-hover:transition-color duration-500">
-                {{ $job->title }}
-            </h3>
-            <p class="text-sm text-gray-500 mt-auto">{{$job?->schedule ?? "N/A"}} -
-                From {{ 'GHS' . ' ' . number_format($job?->salary, 2 ?? "N/A") }}</p>
-        </div>
 
-        <div class="grid md:grid-cols-3 gap-2">
-            @foreach ($job->tags as $tag)
-                <x-tag :$tag size="sm" />
-            @endforeach
+        <div class="md:w-2/5 md:mr-[-20px] lg:mr-[-40px]">
+            <div class="flex flex-wrap gap-1">
+                @foreach ($job->tags as $tag)
+                    <x-tag :$tag size="sm" />
+                @endforeach
+            </div>
         </div>
     </div>
 

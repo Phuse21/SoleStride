@@ -9,13 +9,13 @@ $classes .= ' text-sm px-5 py-2 mb-3';
 }
 
 if ($size === 'sm') {
-$classes .= ' text-2xs px-3 py-1';
+$classes .= ' text-2xs px-3 py-1 mb-1';
 }
 
 @endphp
 @if (isset($tag))
 
-<a data-aos="fade-right" href="{{ route('tag.show', [$tag->name]) }}" {{ $attributes(['class' => $classes])}}>
+<a href="{{ route('tag.show', [$tag->name]) }}" {{ $attributes(['class' => $classes])}}>
     {{ $tag->name }}
 </a>
 @endif
