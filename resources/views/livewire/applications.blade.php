@@ -77,7 +77,7 @@
             </div>
             <div class="w-full flex flex-row justify-between mt-2 border-t border-light_blue p-2">
                 <x-button wire:click="addToShortlist">Add to shortlist</x-button>
-                <button
+                <button wire:click="decline"
                     class="relative inline-flex items-center bg-red-500 hover:bg-white text-white hover:text-red-500 hover:border-2 border-red-500 font-bold py-2 hover:py-1 hover:px-3 px-4 rounded-md">
                     Decline</button>
             </div>

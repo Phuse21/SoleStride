@@ -2,7 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Mail\ApplicationDeclinedMail;
 use App\Mail\ApplicationShortlistedMail;
+use App\Notifications\ApplicationDeclinedNotification;
 use App\Notifications\ApplicationShortlistedNotification;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
@@ -43,6 +45,25 @@ class Applications extends Component
         flash()->success('Application shortlisted');
         $this->dispatch('close-modal', ['name' => 'application']);
 
+    }
+
+    public function decline()
+    {
+
+        $this->application->update(['status' => 'declined']);
+
+        $application = $this->application;
+
+        //send email
+        Mail::to($this->application->applicants->user)->queue(new ApplicationDeclinedMail($this->application));
+
+        //send notification
+        $application->applicants->user->notify(new ApplicationDeclinedNotification($application));
+
+
+        $this->dispatch('pending');
+        flash()->success('Application declined');
+        $this->dispatch('close-modal', ['name' => 'application']);
     }
 
     public function render()

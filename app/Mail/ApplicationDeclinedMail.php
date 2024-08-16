@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ApplicationShortlistedMail extends Mailable
+class ApplicationDeclinedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -21,7 +21,6 @@ class ApplicationShortlistedMail extends Mailable
     {
         //
     }
-
 
     /**
      * Get the message envelope.
@@ -39,7 +38,7 @@ class ApplicationShortlistedMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.application-shortlisted-mail',
+            view: 'mail.application-declined-mail',
         );
     }
 

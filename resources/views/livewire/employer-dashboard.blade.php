@@ -88,7 +88,7 @@
             </div>
         </div>
 
-        <div data-aos="fade-up" class="row-span-3 bg-white shadow rounded-lg">
+        <div class="row-span-3 bg-white shadow rounded-lg">
             <div class="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
                 <span class="text-bold">Pending Applicants</span>
             </div>
@@ -113,7 +113,7 @@
 
             </div>
         </div>
-        <div data-aos="fade-up" class="flex flex-col row-span-3 bg-white shadow rounded-lg">
+        <div class="flex flex-col row-span-3 bg-white shadow rounded-lg">
             <div class="px-6 py-5 font-semibold border-b border-gray-100">Job Applications Chart</div>
             <div class="p-4 flex-grow">
                 <div
@@ -177,7 +177,10 @@
                     <span
                         class="text-gray-600 md:text-base text-sm">{{ $application->applicants->user->name ?? 'Unknown' }}</span>
                     <span class="ml-auto font-semibold md:text-base text-sm {{ $application->status === 'shortlisted' ? 'text-yellow-500' : (
-                            $application->status === 'accepted' ? 'text-green-500' : 'text-gray-700') }}">
+                                    $application->status === 'accepted' ? 'text-green-500' : (
+                                        $application->status === 'declined' ? 'text-red-500' : 'text-gray-700'
+                                    )
+                                ) }}">
                         {{ $application->status ?? 'N/A' }}
                     </span>
                 </li>
