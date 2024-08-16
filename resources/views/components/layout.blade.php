@@ -11,14 +11,15 @@
     @vite(['resources/js/app.js', 'resources/css/app.css'])
 </head>
 
-<body class="{{$unscrollable ? 'overflow-y-hidden' : ''}} bg-white text-black font-hanken overflow-x-hidden pb-10">
+<body
+    class="{{$unscrollable ? 'overflow-y-hidden md:overflow-auto' : ''}} bg-white text-black font-hanken overflow-x-hidden pb-10">
     <div class="px-8">
         @if (auth()->guest())
-            <x-nav-bar />
+        <x-nav-bar />
         @elseif (auth()->user()->role === 'employer')
-            <x-employer.nav-bar />
+        <x-employer.nav-bar />
         @elseif (auth()->user()->role === 'applicant')
-            <x-applicant.nav-bar />
+        <x-applicant.nav-bar />
         @endif
         <main class="mt-6 max-w-[986px] mx-auto relative">
             {{ $slot }}
