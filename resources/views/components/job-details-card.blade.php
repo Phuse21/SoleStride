@@ -1,7 +1,7 @@
 @props(['job', 'hasApplied', 'cvPath'])
 
 <x-panel class="flex flex-col gap-y-4">
-    <div class="flex flex-col md:justify-between lg:flex-row gap-4">
+    <div class="flex flex-col md:justify-between md:flex-row gap-4">
 
         <div class="flex md:w-3/5 flex-row gap-4">
             <div class="flex-shrink-0">
@@ -35,29 +35,33 @@
                 <h6 class="text-sm"><strong>Location</strong>: {{$job->location}}</h6>
                 <h5 class="text-sm font-bold ml-10 pl-5">{{$job->city}}</h5>
             </div>
-            <div class="flex flex-col items-end">
+            <div class="flex flex-row mt-4 md:mt-0 gap-2 md:flex-col md:items-end">
                 <span
-                    class="text-sm  mb-2 py-2 px-2 bg-black/10 rounded-xl font-semibold hover:bg-black/30 transition-colors duration-300">{{$job->mode}}</span>
+                    class="md:text-sm text-xs py-2 px-2 bg-black/10 rounded-xl font-semibold hover:bg-black/30 transition-colors duration-300">{{$job->mode}}</span>
                 <span
-                    class="text-sm py-2 px-2 bg-black/10 rounded-xl font-semibold hover:bg-black/30 transition-colors duration-300">{{($job->created_at)->diffForHumans()}}</span>
+                    class="md:text-sm text-xs py-2 px-2 bg-black/10 rounded-xl font-semibold hover:bg-black/30 transition-colors duration-300">{{($job->created_at)->diffForHumans()}}</span>
             </div>
         </div>
     </div>
 
     <div class="mt-4 w-full border-t-2">
         <h6 class="font-bold mt-2">Job Summary</h6>
-        <p class="mt-2 mb-2">{{ $job?->job_details?->summary ?? 'N/A' }}</p>
+        <p class="mt-2 mb-2 md:text-base text-sm">{{ $job?->job_details?->summary ?? 'N/A' }}</p>
         <ul class="list-disc pl-4">
             <li>
-                <p><strong>Minimum Qualification</strong>:
+                <p class="md:text-base text-sm"><strong>Minimum Qualification</strong>:
                     {{$job?->job_details?->minimum_qualifications ?? 'N/A'}}
                 </p>
             </li>
             <li>
-                <p><strong>Experience Level</strong>: {{$job?->job_details?->experience_level ?? 'N/A'}}</p>
+                <p class="md:text-base text-sm"><strong>Experience Level</strong>:
+                    {{$job?->job_details?->experience_level ?? 'N/A'}}
+                </p>
             </li>
             <li>
-                <p><strong>Experience Length</strong>: {{$job?->job_details?->experience_years ?? 'N/A'}}</p>
+                <p class="md:text-base text-sm"><strong>Experience Length</strong>:
+                    {{$job?->job_details?->experience_years ?? 'N/A'}}
+                </p>
             </li>
         </ul>
     </div>
@@ -66,7 +70,7 @@
         <h6 class="font-bold mt-2">Responsibilities</h6>
         <ul class="mt-2 mb-2 list-disc pl-4">
             @foreach (json_decode($job?->job_details?->responsibilities) ?? ['N/A'] as $item)
-                <li>{{ $item }}</li>
+                <li class="md:text-base text-sm">{{ $item }}</li>
             @endforeach
         </ul>
     </div>
@@ -75,7 +79,7 @@
         <h6 class="font-bold mt-2">Required Skills</h6>
         <ul class="mt-2 mb-2 list-disc pl-4">
             @foreach (json_decode($job?->job_details?->skills) ?? ['N/A'] as $item)
-                <li>{{ $item }}</li>
+                <li class="md:text-base text-sm">{{ $item }}</li>
             @endforeach
         </ul>
     </div>
@@ -84,16 +88,16 @@
         <div class="flex justify-end mt-2">
             @if (!empty(auth()->user()) && auth()->user()->applicant)
                 @if ($hasApplied)
-                    <div class="flex flex-row space-x-4 md:space-x-[370px]">
+                    <div class="w-full flex flex-row justify-between">
                         <a href="{{ Storage::url($cvPath) }}" target="_blank"
-                            class="relative text-sm md:text-base inline-flex font-bold py-2 md:px-4 px-3 rounded-md border border-blue-500  text-blue-500 items-center hover:text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                            class="relative text-sm md:text-base inline-flex font-bold py-2 md:px-4 px-3 rounded-md border border-blue-500 text-blue-500 items-center hover:text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
                             View CV
                         </a>
-                        <x-button type="button" x-data @click="$dispatch('open-modal', {name: 'edit-application'})">Edit
-                            Application
+                        <x-button type="button" x-data @click="$dispatch('open-modal', {name: 'edit-application'})">
+                            Edit Application
                         </x-button>
-
                     </div>
+
                 @else
                     <x-button type="button" x-data @click="$dispatch('open-modal', {name: 'apply'})">Apply</x-button>
                 @endif
