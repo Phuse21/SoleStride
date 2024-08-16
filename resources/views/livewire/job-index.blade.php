@@ -17,20 +17,20 @@
 
         <section>
             <x-section-heading>Tags</x-section-heading>
-            <div data-aos="fade-up" class="flex py-4 justify-start gap-4 overflow-x-auto mb-20">
+            <div class="flex py-4 justify-start gap-4 overflow-x-auto mb-20">
 
 
 
                 @if($tags->isEmpty())
-                    <p class="text-center">No tags available</p>
+                <p class="text-center">No tags available</p>
                 @else
-                    @foreach ($tags as $tag)
-                        <x-tag :$tag />
-                    @endforeach
+                @foreach ($tags as $tag)
+                <x-tag :$tag />
+                @endforeach
                 @endif
 
             </div>
-        </section>
+        </sectidiv
 
 
         <livewire:regular-jobs />
