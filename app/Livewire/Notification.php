@@ -18,7 +18,7 @@ class Notification extends Component
     {
         $this->allNotifications = auth()->user()->notifications()->get();
 
-        $this->notifications = $this->allNotifications->whereNull('read_at')->take(5);
+        $this->notifications = $this->allNotifications->whereNull('read_at');
 
         $this->allNotificationsCount = $this->allNotifications->count();
     }

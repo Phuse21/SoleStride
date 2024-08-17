@@ -18,7 +18,6 @@ class AllNotifications extends Component
     {
         // $this->notifications = auth()->user()->notifications()->get();
 
-
         $this->dispatch('notificationCount', $this->notifications->count());
     }
 
@@ -36,10 +35,12 @@ class AllNotifications extends Component
     public function deleteAll()
     {
         // Delete all notifications for the authenticated user
-        $this->notifications->delete();
+        auth()->user()->notifications()->delete();
 
         // Refresh notifications list
         $this->loadNotifications();
+
+        $this->dispatch('close modal', ['name' => 'all-notifications']);
     }
 
     public function render()

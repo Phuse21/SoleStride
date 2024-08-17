@@ -9,7 +9,7 @@
             </svg>
             @if($notifications->count())
                 <div class="px-1.5 bg-blue-500 rounded-full text-center text-white text-2xs absolute -top-3 -end-2">
-                    {{ $notifications->count() }}
+                    {{ $notifications->count() > 9 ? '9+' : $notifications->count() }}
                     <div class="absolute top-0 start-0 rounded-full -z-10 animate-ping bg-blue-200 w-full h-full"></div>
                 </div>
             @endif
