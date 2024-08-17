@@ -101,6 +101,29 @@ class EmployerDashboard extends Component
         $this->dispatch('close-modal', ['name' => 'application']);
     }
 
+
+    public function acceptApplication($applicationId)
+    {
+
+        // Retrieve the application from the already fetched collection
+        $application = $this->applications->firstWhere('id', $applicationId);
+
+        // Ensure the application exists
+        if (!$application) {
+            flash()->error('Application not found');
+            return;
+        }
+
+
+        //update application status with helper function
+        ApplicationHelper::acceptApplication($application);
+
+        //dispatch event
+        flash()->success('Application accepted');
+        $this->dispatch('close-modal', ['name' => 'application']);
+        $this->mount();
+    }
+
     public function render()
     {
         $this->applications->load('applicants.user');
