@@ -49,21 +49,7 @@ class Applications extends Component
 
     public function decline()
     {
-
-        $this->application->update(['status' => 'declined']);
-
-        $application = $this->application;
-
-        //send email
-        Mail::to($this->application->applicants->user)->queue(new ApplicationDeclinedMail($this->application));
-
-        //send notification
-        $application->applicants->user->notify(new ApplicationDeclinedNotification($application));
-
-
-        $this->dispatch('pending');
-        flash()->success('Application declined');
-        $this->dispatch('close-modal', ['name' => 'application']);
+        $this->dispatch('decline', $this->application->id);
     }
 
     public function render()

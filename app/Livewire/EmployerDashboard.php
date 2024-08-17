@@ -5,10 +5,14 @@ namespace App\Livewire;
 use App\Models\JobApplications;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use App\Helpers\ApplicationHelper;
 
 class EmployerDashboard extends Component
 {
-    public $listeners = ['pending' => 'loadPendingApplications'];
+    public $listeners = [
+        'pending' => 'loadPendingApplications',
+        'decline' => 'declineApplication',
+    ];
     public $jobCount;
     public $applicationsCount;
     public $applicants;
@@ -28,7 +32,7 @@ class EmployerDashboard extends Component
 
 
         // Retrieve applications with the necessary relationships
-        $this->applications = JobApplications::with('applicants.user', 'job')
+        $this->applications = JobApplications::with('applicants.user', 'applicants', 'job')
             ->where('employer_id', $employer->id)
             ->latest('id')
             ->get();
@@ -75,8 +79,31 @@ class EmployerDashboard extends Component
         $this->mount();
     }
 
+
+    public function declineApplication($applicationId)
+    {
+        // Retrieve the application from the already fetched collection
+        $application = $this->applications->firstWhere('id', $applicationId);
+
+        // Ensure the application exists
+        if (!$application) {
+            flash()->error('Application not found');
+            return;
+        }
+
+
+        //update application status with helper function
+        ApplicationHelper::declineApplication($application);
+
+        //dispatch event
+        flash()->success('Application declined');
+        $this->dispatch('pending');
+        $this->dispatch('close-modal', ['name' => 'application']);
+    }
+
     public function render()
     {
+        $this->applications->load('applicants.user');
         return view('livewire.employer-dashboard');
     }
 
