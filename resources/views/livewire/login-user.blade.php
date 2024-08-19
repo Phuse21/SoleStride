@@ -16,7 +16,7 @@
                 <x-form.input type="password" :name="'password'" :id="'password'" wire:model="password" />
                 <x-form.error name="password" />
             </div>
-            <p class="mt-4 mb-4"><a x-data @click="$dispatch('open-modal', {name: 'forgotten-password'})"
+            <p class="mt-4 mb-4"><a x-data @click = "$dispatch('open-modal', {name: 'forgotten-password'})"
                     class="text-blue-500 font-bold cursor-pointer">Forgot Password?</a></p>
             <button type="submit"
                 class="relative inline-flex justify-center w-full md:w-2/3 text-center text-sm bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">

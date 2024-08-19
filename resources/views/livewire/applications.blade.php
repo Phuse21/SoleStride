@@ -5,13 +5,13 @@
             class="bg-gradient-to-t from-primary to-btn_gradient_blue/80 text-white h-fit w-full p-3 rounded-lg flex flex-col items-center border border-light_blue relative">
             <div class="h-32 w-32 rounded-full overflow-hidden flex items-center justify-center bg-white"
                 style="font-size: 50px;">
-                <img src="{{asset($application?->applicants?->profile_photo)}}" class="object-cover h-full w-full">
+                <img src="{{ asset($application?->applicants?->profile_photo) }}" class="object-cover h-full w-full">
             </div>
             <p class="text-white text-xl font-bold font-content capitalize mt-3">
-                {{$this->application?->applicants?->user?->name ?? "N/A"}}
+                {{ $this->application?->applicants?->user?->name ?? 'N/A' }}
             </p>
             <p class="text-base font-light text-white font-content">
-                {{$this->application?->applicants?->user?->email ?? "N/A"}}
+                {{ $this->application?->applicants?->user?->email ?? 'N/A' }}
             </p>
         </div>
 
@@ -22,37 +22,37 @@
             <div class="flex flex-col items-start justify-start border-light_blue w-full p-2">
                 <p class="text-zinc-400 text-sm font-content w-full capitalize">Applying For</p>
                 <p class="text-base font-medium text-black font-content capitalize">
-                    {{$this->application?->job->title ?? "N/A"}}
+                    {{ $this->application?->job->title ?? 'N/A' }}
                 </p>
             </div>
             <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                 <p class="text-zinc-400 text-sm font-content w-full capitalize">Education</p>
                 <p class="text-base font-medium text-black font-content capitalize">
-                    {{$this->application?->applicants?->education ?? "N/A"}}
+                    {{ $this->application?->applicants?->education ?? 'N/A' }}
                 </p>
             </div>
             <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                 <p class="text-zinc-400 text-sm font-content w-full capitalize">Date of Birth</p>
                 <p class="text-base font-medium text-black font-content capitalize">
-                    {{$this->application?->applicants?->date_of_birth ?? "N/A"}}
+                    {{ $this->application?->applicants?->date_of_birth ?? 'N/A' }}
                 </p>
             </div>
             <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                 <p class="text-zinc-400 text-sm font-content w-full capitalize">Country</p>
                 <p class="text-base font-medium text-black font-content capitalize">
-                    {{$this->application?->applicants?->country ?? "N/A"}}
+                    {{ $this->application?->applicants?->country ?? 'N/A' }}
                 </p>
             </div>
             <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                 <p class="text-zinc-400 text-sm font-content w-full capitalize">Phone</p>
                 <p class="text-base font-medium text-black font-content capitalize">
-                    <span class="text-lg">+</span> {{$this->application?->applicants?->phone ?? "N/A"}}
+                    <span class="text-lg">+</span> {{ $this->application?->applicants?->phone ?? 'N/A' }}
                 </p>
             </div>
             <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                 <p class="text-zinc-400 text-sm font-content w-full capitalize">Linkedin</p>
                 <div class="flex items-center ">
-                    <a href="{{$this->application?->applicants?->linkedin ?? '#'}}" target="_blank"
+                    <a href="{{ $this->application?->applicants?->linkedin ?? '#' }}" target="_blank"
                         class="flex flex-row items-center">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="h-12 w-12">
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -76,8 +76,12 @@
                 </div>
             </div>
             <div class="w-full flex flex-row justify-between mt-2 border-t border-light_blue p-2">
-                <x-button wire:click="addToShortlist">Add to shortlist</x-button>
-                <button wire:click="decline"
+                <x-button wire:loading.attr="disabled" wire:click="addToShortlist">Add to
+                    shortlist</x-button>
+                <div wire:target="addToShortlist,decline" wire:loading class="text-sm text-blue-500">
+                    Please wait...
+                </div>
+                <button wire:loading.attr="disabled" wire:click="decline"
                     class="relative inline-flex items-center bg-red-500 hover:bg-white text-white hover:text-red-500 hover:border-2 border-red-500 font-bold py-2 hover:py-1 hover:px-3 px-4 rounded-md">
                     Decline</button>
             </div>

@@ -82,6 +82,7 @@ class EmployerDashboard extends Component
 
     public function declineApplication($applicationId)
     {
+        $this->dispatch('close-modal', ['name' => 'application']);
         // Retrieve the application from the already fetched collection
         $application = $this->applications->firstWhere('id', $applicationId);
 
@@ -98,7 +99,6 @@ class EmployerDashboard extends Component
         //dispatch event
         flash()->success('Application declined');
         $this->dispatch('pending');
-        $this->dispatch('close-modal', ['name' => 'application']);
     }
 
 

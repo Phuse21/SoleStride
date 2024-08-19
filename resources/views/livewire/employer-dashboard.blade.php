@@ -3,7 +3,7 @@
         class="flex md:space-y-0 flex-row justify-between md:top-[104px] top-[60px] shadow-lg p-2 rounded-b-md z-10 bg-white">
         <div class="mr-4">
             <h3 class="text-base md:text-xl font-semibold mb-2">Employer Dashboard</h3>
-            <h4 class="md:text-sm text-xs text-gray-600 ml-0.5">{{auth()->user()->employer?->name ?? 'Unknown'}}</h4>
+            <h4 class="md:text-sm text-xs text-gray-600 ml-0.5">{{ auth()->user()->employer?->name ?? 'Unknown' }}</h4>
         </div>
         <div class="flex flex-wrap items-start justify-end">
             <x-button wire:navigate :href="route('employer.create')">
@@ -18,7 +18,7 @@
     </div>
 
     <section class="grid md:grid-cols-3 xl:grid-cols-4 gap-6 mt-4">
-        <a wire:navigate href="{{route('employer.jobsPosted')}}">
+        <a wire:navigate href="{{ route('employer.jobsPosted') }}">
             <div class="flex items-center p-8 bg-white shadow rounded-lg hover:bg-black/5">
                 <div
                     class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 hover:bg-purple-200 rounded-full mr-6">
@@ -38,7 +38,7 @@
                     </svg>
                 </div>
                 <div>
-                    <span class="block text-2xl font-bold">{{$jobCount ?? 'NA'}}</span>
+                    <span class="block text-2xl font-bold">{{ $jobCount ?? 'NA' }}</span>
                     <span class="block text-gray-500">Jobs Posted</span>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 </svg>
             </div>
             <div>
-                <span class="inline-block text-2xl font-bold">{{$applicationsCount ?? 'NA'}}</span>
+                <span class="inline-block text-2xl font-bold">{{ $applicationsCount ?? 'NA' }}</span>
                 <span class="block text-gray-500">Job Applications</span>
             </div>
 
@@ -71,7 +71,7 @@
                 <img src="https://i.ibb.co/vdMT1yz/planning-2755487.png" alt="planning-2755487" class="w-6 h-6">
             </div>
             <div>
-                <span class="block text-2xl font-bold">{{$shortlistedCount ?? 'NA'}}</span>
+                <span class="block text-2xl font-bold">{{ $shortlistedCount ?? 'NA' }}</span>
                 <span class="block text-gray-500">Shortlisted Applicants</span>
             </div>
 
@@ -93,22 +93,23 @@
                 <span class="text-bold">Pending Applicants</span>
             </div>
             <div class="overflow-y-auto" style="max-height: 30rem;">
-                <ul data-aos="fade-right" class="p-4 space-y-6">
+                <ul class="p-4 space-y-6">
                     @if ($applicants && $applicants->count() > 0)
-                    @foreach($applicants->sortBy('created_at') as $application)
-                    <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10"
-                        x-data @click="$dispatch('open-modal', {name: 'application'})"
-                        wire:click="$dispatch('viewApplicantDetails', [{{ $application->id }}])">
-                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                            <img src="{{asset($application?->applicants?->profile_photo ?? 'N/A')}}">
-                        </div>
-                        <span class=" font-semibold">{{ $application?->applicants?->user?->name ?? 'Unknown' }}</span>
-                        <span
-                            class="ml-auto text-gray-600">{{ $application?->created_at->diffForHumans() ?? 'N/A' }}</span>
-                    </li>
-                    @endforeach
+                        @foreach ($applicants->sortBy('created_at') as $application)
+                            <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10"
+                                x-data @click="$dispatch('open-modal', {name: 'application'})"
+                                wire:click="$dispatch('viewApplicantDetails', [{{ $application->id }}])">
+                                <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                                    <img src="{{ asset($application?->applicants?->profile_photo ?? 'N/A') }}">
+                                </div>
+                                <span
+                                    class=" font-semibold">{{ $application?->applicants?->user?->name ?? 'Unknown' }}</span>
+                                <span
+                                    class="ml-auto text-gray-600">{{ $application?->created_at->diffForHumans() ?? 'N/A' }}</span>
+                            </li>
+                        @endforeach
                     @else
-                    <li class="text-center text-gray-500">No pending applications.</li>
+                        <li class="text-center text-gray-500">No pending applications.</li>
                     @endif
                 </ul>
 
@@ -136,26 +137,35 @@
         <div class="overflow-y-auto" style="max-height: 30rem;">
             <ul class="p-4 space-y-6">
                 @forelse ($shortlistedApplications as $application)
-                @if ($loop->first)
-                <li class="flex items-center cursor-pointer p-2 rounded border-b border-black/10">
-                    <span class="font-semibold">Applicants</span>
-                    <span class="ml-auto text-gray-600">Action</span>
-                </li>
-                @endif
-                <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10">
-                    <div class="md:h-10 md:w-10 h-8 w-8 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                        <img src="{{ asset($application?->applicants?->profile_photo ?? 'N/A') }}">
-                    </div>
-                    <span class="md:text-base text-sm">{{ $application?->applicants?->user?->name ?? 'Unknown' }}</span>
-                    <div class="ml-auto space-x-2">
-                        <button wire:click="acceptApplication({{ $application->id }})"
-                            class="text-green-500 md:text-base text-sm no-underline hover:underline">Accept</button>
-                        <button wire:click="declineApplication({{ $application->id }})"
-                            class="text-red-500 md:text-base text-sm no-underline hover:underline">Decline</button>
-                    </div>
-                </li>
+                    @if ($loop->first)
+                        <li
+                            class="flex flex-row justify-between items-center cursor-pointer p-2 rounded border-b border-black/10">
+                            <span class="font-semibold">Applicants</span>
+                            <div wire:loading wire:target="acceptApplication,declineApplication"
+                                class="text-sm text-blue-500">
+                                Please wait...
+                            </div>
+                            <span class="text-gray-600">Action</span>
+                        </li>
+                    @endif
+                    <li
+                        class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10">
+                        <div class="md:h-10 md:w-10 h-8 w-8 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                            <img src="{{ asset($application?->applicants?->profile_photo ?? 'N/A') }}">
+                        </div>
+                        <span
+                            class="md:text-base text-sm">{{ $application?->applicants?->user?->name ?? 'Unknown' }}</span>
+                        <div class="ml-auto space-x-2">
+                            <button wire:loading.attr="disabled"
+                                wire:click="acceptApplication({{ $application->id }})"
+                                class="text-green-500 md:text-base text-sm no-underline hover:underline">Accept</button>
+                            <button wire:loading.attr="disabled"
+                                wire:click="declineApplication({{ $application->id }})"
+                                class="text-red-500 md:text-base text-sm no-underline hover:underline">Decline</button>
+                        </div>
+                    </li>
                 @empty
-                <li class="text-center text-gray-500">No applications found.</li>
+                    <li class="text-center text-gray-500">No applications found.</li>
                 @endforelse
 
             </ul>
@@ -166,31 +176,36 @@
     <x-modal name="applications" title="Applications">
         <div class="overflow-y-auto" style="max-height: 30rem;">
             <ul class="p-4 space-y-6">
-                @if($applications && $applications->count() > 0)
                 <li class="flex items-center cursor-pointer p-2 rounded border-b border-black/10">
-
                     <span class="text-gray-600 font-bold">Applicants</span>
                     <span class="ml-auto text-gray-600">Status</span>
                 </li>
-                @foreach($applications->sortByDesc('updated_at') as $application)
-                <li class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10">
-                    <div class="md:h-10 md:w-10 h-8 w-8 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                        <img src="{{asset($application?->applicants?->profile_photo ?? 'N/A')}}" alt="Profile Photo">
-                    </div>
-                    <span
-                        class="text-gray-600 font-semibold md:text-base text-sm">{{ $application?->applicants?->user?->name ?? 'Unknown' }}</span>
-                    <span class="ml-auto  md:text-base text-sm {{ $application->status === 'shortlisted' ? 'text-yellow-500' : (
-                                    $application->status === 'accepted' ? 'text-green-500' : (
-                                        $application->status === 'declined' ? 'text-red-500' : 'text-gray-700'
-                                    )
-                                ) }}">
-                        {{ $application?->status ?? 'N/A' }}
-                    </span>
-                </li>
-                @endforeach
-                @else
-                <li class="text-center text-gray-500">No applications found.</li>
-                @endif
+
+                @forelse ($applications->sortByDesc('updated_at') as $application)
+                    <li
+                        class="flex items-center cursor-pointer hover:bg-black/10 p-2 rounded border-b border-black/10">
+                        <div class="md:h-10 md:w-10 h-8 w-8 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                            <img src="{{ asset($application?->applicants?->profile_photo ?? 'N/A') }}"
+                                alt="Profile Photo">
+                        </div>
+                        <span class="text-gray-600 font-semibold md:text-base text-sm">
+                            {{ $application?->applicants?->user?->name ?? 'Unknown' }}
+                        </span>
+                        <span
+                            class="ml-auto md:text-base text-sm {{ $application->status === 'shortlisted'
+                                ? 'text-yellow-500'
+                                : ($application->status === 'accepted'
+                                    ? 'text-green-500'
+                                    : ($application->status === 'declined'
+                                        ? 'text-red-500'
+                                        : 'text-gray-700')) }}">
+                            {{ $application?->status ?? 'N/A' }}
+                        </span>
+                    </li>
+                @empty
+                    <li class="text-center text-gray-500">No applications found.</li>
+                @endforelse
+
             </ul>
 
         </div>
