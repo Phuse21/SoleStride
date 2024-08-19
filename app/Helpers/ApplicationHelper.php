@@ -7,6 +7,7 @@ use App\Mail\ApplicationDeclinedMail;
 use App\Models\JobApplications;
 use App\Notifications\ApplicationAcceptedNotification;
 use App\Notifications\ApplicationDeclinedNotification;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -15,17 +16,16 @@ class ApplicationHelper
 
     public static function declineApplication(JobApplications $application)
     {
-        //update application status
-        $application->update([
-            'status' => 'declined',
-        ]);
+        // Batch related updates if possible
+        DB::transaction(function () use ($application) {
+            $application->update(['status' => 'declined']);
 
-        // Send email
-        Mail::to($application->applicants->user)->queue(new ApplicationDeclinedMail($application));
+            $user = $application->applicants->user;
 
-        // Send notification
-        $application->applicants->user->notify(new ApplicationDeclinedNotification($application));
-
+            // Send email and notification together if possible
+            Mail::to($user)->queue(new ApplicationDeclinedMail($application));
+            $user->notify(new ApplicationDeclinedNotification($application));
+        });
 
     }
 

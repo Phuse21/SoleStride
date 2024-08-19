@@ -7,6 +7,7 @@ use Livewire\Component;
 class AllNotifications extends Component
 {
 
+    public $listeners = ['loadNotifications'];
     public $notifications;
 
     public function mount($notifications)
@@ -16,7 +17,7 @@ class AllNotifications extends Component
 
     public function loadNotifications()
     {
-        // $this->notifications = auth()->user()->notifications()->get();
+        $this->notifications = auth()->user()->notifications()->get();
 
         $this->dispatch('notificationCount', $this->notifications->count());
     }
@@ -34,8 +35,9 @@ class AllNotifications extends Component
 
     public function deleteAll()
     {
-        // Delete all notifications for the authenticated user
-        auth()->user()->notifications()->delete();
+        \App\Models\Notification::where('notifiable_id', auth()->id())
+            ->where('notifiable_type', 'App\Models\User') // Assuming the `notifiable_type` is 'App\Models\User'
+            ->delete();
 
         // Refresh notifications list
         $this->loadNotifications();

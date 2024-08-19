@@ -31,12 +31,18 @@ class Notification extends Component
         }
 
         $this->mount();
+        $this->dispatch('loadNotifications');
     }
 
     public function markAllAsRead()
     {
-        $this->notifications->markAsRead();
+        \App\Models\Notification::whereIn(
+            'id',
+            $this->notifications->pluck('id')
+        )->update(['read_at' => now()]);
         $this->mount();
+        $this->dispatch('loadNotifications');
+
     }
 
     public function countAllNotifications($notificationCount)

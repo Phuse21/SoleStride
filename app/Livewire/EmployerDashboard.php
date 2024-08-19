@@ -126,7 +126,7 @@ class EmployerDashboard extends Component
 
     public function render()
     {
-        $this->applications->load('applicants.user');
+        // $this->applications->load('applicants.user');
         return view('livewire.employer-dashboard');
     }
 
