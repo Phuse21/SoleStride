@@ -8,20 +8,32 @@
                     style="font-size: 50px;">
                     <img src="{{ asset($applicant->profile_photo) }}" class="object-cover h-full w-full">
                 </div>
-                <p class="text-white text-xl font-bold font-content capitalize mt-3">{{$applicant->user->name}}</p>
-                <p class="text-base font-light text-white font-content">{{$applicant->user->email}}</p>
+                <p class="text-white text-xl font-bold font-content capitalize mt-3">{{ $applicant->user->name }}</p>
+                <p class="text-base font-light text-white font-content">{{ $applicant->user->email }}</p>
             </div>
 
             <div
                 class="bg-white p-3 text-black h-fit w-full rounded-lg flex flex-col items-center border border-light_blue">
                 <div class="flex flex-col items-start justify-start border-light_blue w-full p-2">
                     <p class="text-zinc-400 text-sm font-content w-full capitalize">Applied Jobs</p>
-                    <p class="text-base font-medium text-black font-content capitalize">{{$applications->count()}}</p>
+                    <p class="text-base font-medium text-black font-content capitalize">{{ $applications->count() }}</p>
                 </div>
                 <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                     <p class="text-zinc-400 text-sm font-content w-full capitalize">Shortlisted</p>
                     <p class="text-base font-medium text-black font-content capitalize">
-                        {{$applications->where('status', 'shortlisted')->count()}}
+                        {{ $applications->where('status', 'shortlisted')->count() }}
+                    </p>
+                </div>
+                <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
+                    <p class="text-zinc-400 text-sm font-content w-full capitalize">Accepted</p>
+                    <p class="text-base font-medium text-black font-content capitalize">
+                        {{ $applications->where('status', 'accepted')->count() }}
+                    </p>
+                </div>
+                <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
+                    <p class="text-zinc-400 text-sm font-content w-full capitalize">Declined</p>
+                    <p class="text-base font-medium text-black font-content capitalize">
+                        {{ $applications->where('status', 'declined')->count() }}
                     </p>
                 </div>
                 <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
@@ -33,14 +45,15 @@
                 </div>
                 <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                     <p class="text-zinc-400 text-sm font-content w-full capitalize">Country</p>
-                    <p class="text-base font-medium text-black font-content capitalize">{{$applicant->country}}</p>
+                    <p class="text-base font-medium text-black font-content capitalize">{{ $applicant->country }}</p>
                 </div>
                 <div class="flex flex-col items-start justify-start border-t border-light_blue w-full p-2">
                     <p class="text-zinc-400 text-sm font-content w-full capitalize">Socials</p>
                     <div class="flex items-center justify-between w-full">
                         Linkedin
-                        <a href="{{$applicant?->linkedin ?? '#'}}" target="_blank" class="flex flex-row items-center">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" class="h-12 w-12">
+                        <a href="{{ $applicant?->linkedin ?? '#' }}" target="_blank" class="flex flex-row items-center">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                class="h-12 w-12">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                                 <g id="SVGRepo_iconCarrier">
@@ -67,38 +80,38 @@
                     <div class="flex text-sm items-center capitalize text-black">
                         <label class="w-1/3" title="Nationality">Nationality</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$applicant->country}}
+                            {{ $applicant->country }}
                         </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
                         <label class="w-1/3" title="Street address">Street address</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$applicant->street_address}}
+                            {{ $applicant->street_address }}
                         </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
                         <label class="w-1/3" title="State">State/province</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$applicant->state}}
+                            {{ $applicant->state }}
                         </div>
                     </div>
 
                     <div class="flex text-sm items-center capitalize text-black">
                         <label class="w-1/3" title="City">City</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$applicant->city}}
+                            {{ $applicant->city }}
                         </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
                         <label class="w-1/3" title="Phone">Phone Number</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$applicant->phone}}
+                            {{ $applicant->phone }}
                         </div>
                     </div>
                     <div class="flex text-sm items-center capitalize text-black">
                         <label class="w-1/3" title="Education">Education</label>
                         <div class="w-2/3 p-2 text-base text-left border rounded-lg h-fit border-gray2/50 break-words">
-                            {{$applicant->education}}
+                            {{ $applicant->education }}
                         </div>
                     </div>
                 </form>
