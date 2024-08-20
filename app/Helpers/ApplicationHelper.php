@@ -32,15 +32,15 @@ class ApplicationHelper
 
     public static function acceptApplication(JobApplications $application)
     {
-        //update application status
-        $application->update([
-            'status' => 'accepted',
-        ]);
 
-        //send email
-        Mail::to($application->applicants->user)->queue(new ApplicationAcceptedMail($application));
+        DB::transaction(function () use ($application) {
+            $application->update(['status' => 'declined']);
 
-        //send notification
-        $application->applicants->user->notify(new ApplicationAcceptedNotification($application));
+            $user = $application->applicants->user;
+
+            // Send email and notification together if possible
+            Mail::to($user)->queue(new ApplicationAcceptedMail($application));
+            $user->notify(new ApplicationAcceptedNotification($application));
+        });
     }
 }

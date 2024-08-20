@@ -21,9 +21,10 @@
                     <span class="text-xs text-gray-600">{{ auth()->user()->role }}</span>
                 </div>
                 <span class="h-12 w-12 ml-2 sm:ml-3 mr-2 p-1 bg-gray-100 rounded-full overflow-hidden">
-                    <img src="{{ asset(auth()->user()->applicant->profile_photo) }}" alt="user profile photo"
-                        class="h-full w-full object-cover rounded-full">
+                    <img src="{{ auth()->user()->applicant && auth()->user()->applicant->profile_photo ? asset(auth()->user()->applicant->profile_photo) : 'https://i.ibb.co/c6hJf99/R.png' }}"
+                        alt="user profile photo" class="h-full w-full object-cover rounded-full">
                 </span>
+
             </div>
         </x-nav-link>
         <div class="flex space-x-2 font-bold items-center border-l pl-3 ml-3">
@@ -64,9 +65,11 @@
             <div class="border-t border-gray-700 pb-3 pt-4">
                 <div class="flex items-center px-3">
                     <div class="flex-shrink-0">
-                        <img class="h-10 w-10 rounded-full" src="{{ asset(auth()->user()->applicant->profile_photo) }}"
+                        <img class="h-10 w-10 rounded-full"
+                            src="{{ auth()->user()->applicant && auth()->user()->applicant->profile_photo ? asset(auth()->user()->applicant->profile_photo) : 'https://i.ibb.co/c6hJf99/R.png' }}"
                             alt="Profile Picture">
                     </div>
+
                     <div class="ml-3">
                         <div class="leading-none font-semibold text-sm">{{ auth()->user()->name }}</div>
                         <div class="text-sm font-medium leading-none text-gray-500">{{ auth()->user()->role }}</div>

@@ -4,12 +4,12 @@
     <!-- Stepper -->
     <div class="md:max-w-md max-w-[60%] mx-auto mb-6" x-data="{ step: @entangle('step') }">
         <div class="flex justify-between items-center">
-            <div :class="{'bg-blue-600 text-white': step >= 1, 'bg-gray-300': step < 1}"
+            <div :class="{ 'bg-blue-600 text-white': step >= 1, 'bg-gray-300': step < 1 }"
                 class="md:w-8 md:h-8 w-6 h-6 rounded-full flex items-center justify-center">
                 1
             </div>
-            <div :class="{'bg-blue-600': step > 1}" class="flex-1 h-1 bg-gray-300 mx-2"></div>
-            <div :class="{'bg-blue-600 text-white': step >= 2, 'bg-gray-300': step < 2}"
+            <div :class="{ 'bg-blue-600': step > 1 }" class="flex-1 h-1 bg-gray-300 mx-2"></div>
+            <div :class="{ 'bg-blue-600 text-white': step >= 2, 'bg-gray-300': step < 2 }"
                 class="md:w-8 md:h-8 w-6 h-6 rounded-full flex items-center justify-center">
                 2
             </div>
@@ -39,8 +39,8 @@
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3 text-gray-500">
                                     GHS
                                 </span>
-                                <x-form.input type="number" min="0" name="salary" id="salary" wire:model="salary"
-                                    class="pl-12" />
+                                <x-form.input type="number" min="0" name="salary" id="salary"
+                                    wire:model="salary" class="pl-12" />
                             </div>
                             <x-form.error name="salary" />
                         </div>
@@ -50,7 +50,7 @@
                         <div class="flex">
                             <div class="w-[85%] ml-7 block md:hidden">
                                 @if ($errors->has('selectedCountry') || $errors->has('selectedState'))
-                                <span class="text-red-500 text-sm">The country and state fields are required.</span>
+                                    <span class="text-red-500 text-sm">The country and state fields are required.</span>
                                 @endif
                             </div>
                             <div class="w-1/2 hidden md:block">
@@ -116,21 +116,14 @@
 
 
 
-                    <div class="flex mx-auto w-full space-x-4 items-center">
+                    <div>
                         <button wire:loading.attr="disabled" wire:target="nextStep,selectState" type="submit"
                             class="relative md:w-fit w-[85%] md:ml-0 mx-auto text-sm md:text-base inline-flex items-center justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 md:px-4 px-3 rounded-md">
-                            <span class="flex-1 text-center">Next</span>
-
-                            <!-- Spinner-->
-                            <div wire:loading wire:target="nextStep" class="absolute right-3">
-                                <div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]"
-                                    role="status">
-                                    <span
-                                        class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
-                                </div>
-                            </div>
+                            Next
                         </button>
-
+                        <div wire:loading wire:target="nextStep" class="text-sm text-blue-500">
+                            Please wait...
+                        </div>
                     </div>
                 </div>
             </form>
@@ -159,14 +152,15 @@
 
                         <div class="md:w-full w-[85%] mx-auto">
                             <x-form.label name="experience_years" label="Years of Exp" />
-                            <x-form.input type="number" min="0" max="50" name="experience_years" id="experience_years"
-                                wire:model="experience_years" />
+                            <x-form.input type="number" min="0" max="50" name="experience_years"
+                                id="experience_years" wire:model="experience_years" />
                             <x-form.error name="experience_years" />
                         </div>
 
                         <div class="md:w-full w-[85%] mx-auto">
                             <x-form.label name="experience_level" label="Experience Level" />
-                            <x-form.select name="experience_level" id="experience_level" wire:model="experience_level">
+                            <x-form.select name="experience_level" id="experience_level"
+                                wire:model="experience_level">
                                 <option value="">--Please Select--</option>
                                 <option value="Any">Any</option>
                                 <option value="entry">Entry</option>
@@ -191,9 +185,8 @@
 
                         <div class="md:w-full w-[85%] mx-auto">
                             <x-form.label name="skills" label="Skills" />
-                            <textarea name="skills" id="skills" wire:model="skills"
-                                placeholder="Communication, English etc." rows="4"
-                                class="w-full border rounded-lg p-2 text-sm"></textarea>
+                            <textarea name="skills" id="skills" wire:model="skills" placeholder="Communication, English etc."
+                                rows="4" class="w-full border rounded-lg p-2 text-sm"></textarea>
                             <div class="flex justify-end">
                                 <small class="text-gray-500">Separate skills with comma</small>
                             </div>
