@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Mail\RegisterUserMail;
 use App\Models\User;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -50,26 +51,9 @@ class RegisterUser extends Component
     public function register()
     {
 
-        // dd(
-        //     $this->logo,
-        //     $this->employer,
-        //     $this->role,
-        //     $this->name,
-        //     $this->email,
-        //     $this->password,
-        //     $this->password_confirmation,
-        //     $this->education,
-        //     $this->field,
-        //     $this->country,
-        //     $this->phone,
-        //     $this->street_address,
-        //     $this->city,
-        //     $this->state,
-        //     $this->zip,
-        //     $this->profile_photo,
-        //     $this->linkedin
-        // );
 
+
+        //validate user
         $userAttributes = $this->validate([
             'name' => 'required|min:3|max:255',
             'email' => 'required|email|min:3|max:255|unique:users',
@@ -77,7 +61,7 @@ class RegisterUser extends Component
             'role' => 'required',
         ]);
 
-
+        //validate employer
         if ($this->role === 'employer') {
             $employerAttributes = $this->validate([
                 'employer' => 'required|min:3|max:255',
@@ -93,9 +77,8 @@ class RegisterUser extends Component
             ]);
         }
 
-
+        //validate applicant
         if ($this->role === 'applicant') {
-
             $applicantAttributes = $this->validate([
                 'education' => 'required',
                 'date_of_birth' => 'required',
@@ -110,58 +93,69 @@ class RegisterUser extends Component
             ]);
         }
 
-
-
-
-        // Create the user with validated data
-        $user = User::create([
-            'name' => $userAttributes['name'],
-            'email' => $userAttributes['email'],
-            'password' => Hash::make($userAttributes['password']),
-            'role' => $this->role
-        ]);
-
-
-        // Handle employer-specific data
-        if ($this->role === 'employer' && $this->logo) {
-            $logoPath = $employerAttributes['logo']->store('logos');
-            $user->employer()->create([
-                'name' => $employerAttributes['employer'],
-                'position' => $employerAttributes['position'],
-                'company_country' => $employerAttributes['company_country'],
-                'company_phone' => $employerAttributes['company_phone'],
-                'company_street_address' => $employerAttributes['company_street_address'],
-                'company_state' => $employerAttributes['company_state'],
-                'company_city' => $employerAttributes['company_city'],
-                'company_zip' => $employerAttributes['company_zip'],
-                'url' => $employerAttributes['url'],
-                'logo' => "storage/{$logoPath}"
+        //open a try/catch block
+        try {
+            //open a transaction
+            DB::beginTransaction();
+            //create user with validated attributes
+            $user = User::create([
+                'name' => $userAttributes['name'],
+                'email' => $userAttributes['email'],
+                'password' => Hash::make($userAttributes['password']),
+                'role' => $this->role
             ]);
+
+            //handle employer specific attributes
+            if ($this->role === 'employer') {
+                $user->employer()->create([
+                    'name' => $employerAttributes['employer'],
+                    'position' => $employerAttributes['position'],
+                    'company_country' => $employerAttributes['company_country'],
+                    'company_phone' => $employerAttributes['company_phone'],
+                    'company_street_address' => $employerAttributes['company_street_address'],
+                    'company_state' => $employerAttributes['company_state'],
+                    'company_city' => $employerAttributes['company_city'],
+                    'company_zip' => $employerAttributes['company_zip'],
+                    'url' => $employerAttributes['url'],
+                    'logo' => $employerAttributes['logo'],
+                ]);
+            }
+
+
+            //handle applicant specific attributes
+            elseif ($this->role === 'applicant') {
+                // dd($applicantAttributes);
+                $user->applicant()->create([
+                    'education' => $applicantAttributes['education'],
+                    'date_of_birth' => $applicantAttributes['date_of_birth'],
+                    'country' => $applicantAttributes['country'],
+                    'phone' => $applicantAttributes['phone'],
+                    'street_address' => $applicantAttributes['street_address'],
+                    'city' => $applicantAttributes['city'],
+                    'state' => $applicantAttributes['state'],
+                    'zip' => $applicantAttributes['zip'],
+                    'profile_photo' => $applicantAttributes['profile_photo'],
+                    'linkedin' => $applicantAttributes['linkedin'],
+                ]);
+            }
+
+            // Send email for user registration
+            Mail::to($user)->queue(new RegisterUserMail($user));
+
+
+            //commit the transaction
+            DB::commit();
+
+            //flash a success message
+            flash()->success('User created successfully!');
+            return redirect()->route('login');
+        } catch (\Exception $e) {
+            //rollback the transaction
+            DB::rollBack();
+            //flash an error message
+            flash()->error('An error occurred while creating the user. Please try again.');
+            return redirect()->back();
         }
-
-        // Handle applicant-specific data
-        elseif ($this->role === 'applicant' && $this->profile_photo) {
-            $profilePhotoPath = $applicantAttributes['profile_photo']->store('profile_photos');
-            $user->applicant()->create([
-                'education' => $applicantAttributes['education'],
-                'date_of_birth' => $applicantAttributes['date_of_birth'],
-                'country' => $applicantAttributes['country'],
-                'phone' => $applicantAttributes['phone'],
-                'street_address' => $applicantAttributes['street_address'],
-                'city' => $applicantAttributes['city'],
-                'state' => $applicantAttributes['state'],
-                'zip' => $applicantAttributes['zip'],
-                'profile_photo' => "storage/{$profilePhotoPath}",
-                'linkedin' => $applicantAttributes['linkedin'],
-            ]);
-        }
-
-        //send email for user registration
-        Mail::to($user)->queue(new RegisterUserMail($user));
-
-        // Auth::login($user)
-        flash()->success('User created successfully.');
-        return redirect()->route('login');
 
     }
 

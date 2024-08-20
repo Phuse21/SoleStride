@@ -6,6 +6,7 @@ use App\Mail\CreateJobMail;
 use App\Notifications\JobCreatedNotification;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -66,19 +67,21 @@ class CreateJob extends Component
 
     public function saveJobDetails()
     {
+        // Convert responsibilities and skills to arrays
         $this->responsibilities = $this->convertToArray($this->responsibilities);
         $this->skills = $this->convertToArray($this->skills);
 
+        // Validate the input data
         $this->validate([
             'summary' => 'required|min:10|max:1000',
             'minimum_qualifications' => 'required',
             'experience_level' => 'required',
-            'experience_years' => 'required|integer|min:1 |max:50',
+            'experience_years' => 'required|integer|min:1|max:50',
             'responsibilities' => 'required',
             'skills' => 'required',
         ]);
 
-
+        // Prepare attributes for the job
         $attributes = [
             'title' => $this->title,
             'salary' => $this->salary,
@@ -92,42 +95,61 @@ class CreateJob extends Component
             'country' => $this->selectedCountry
         ];
 
-        $job = Auth::user()->employer->jobs()->create(Arr::except($attributes, ['tags']));
+        // Open a try/catch block to handle transaction and potential errors
+        try {
+            // Start the transaction
+            DB::beginTransaction();
 
-        if ($attributes['tags'] ?? false) {
-            $tags = explode(',', $attributes['tags']);
+            // Create the job associated with the authenticated employer
+            $job = Auth::user()->employer->jobs()->create(Arr::except($attributes, ['tags']));
 
-            //Trim spaces around tags
-            $tags = array_map('trim', $tags);
+            // Handle tags if provided
+            if ($attributes['tags'] ?? false) {
+                $tags = explode(',', $attributes['tags']);
 
-            //filter out empty tags
-            $tags = array_filter($tags, fn($tag) => $tag !== '');
+                // Trim spaces around tags and filter out empty tags
+                $tags = array_map('trim', $tags);
+                $tags = array_filter($tags, fn($tag) => $tag !== '');
 
-            //iterate over each valid tag and attach it to the job
-            foreach ($tags as $tag) {
-                $job->tag($tag);
+                // Attach valid tags to the job
+                foreach ($tags as $tag) {
+                    $job->tag($tag);
+                }
             }
 
+            // Create job details associated with the job
+            $job->job_details()->create([
+                'summary' => $this->summary,
+                'minimum_qualifications' => $this->minimum_qualifications,
+                'experience_level' => $this->experience_level,
+                'experience_years' => $this->experience_years,
+                'responsibilities' => json_encode($this->responsibilities),
+                'skills' => json_encode($this->skills),
+            ]);
+
+            // Send email notification about the job creation
+            Mail::to($job->employer->user)->queue(new CreateJobMail($job));
+
+            // Save a notification for the employer
+            $job->employer->user->notify(new JobCreatedNotification($job));
+
+            // Commit the transaction
+            DB::commit();
+
+            // Flash a success message and redirect
+            flash()->success('Job creation successful.');
+            return redirect()->route('employer.jobsPosted');
+
+        } catch (\Exception $e) {
+            // Rollback the transaction in case of an error
+            DB::rollBack();
+
+            // Flash an error message and redirect back
+            flash()->error('An error occurred while creating the job. Please try again.');
+            return redirect()->back();
         }
-
-        $job->job_details()->create([
-            'summary' => $this->summary,
-            'minimum_qualifications' => $this->minimum_qualifications,
-            'experience_level' => $this->experience_level,
-            'experience_years' => $this->experience_years,
-            'responsibilities' => json_encode($this->responsibilities),
-            'skills' => json_encode($this->skills),
-        ]);
-
-        //send email
-        Mail::to($job->employer->user)->queue(new CreateJobMail($job));
-
-        //save notification
-        $job->employer->user->notify(new JobCreatedNotification($job));
-
-        flash()->success('Job creation successful.');
-        return redirect()->route('employer.jobsPosted');
     }
+
 
     protected function convertToArray($input)
     {
