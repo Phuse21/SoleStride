@@ -83,7 +83,7 @@ class RegisterUser extends Component
                 'education' => 'required',
                 'date_of_birth' => 'required',
                 'country' => 'required',
-                'phone' => 'required',
+                'phone' => 'required|min:8|max:12',
                 'street_address' => 'required|min:3|max:255',
                 'city' => 'required',
                 'state' => 'required',

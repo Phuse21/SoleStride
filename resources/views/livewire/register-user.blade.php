@@ -115,9 +115,15 @@
 
                         <div class="md:w-full w-[85%] mx-auto">
                             <x-form.label :name="'phone'" :label="'Phone'" />
-                            <x-form.input type="text" :name="'phone'" :id="'phone'"
-                                wire:model="company_phone" />
-                            <x-form.error name="phone" />
+                            <div class="relative">
+                                <span class="absolute left-0 inset-y-0 text-lg flex items-center pl-3 text-gray-500">
+                                    +
+                                </span>
+                                <x-form.input type="text" :name="'phone'" :id="'phone'"
+                                    placeholder="eg: 233247688096" wire:model="company_phone"
+                                    class="pl-12 items-center" />
+                            </div>
+                            <x-form.error name="company_phone" />
                         </div>
 
                     </div>
@@ -167,7 +173,7 @@
                         <div class="md:w-full w-[85%] mx-auto">
                             <x-form.label :name="'date_of_birth'" :label="'Date of Birth'" />
                             <x-form.input type="date" :name="'date_of_birth'" :id="'date_of_birth'"
-                                wire:model="date_of_birth" />
+                                max="{{ \Carbon\Carbon::now()->toDateString() }}" wire:model="date_of_birth" />
                             <x-form.error name="date_of_birth" />
                         </div>
                     </div>
