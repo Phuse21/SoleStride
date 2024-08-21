@@ -116,9 +116,9 @@
 
 
 
-                    <div>
+                    <div class="md:w-full w-[85%] mx-auto">
                         <button wire:loading.attr="disabled" wire:target="nextStep,selectState" type="submit"
-                            class="relative md:w-fit w-[85%] md:ml-0 mx-auto text-sm md:text-base inline-flex items-center justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 md:px-4 px-3 rounded-md">
+                            class="relative md:w-fit w-full text-sm md:text-base inline-flex items-center justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 md:px-4 px-3 rounded-md">
                             Next
                         </button>
                         <div wire:loading wire:target="nextStep" class="text-sm text-blue-500">
@@ -201,25 +201,29 @@
                             class="w-full border rounded-lg p-2 text-sm"></textarea>
                         <div class="flex justify-end">
                             <small class="text-gray-500">
-                                <span x-text="$wire.summary.length > 0 ? $wire.summary.length : 0"></span>
+                                <span
+                                    x-text="$wire.summary && $wire.summary.length > 0 ? $wire.summary.length : 0"></span>
                                 out of 1000 characters
                             </small>
                         </div>
                         <x-form.error name="summary" />
                     </div>
 
-                    <div class="flex space-x-4 items-center">
-                        <x-button type="button" @click="step = 1">Back</x-button>
-                        <x-button type="submit" wire:loading.attr="disabled" wire:target="saveJobDetails">Publish
-                            <div wire:loading wire:target="saveJobDetails">
-                                <div class="inline-block h-4 w-4 ml-1 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]"
-                                    role="status">
-                                    <span
-                                        class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                    <div class="md:w-full w-[85%] mx-auto">
+                        <div class="flex space-x-4 items-center">
+                            <x-button type="button" @click="step = 1">Back</x-button>
+                            <x-button type="submit" wire:loading.attr="disabled"
+                                wire:target="saveJobDetails">Publish
+                                <div wire:loading wire:target="saveJobDetails">
+                                    <div class="inline-block h-4 w-4 ml-1 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-primary motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                                        role="status">
+                                        <span
+                                            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </x-button>
+                            </x-button>
 
+                        </div>
                     </div>
                 </div>
             </form>

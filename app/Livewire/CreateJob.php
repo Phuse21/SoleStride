@@ -8,7 +8,6 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-use Livewire\Attributes\On;
 use Livewire\Component;
 
 
@@ -26,7 +25,7 @@ class CreateJob extends Component
     public $featured;
     public $mode;
 
-    public $summary;
+    public $summary = '';
     public $minimum_qualifications;
     public $experience_level;
     public $experience_years;
