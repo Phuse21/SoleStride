@@ -17,7 +17,7 @@ class ApplicantProfile extends Component
     {
 
         $this->applicant = auth()->user()->applicant;
-        dd($this->applicant);
+        // dd($this->applicant);
 
         //retrieve applications with the necessary relationships
         $this->applications = JobApplications::with('applicants.user', 'job')

@@ -18,7 +18,7 @@
         <!-- Notifications Dropdown -->
         <div style="display: none" x-show="open" @click.outside="open = false"
             x-on:keydown.escape.window="open = false"
-            class="flex flex-col absolute mt-1 md:mt-7 py-2 right-[-67px] w-[300px]   bg-white border border-gray-200 rounded-lg shadow-lg z-20">
+            class="flex flex-col absolute mt-1 md:mt-7 py-2 right-[-40px] md:right-[-67px] md:w-[300px] w-[250px]   bg-white border border-gray-200 rounded-lg shadow-lg z-20">
 
             <!--fixed Header -->
             <div class="px-2 py-1 w-full flex items-center justify-between border-b border-gray-300">
