@@ -22,8 +22,8 @@
         </div>
 
         <div class="w-full md:w-1/3 hidden md:block">
-            <img src="https://i.ibb.co/zGmPNzP/portrait-engineer-job-site-work-hours.jpg"
-                alt="portrait-engineer-job-site-work-hours" class="rounded-xl">
+            <img src="{{ asset('storage/assets/woman-engineer.jpg') }}" alt="portrait-engineer-job-site-work-hours"
+                class="rounded-xl">
         </div>
     </div>
 </div>

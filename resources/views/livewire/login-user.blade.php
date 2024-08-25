@@ -8,7 +8,7 @@
         <form wire:submit.prevent="login" class="max-w-md mx-auto">
             <div class="mb-6 w-full md:w-2/3">
                 <x-form.label :name="'email'" :label="'Email'" />
-                <x-form.input type="email" :name="'email'" :id="'email'" wire:model="email" />
+                <x-form.input type="email" :name="'email'" :id="'email1'" wire:model="email" />
                 <x-form.error name="email" />
             </div>
             <div class="mb-6 w-full md:w-2/3">
@@ -36,8 +36,9 @@
     </div>
     <!-- Right Section -->
     <div class="hidden md:block w-full md:w-1/2 relative h-64 md:h-screen">
-        <img src="https://i.ibb.co/RyNjv7p/copy-space-blank-commercial-advertisement.jpg"
-            alt="portrait-engineer-job-site-work-hours" class="absolute inset-0 w-full h-full object-cover rounded-xl">
+        <img src="{{ asset('storage/assets/login-page.jpg') }}" alt="portrait-engineer-job-site-work-hours"
+            class="absolute inset-0 w-full h-full object-cover rounded-xl">
+
         <div class="absolute inset-0 bg-blue-400 opacity-50 rounded-xl"></div>
         <div class="relative z-5 flex items-start justify-start h-full p-8">
             <div class="text-white">
