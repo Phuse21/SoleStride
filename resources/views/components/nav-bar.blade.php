@@ -1,7 +1,7 @@
 <nav class="flex justify-between items-center border-b border-black/10 sticky top-0 bg-white z-10">
     <div>
         <a wire:navigate href="/">
-            <img class="h-24 w-24" src="https://i.ibb.co/C0484RC/2-removebg-preview.png" alt="Your Company">
+            <img class="h-24 w-24" src="{{ asset('storage/assets/company-logo.png') }}" alt="Your Company">
         </a>
 
     </div>

@@ -12,23 +12,23 @@
 </head>
 
 <body
-    class="{{$unscrollable ? 'overflow-y-hidden md:overflow-auto' : ''}} bg-white text-black font-hanken overflow-x-hidden pb-10">
+    class="{{ $unscrollable ? 'overflow-y-hidden md:overflow-auto' : '' }} bg-white text-black font-hanken overflow-x-hidden pb-10">
     <div class="px-8">
         @if (auth()->guest())
-        <x-nav-bar />
+            <x-nav-bar />
         @elseif (auth()->user()->role === 'employer')
-        <x-employer.nav-bar />
+            <x-employer.nav-bar />
         @elseif (auth()->user()->role === 'applicant')
-        <x-applicant.nav-bar />
+            <x-applicant.nav-bar />
         @endif
         <main class="mt-6 max-w-[986px] mx-auto relative">
             {{ $slot }}
         </main>
         <footer data-aos="fade-up"
-            class="{{$hideFooter ? 'hidden md:block' : ''}} flex flex-col max-w-[986px] mx-auto text-black py-5 mt-20 border-t border-gray-200">
+            class="{{ $hideFooter ? 'hidden md:block' : '' }} flex flex-col max-w-[986px] mx-auto text-black py-5 mt-20 border-t border-gray-200">
             <div class="mb-3 mx-2 grid grid-cols-1 md:grid-cols-2">
                 <div class="flex-1 mb-4 text-left">
-                    <img class="h-16 w-16 md:h-24 md:w-24" src="https://i.ibb.co/C0484RC/2-removebg-preview.png"
+                    <img class="h-16 w-16 md:h-24 md:w-24" src="{{ asset('storage/assets/company-logo.png') }}"
                         alt="Your Company">
                     <p class="mb-4 font-mono">"Discover Your Future with SoleStride Jobs"</p>
                 </div>
@@ -45,7 +45,8 @@
                                 <a href="#" class="text-black text-xs md:text-sm hover:text-gray-400">About us</a>
                             </li>
                             <li class="mb-2">
-                                <a href="#" class="text-black text-xs md:text-sm hover:text-gray-400">Contact us</a>
+                                <a href="#" class="text-black text-xs md:text-sm hover:text-gray-400">Contact
+                                    us</a>
                             </li>
                             <li class="mb-2">
                                 <a href="#" class="text-black text-xs md:text-sm hover:text-gray-400">Blog</a>

@@ -185,16 +185,11 @@
                         </div>
 
                         <div class="md:w-full w-[85%] mx-auto">
-                            <x-form.label :name="'phone'" :label="'Phone'" />
-                            <div class="relative">
-                                <span class="absolute left-0 inset-y-0 text-lg flex items-center pl-3 text-gray-500">
-                                    +
-                                </span>
-                                <x-form.input type="text" :name="'phone'" :id="'phone'"
-                                    placeholder="eg: 233247688096" wire:model="phone" class="pl-12 items-center" />
-                            </div>
-                            <x-form.error name="phone" />
+                            <x-form.label :name="'state'" :label="'State'" />
+                            <x-form.input type="text" :name="'state'" :id="'state'" wire:model="state" />
+                            <x-form.error name="state" />
                         </div>
+
                     </div>
 
                     <div class="md:w-full w-[85%] mx-auto">
@@ -204,11 +199,7 @@
                         <x-form.error name="street_address" />
                     </div>
 
-                    <div class="md:w-full w-[85%] mx-auto">
-                        <x-form.label :name="'state'" :label="'State'" />
-                        <x-form.input type="text" :name="'state'" :id="'state'" wire:model="state" />
-                        <x-form.error name="state" />
-                    </div>
+
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="md:w-full w-[85%] mx-auto">
@@ -222,6 +213,18 @@
                             <x-form.label :name="'zip'" :label="'Zip'" />
                             <x-form.input type="text" :name="'zip'" :id="'zip'" wire:model="zip" />
                             <x-form.error name="zip" />
+                        </div>
+
+                        <div class="md:w-full w-[85%] mx-auto">
+                            <x-form.label :name="'phone'" :label="'Phone'" />
+                            <div class="relative">
+                                <span class="absolute left-0 inset-y-0 text-lg flex items-center pl-3 text-gray-500">
+                                    +
+                                </span>
+                                <x-form.input type="text" :name="'phone'" :id="'phone'"
+                                    placeholder="eg: 233247688096" wire:model="phone" class="pl-12 items-center" />
+                            </div>
+                            <x-form.error name="phone" />
                         </div>
                     </div>
 
