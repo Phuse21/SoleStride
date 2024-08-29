@@ -107,7 +107,7 @@ class RegisterUser extends Component
 
             //handle employer specific attributes
             if ($this->role === 'employer') {
-                $logoPath = $this->logo->store('logos');
+                $logoPath = 'storage/' . $this->logo->store('logos');
 
                 $user->employer()->create([
                     'name' => $employerAttributes['employer'],
@@ -128,7 +128,7 @@ class RegisterUser extends Component
             elseif ($this->role === 'applicant') {
                 // dd($applicantAttributes);
 
-                $profilePath = $this->profile_photo->store('profile_photos');
+                $profilePath = 'storage/' . $this->profile_photo->store('profile_photos');
 
                 $user->applicant()->create([
                     'education' => $applicantAttributes['education'],
