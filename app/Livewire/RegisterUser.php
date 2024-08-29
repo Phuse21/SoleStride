@@ -107,6 +107,8 @@ class RegisterUser extends Component
 
             //handle employer specific attributes
             if ($this->role === 'employer') {
+                $logoPath = $this->logo->store('logos');
+
                 $user->employer()->create([
                     'name' => $employerAttributes['employer'],
                     'position' => $employerAttributes['position'],
@@ -117,7 +119,7 @@ class RegisterUser extends Component
                     'company_city' => $employerAttributes['company_city'],
                     'company_zip' => $employerAttributes['company_zip'],
                     'url' => $employerAttributes['url'],
-                    'logo' => $employerAttributes['logo'],
+                    'logo' => $logoPath,
                 ]);
             }
 
@@ -125,6 +127,9 @@ class RegisterUser extends Component
             //handle applicant specific attributes
             elseif ($this->role === 'applicant') {
                 // dd($applicantAttributes);
+
+                $profilePath = $this->profile_photo->store('profile_photos');
+
                 $user->applicant()->create([
                     'education' => $applicantAttributes['education'],
                     'date_of_birth' => $applicantAttributes['date_of_birth'],
@@ -134,7 +139,7 @@ class RegisterUser extends Component
                     'city' => $applicantAttributes['city'],
                     'state' => $applicantAttributes['state'],
                     'zip' => $applicantAttributes['zip'],
-                    'profile_photo' => $applicantAttributes['profile_photo'],
+                    'profile_photo' => $profilePath,
                     'linkedin' => $applicantAttributes['linkedin'],
                 ]);
             }
