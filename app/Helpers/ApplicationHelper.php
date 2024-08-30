@@ -34,7 +34,7 @@ class ApplicationHelper
     {
 
         DB::transaction(function () use ($application) {
-            $application->update(['status' => 'declined']);
+            $application->update(['status' => 'accepted']);
 
             $user = $application->applicants->user;
 
