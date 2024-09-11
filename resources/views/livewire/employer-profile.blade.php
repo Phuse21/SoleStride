@@ -7,7 +7,7 @@
                     class="bg-gradient-to-t from-primary to-btn_gradient_blue/80 text-white h-fit w-full p-3 rounded-lg flex flex-col items-center border border-light_blue relative">
                     <div class="h-32 w-32 p-1 rounded-full overflow-hidden flex items-center justify-center bg-white"
                         style="font-size: 50px;">
-                        <img src="{{ asset('storage/' . $employer?->logo ?? 'https://i.ibb.co/Yk3VRHC/user-131563.png') }}"
+                        <img src="{{ asset($employer?->logo ?? 'https://i.ibb.co/Yk3VRHC/user-131563.png') }}"
                             class="object-cover rounded-full h-full w-full">
                     </div>
                     <p class="text-white text-xl font-bold font-content capitalize mt-3">
