@@ -4,31 +4,13 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: solestride
-    # working_dir: /app
-    # volumes:
-    #   - .:/app  # Mount the current directory to /app in the container
     ports:
-      - "8000:8000"  # Map port 8000 on the host to port 8000 in the container
-    depends_on:
-      - db  # Ensure the db service is started before the app
+      - "10000:10000"  # Map port 10000 for Render
     environment:
-      DB_HOST: db 
-      DB_PORT: 3306
+      DB_CONNECTION: pgsql
+      DB_HOST: dpg-ctf05mlds78s73dldq40-a  # Render database host
+      DB_PORT: 5432
       DB_DATABASE: solestride
-      DB_USERNAME: root
-      DB_PASSWORD: 
-    command: ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
-
-  db:
-    image: mysql:8.0 
-    container_name: solestride-db
-    environment:
-      MYSQL_DATABASE: solestride
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    volumes:
-      - db_data:/var/lib/mysql  # Persist database data in a Docker volume
-    ports:
-      - "3306:3306"  # Map port 3306 on the host to port 3306 in the container
-
-volumes:
-  db_data:  # Define the volume for database persistence
+      DB_USERNAME: postgres
+      DB_PASSWORD: secret  # Render database password
+    command: ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
